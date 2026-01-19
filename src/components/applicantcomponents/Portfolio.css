@@ -1,0 +1,843 @@
+/* Card width tightened + centered */
+.portfolio-card {
+  display: grid !important;
+  grid-template-columns: auto 1px 1fr auto !important;
+  /* left | divider | middle | right */
+  gap: 16px !important;
+  align-items: center !important;
+  background: #fff !important;
+  border: 1px solid #F4E7D6 !important;
+  border-radius: 12px !important;
+  padding: 16px 20px !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06) !important;
+  /* width: 100% !important; */
+  /* max-width: 1080px !important;       ↓ narrower card */
+  margin: 0 auto 16px auto !important;
+  /* centered */
+}
+
+/* Left cluster */
+.portfolio-left {
+  grid-column: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+}
+
+.portfolio-avatar-wrap {
+  position: relative !important;
+  width: 72px !important;
+  height: 72px !important;
+  flex: 0 0 72px !important;
+  overflow: visible !important;
+}
+
+.portfolio-avatar {
+  width: 72px !important;
+  height: 72px !important;
+  border-radius: 999px !important;
+  border: 2px solid #FFE2C4 !important;
+}
+
+/* Camera/edit button — fixed positioning & visibility */
+.portfolio-camera-btn {
+  position: absolute !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  transform: translate(25%, 25%) !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50% !important;
+  border: 2px solid #fff !important;
+  background: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18) !important;
+  cursor: pointer !important;
+  display: flex !important;
+  /* Centering fix */
+  align-items: center !important;
+  /* vertically center */
+  justify-content: center !important;
+  /* horizontally center */
+  z-index: 2 !important;
+  padding: 0 !important;
+}
+
+.portfolio-camera-btn svg {
+  color: #000 !important;
+  /* black pen icon */
+  font-size: 14px !important;
+}
+
+
+.portfolio-meta {
+  display: grid !important;
+  gap: 4px !important;
+}
+
+.portfolio-name-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+}
+
+.portfolio-name {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  color: #1B1B1B !important;
+  margin: 0 !important;
+  cursor: default;
+}
+
+.portfolio-role {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #F97316 !important;
+  margin: 0 !important;
+  cursor: default !important;
+}
+
+.portfolio-updated {
+  font-size: 12px !important;
+  color: #737373 !important;
+  cursor: default;
+}
+
+.common_style{
+  cursor: default !important;
+}
+
+.portfolio-edit-btn {
+  position: relative !important;
+  top: 0 !important;
+  /* Avoid fixed pixel offset unless you want absolute positioning */
+  left: 0 !important;
+  width: 77px !important;
+  height: 32px !important;
+  background: linear-gradient(292deg, #fbbb5c 0%, #e66a0e 100%) !important;
+  border-radius: 6px !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  opacity: 1 !important;
+  transition: all 0.2s ease !important;
+}
+
+.portfolio-edit-btn:hover {
+  filter: brightness(1.05) !important;
+  transform: translateY(-1px) !important;
+}
+
+
+
+
+/* Divider column */
+.portfolio-divider {
+  grid-column: 2 !important;
+  height: 100% !important;
+  width: 1px !important;
+  background: #EDEDED !important;
+  align-self: stretch !important;
+  margin: 0 !important;
+}
+
+/* Middle info stack */
+.portfolio-middle {
+  grid-column: 3 !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 8px !important;
+}
+
+.portfolio-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  color: #2B2B2B !important;
+  font-size: 14px !important;
+}
+
+.portfolio-icon {
+  width: 18px !important;
+  height: 18px !important;
+  object-fit: contain !important;
+  flex: 0 0 18px !important;
+}
+
+/* Right score */
+.portfolio-right {
+  grid-column: 4 !important;
+  text-align: right !important;
+  min-width: 84px !important;
+  align-self: center !important;
+}
+
+.portfolio-score-label {
+  font-size: 12px !important;
+  color: #737373 !important;
+  margin: 0 0 2px !important;
+}
+
+.portfolio-score {
+  font-size: 44px !important;
+  font-weight: 800 !important;
+  color: #D26B15 !important;
+  line-height: 1 !important;
+}
+
+/* Medals */
+.portfolio-medals {
+  display: flex !important;
+  gap: 4px !important;
+  margin-left: -2px !important;
+}
+
+.portfolio-medal {
+  font-size: 20px !important;
+  line-height: 1 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .portfolio-card {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    max-width: 100% !important;
+  }
+
+  .portfolio-left,
+  .portfolio-middle,
+  .portfolio-right,
+  .portfolio-divider {
+    grid-column: 1 !important;
+  }
+
+  .portfolio-divider {
+    display: none !important;
+  }
+
+  .portfolio-right {
+    text-align: left !important;
+  }
+  .skill-badge-empty-para p, .skill-badge-empty-para span{
+    font-size: 14px !important;    
+  }
+}
+
+/* --- shared card shell --- */
+.card-base {
+  background: #fff !important;
+  border: 1px solid #F0EFEA !important;
+  border-radius: 12px !important;
+  padding: 16px 18px !important;
+  margin: 12px 0 !important;
+}
+
+.soft-shadow {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .06) !important;
+}
+
+.card-title-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 8px !important;
+}
+
+.card-title {
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  color: #1b1b1b !important;
+  margin: 0 !important;
+}
+
+.req {
+  color: #F97316 !important;
+}
+
+.edit-chip {
+  border: 0 !important;
+  border-radius: 8px !important;
+  padding: 6px 10px !important;
+  cursor: pointer !important;
+  background: #FFE6D2 !important;
+  color: #D26B15 !important;
+  font-weight: 700 !important;
+}
+
+.card-subtitle {
+  color: #7a7a7a !important;
+  font-size: 13px !important;
+  margin: 0 0 12px !important;
+}
+
+.summary-text {
+  color: #737373 !important;
+  line-height: 1.5 !important;
+  font-size: 13px !important;
+}
+.field-align{
+  display: flex !important;
+  flex-direction: column !important;
+}
+.field-align input{
+  height: 50px;
+}
+/* --- personal details grid --- */
+.pd-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+}
+
+.pd-input {
+  background: #F7F7F7 !important;
+  border: 1px solid #E5E5E5 !important;
+  border-radius: 8px !important;
+  padding: 12px 14px !important;
+  font-size: 14px !important;
+  color: #2B2B2B !important;
+}
+
+.pd-input::placeholder {
+  color: #9E9E9E !important;
+}
+
+.pd-input.raw {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.pd-input.with-icon,
+.pd-input.with-add {
+  background: #F7F7F7 !important;
+  border: 1px solid #E5E5E5 !important;
+  border-radius: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 12px !important;
+}
+
+.pd-icon {
+  margin-left: auto !important;
+  opacity: .6 !important;
+}
+
+.pd-add {
+  margin-left: auto !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 999px !important;
+  border: none !important;
+  cursor: not-allowed !important;
+  background: #F0F0F0 !important;
+  color: #777 !important;
+  font-weight: 700 !important;
+}
+
+.pd-select-wrap {
+  width: 100%;
+  position: relative;
+}
+
+.profile-dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #F7F7F7;
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
+  padding: 12px 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.profile-dropdown.open {
+  border-color: #BDBDBD;
+}
+
+.profile-dropdown.placeholder .pd-selected {
+  color: #9E9E9E;
+}
+
+.pd-select {
+  font-size: 14px;
+  color: #2B2B2B;
+}
+
+.pd-caret {
+  font-size: 14px;
+  color: #888;
+}
+
+.pd-options {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  z-index: 999;
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: 140px;
+}
+
+.pd-option {
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+
+.pd-option:hover {
+  background: #F0F0F0;
+}
+
+.span-2 {
+  grid-column: span 2 / span 2 !important;
+}
+
+@media (max-width: 992px) {
+  .pd-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .span-2 {
+    grid-column: auto !important;
+  }
+}
+
+/* --- dashed resume drop area --- */
+.resume-drop {
+  margin-top: 14px !important;
+  border: 2px dashed #F4A66A !important;
+  background: #FFF7F0 !important;
+  border-radius: 12px !important;
+  padding: 22px 18px !important;
+}
+
+.resume-drop-inner {
+  text-align: center !important;
+}
+
+.resume-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: #F97316 !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+}
+
+.resume-note {
+  margin-top: 8px !important;
+  color: #8c8c8c !important;
+  font-size: 12px !important;
+}
+
+/* minor: primary button used in summary modal */
+.btn-primary {
+  background: #1967d2 !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 8px 14px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  font-weight: 700 !important;
+}
+
+.skill-chip {
+  background: #FFF0E5 !important;
+  color: #D26B15 !important;
+  border-radius: 20px !important;
+  padding: 6px 12px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  cursor: default !important;
+}
+
+.skill-chip span {
+  margin-left: 6px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  font-size: 13px !important;
+}
+
+/* keep card content clipped to the rounded corners */
+.card-base {
+  position: relative;
+  overflow: visible;
+  /* <-- important */
+  box-sizing: border-box;
+}
+
+/* skills card gets a touch more bottom space */
+.card-base.card-skills {
+  padding-bottom: 24px;
+  /* ensures chips never sit on the edge */
+}
+
+/* inner pad guarantees chips “live” inside the card */
+.skills-pad {
+  padding: 2px 4px 6px;
+  /* left/right align with input */
+}
+
+/* chips layout */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* chip look */
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  background: #FFF0E5;
+  border-radius: 20px;
+  padding: 6px 12px;
+  color: #D26B15;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.skill-chip .chip-x {
+  margin-left: 6px;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* Compact grid container inside the portfolio card */
+.skill-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(170px, 1fr));
+  gap: 14px;
+}
+
+/* Make sure individual badge cards don’t break the card shell */
+.skill-badge-card {
+  width: 100%;
+  max-width: 200px;
+  margin: 0;
+  /* override any external margins */
+  border-radius: 10px;
+  /* softer */
+  overflow: hidden;
+  /* clip to rounded edges */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Status pill spacing for compact layout */
+.skill-badge-card .status {
+  padding: 6px 8px 0 8px;
+}
+
+/* Narrow screens: 2 per row */
+@media (max-width: 992px) {
+  .skill-badges-grid {
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
+  }
+}
+
+/* Very narrow screens: 1 per row */
+@media (max-width: 530px) {
+  .skill-badges-grid {
+    grid-template-columns: 1fr;
+  }
+  .skill-badge-empty-para{
+    display: block !important;  
+  }
+  .skill-badge-empty-para p, .skill-badge-empty-para span{
+    font-size: 12px !important;    
+  }
+}
+
+
+/* the wrapper for inputs with an icon (don't use .pd-input here) */
+.pd-with-icon {
+  background: #F7F7F7 !important;
+  border: 1px solid #E5E5E5 !important;
+  border-radius: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 12px !important;
+}
+
+/* the inner input should stretch and look like other inputs */
+.pd-input.raw {
+  background: transparent !important;
+  border: none !important;
+  padding: 12px 0 !important;
+  width: 100% !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+/* make the calendar icon centered & consistent */
+.pd-icon {
+  margin-left: 8px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 20px !important;
+  height: 20px !important;
+  line-height: 1 !important;
+  font-size: 16px !important;
+}
+
+/* Modal overlay — dim background */
+.modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(0, 0, 0, 0.55) !important;
+  z-index: 10000 !important;
+  padding: 20px !important;
+}
+
+/* Modal shell: allow visible overflow so dropdown can escape */
+/* sensible default for all modals (restore padding) */
+.modal-content2 {
+  position: relative !important;
+  width: 820px !important;
+  max-width: calc(100% - 40px) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35) !important;
+
+  /* restore normal modal padding & scrolling */
+  padding: 24px !important;
+  box-sizing: border-box !important;
+  max-height: 78vh !important;
+  overflow: auto !important;
+}
+
+
+/* you already have this */
+.modal-content2.keyskills {
+  padding: 0 !important;
+  overflow: visible !important;
+  /* allow dropdown to be positioned outside */
+}
+
+.modal-body {
+  background: #fff !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  max-height: 78vh !important;
+  overflow: auto !important;
+  /* scroll inside the body */
+}
+
+/* Allow suggestions to escape the inner scrolling box when using keyskills modal */
+.modal-content2.keyskills .modal-body {
+  overflow: visible !important;
+}
+
+/* keep suggestions above everything */
+.modal-content2.keyskills .typeahead-suggestions,
+.modal-content2.keyskills .typeahead-suggestions li {
+  z-index: 20000 !important;
+}
+
+
+.typeahead-suggestions {
+  z-index: 20000 !important;
+  /* higher than modal overlay (10000) and modal body (11000) */
+}
+
+/* responsive */
+@media (max-width: 720px) {
+  .modal-content2 {
+    width: 96% !important;
+  }
+
+  .modal-body {
+    padding: 16px !important;
+    max-height: 90vh !important;
+  }
+}
+
+/* Typeahead container */
+.typeahead-wrapper {
+  position: relative !important;
+  /* suggestion box positioned relative to this */
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+/* input + add button row */
+.typeahead-row {
+  display: flex !important;
+  gap: 8px !important;
+  align-items: center !important;
+}
+
+/* input fills space */
+.typeahead-row .pd-input {
+  flex: 1 !important;
+}
+
+/* Suggestion dropdown */
+.typeahead-suggestions {
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  left: 0 !important;
+  right: 0 !important;
+  background: #fff !important;
+  border: 1px solid #e6e6e6 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+  max-height: 220px !important;
+  overflow-y: auto !important;
+  z-index: 11000 !important;
+  /* above modal body */
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 6px 0 !important;
+}
+
+/* suggestion row */
+.typeahead-suggestions li {
+  padding: 10px 12px !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+}
+
+.typeahead-suggestions li:hover {
+  background: #faf7f2 !important;
+}
+
+/* small polish */
+.error-message {
+  color: #d32f2f !important;
+  margin-top: 6px !important;
+}
+
+.skills-pad {
+  padding: 2px 4px 6px !important;
+}
+
+.skills-list {
+  display: flex !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+}
+
+.skill-chip {
+  display: inline-flex !important;
+  align-items: center !important;
+  background: #FFF0E5 !important;
+  color: #D26B15 !important;
+  border-radius: 20px !important;
+  padding: 6px 12px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+
+.skill-chip .chip-x {
+  margin-left: 8px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+
+
+/* === Modal button color override (brand orange) === */
+/* Targets buttons inside modals that use modal-content2 */
+.modal-content2 .btn-primary,
+.modal-content2 button.btn-primary,
+.modal-content2 .btn,
+.modal-content2 button[type="button"],
+.modal-content2 button[type="submit"] {
+  background: linear-gradient(90deg, #F98F11 0%, #E66A0E 100%) !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  /* subtle border */
+  color: #ffffff !important;
+  box-shadow: 0 6px 18px rgba(249, 143, 17, 0.12) !important;
+  padding: 8px 14px !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease !important;
+  text-transform: none;
+}
+
+/* Hover / focus / active states */
+.modal-content2 .btn-primary:hover,
+.modal-content2 button.btn-primary:hover,
+.modal-content2 .btn:hover,
+.modal-content2 button[type="button"]:hover,
+.modal-content2 button[type="submit"]:hover {
+  transform: translateY(-2px) !important;
+  filter: brightness(0.97) !important;
+}
+
+.modal-content2 .btn-primary:active,
+.modal-content2 button.btn-primary:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 4px 14px rgba(230, 106, 14, 0.12) !important;
+}
+
+.modal-content2 .btn-primary:focus,
+.modal-content2 button.btn-primary:focus {
+  outline: 3px solid rgba(249, 143, 17, 0.18) !important;
+  outline-offset: 2px !important;
+}
+
+/* Disabled state */
+.modal-content2 .btn-primary[disabled],
+.modal-content2 button.btn-primary[disabled],
+.modal-content2 .btn[disabled] {
+  background: #F5C9A0 !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* If some modals use .btn-outline or .secondary style, convert them too */
+.modal-content2 .btn-outline,
+.modal-content2 .btn-secondary {
+  background: transparent !important;
+  border: 1px solid #F98F11 !important;
+  color: #F98F11 !important;
+  box-shadow: none !important;
+}
+
+/* Make anchor links that look like buttons consistent inside modals */
+.modal-content2 a.btn,
+.modal-content2 a.button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  background: linear-gradient(90deg, #F98F11 0%, #E66A0E 100%) !important;
+  color: #fff !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+}
+
+.skill-badge-empty-para{
+  display: flex;
+}

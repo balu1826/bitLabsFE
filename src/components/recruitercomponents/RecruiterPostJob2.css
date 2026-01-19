@@ -1,0 +1,128 @@
+.post-job {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .screening-questions label {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .screening-questions p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .question {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .question input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  
+  .delete-button {
+    color: #FF7171 !important;
+font-family: "Plus Jakarta Sans";
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 26px;
+margin-right: 15px;
+  }
+  
+  .delete-button:hover {
+    color: #FF7171 !important;
+  }
+  
+  .add-button {
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-button:hover {
+    color: #000 !important;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .back-button, .post-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .back-button {
+    background-color: #f0f0f0;
+  }
+  
+  .post-button {
+    background-color: #ff6600;
+    color: #fff;
+  }
+  
+  .post-button:hover {
+    background-color: #e65c00;
+  }
+  
+  .dashboard .button-back {
+    background-color: 'none';
+    font-weight: 700;
+    border-radius: 8px;
+    display: inline-flex;
+    justify-content: center;
+    width: 180px;
+    height: 40px;
+    align-items: center;
+    height: 40px;
+    color: #F97316;
+    font-size: 15px;
+    line-height: 16px;
+    font-weight: 500;
+    padding: 8px 16px;
+    z-index: 2;
+    flex-wrap: wrap;
+    gap: 4px;
+    border: 1px solid #F97316;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.dashboard .button-back:hover {
+    
+    font-weight: 700;
+    border-radius: 8px;
+    border-color: #c2570c;
+    display: inline-flex;
+    justify-content: center;
+    width: 180px;
+    height: 40px;
+    align-items: center;
+    height: 40px;
+    color: #c2570c;
+    font-size: 15px;
+    line-height: 16px;
+    font-weight: 500;
+    padding: 8px 16px;
+    position: relative;
+    z-index: 2;
+    flex-wrap: wrap;
+    gap: 4px;
+
+}

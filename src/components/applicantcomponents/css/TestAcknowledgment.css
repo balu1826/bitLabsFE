@@ -1,0 +1,147 @@
+.acknowledgment-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 20px;
+  height: 100vh;
+ 
+}
+
+.acknowledgment-content {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 97% !important;
+  height: 100% !important;
+}
+
+.acknowledgment-image {
+  width: 100%;
+  max-width: 300px;
+  height: 300px;
+  margin-bottom: 20px;
+}
+
+.acknowledgment-score {
+  color: #F97316 !important;
+  text-align: center !important;
+  font-family: "Plus Jakarta Sans" !important;
+  font-size: 36px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+   margin-bottom: 30px !important;
+}
+
+.acknowledgment-text {
+  color: #8C8C8C !important;
+text-align: center !important;
+font-family: "Plus Jakarta Sans" !important;
+font-size: 24px !important;
+font-style: normal !important;
+font-weight: 600 !important;
+}
+.acknowledgment-text1
+{
+  color: #000 !important;
+text-align: center !important;
+font-family: "Plus Jakarta Sans" !important;
+font-size: 24px !important;
+font-style: normal !important;
+font-weight: 600 !important;
+}
+
+
+.acknowledgment-subtext {
+  color: #000 !important;
+font-family: "Plus Jakarta Sans" !important;
+font-size: 24px !important;
+font-style: normal !important;
+font-weight: 600 !important;
+line-height: 25px !important; /* 104.167% */
+margin-bottom: 30px !important;
+margin-top: 30px !important;
+}
+
+.acknowledgment-subtext1
+{
+  color: #F97316 !important;
+font-family: "Plus Jakarta Sans" !important;
+font-size: 24px !important;
+font-style: normal !important;
+font-weight: 600 !important;
+line-height: 25px !important; /* 104.167% */
+margin-bottom: 30px !important;
+margin-top: 30px !important;
+}
+
+@media (max-width: 600px) {
+  .acknowledgment-image
+  {
+    width: 80% !important;
+    height: 80% !important;
+  }
+  .acknowledgment-score {
+    font-size: 23px !important;
+  }
+  .acknowledgment-text1,
+  .acknowledgment-text 
+  {
+    font-size: 14px !important;
+    line-height: 20px !important;
+  }
+  .acknowledgment-subtext1,
+  .acknowledgment-subtext {
+    font-size: 20px !important;
+  }
+}
+
+.but-link {
+ 
+  justify-content: space-between;
+  align-items: center;
+}
+
+.acknowledgment-btn {
+  background-color: #f46f16 !important;
+  color: white !important;
+  border: none !important;
+  padding: 10px !important;
+  font-size: 18px !important;
+  cursor: pointer !important;
+  border-radius: 5px !important;
+  transition: background-color 0.3s ease !important;
+  margin-bottom: 10px;
+}
+
+.acknowledgment-btn:hover {
+  background-color: #e65a00;
+}
+
+.link-but {
+  margin-left: 15px;
+}
+
+@media (max-width: 480px) {
+  .but-link {
+    flex-direction: row; /* Align items in a row */
+    justify-content: space-between; /* Space evenly between the button and link */
+    padding-right: 0; /* Remove right padding */
+    padding-left: 0; /* Optional: remove left padding */
+  }
+
+  .acknowledgment-btn,
+  .link-but {
+    width: 48%; /* Each item takes up 48% of the width to allow space between them */
+    text-align: center; /* Center text inside the items */
+    font-size: 14px !important;
+    margin-bottom: 0; /* Remove bottom margin to align items better */
+  }
+
+  .link-but {
+    margin-left: 0; /* Remove margin in mobile view */
+    text-decoration: underline !important; /* Prevent underline from shrinking the width */
+  }
+}

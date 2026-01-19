@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 84 96">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-1, .cls-3 {
+        fill-rule: evenodd;
+      }
+
+      .cls-4, .cls-3 {
+        fill: #554ea1;
+      }
+    </style>
+  </defs>
+  <!-- Generator: Adobe Illustrator 28.6.0, SVG Export Plug-In . SVG Version: 1.2.0 Build 709)  -->
+  <g>
+    <g id="Layer_1">
+      <rect class="cls-4" x="-1.9" y="-2.1" width="87.8" height="99.5"/>
+      <path class="cls-1" d="M4803.7-375.5h2500v2500h-2500V-375.5Z"/>
+      <path class="cls-3" d="M1.2,1.7h80.6v92.6H1.2V1.7Z"/>
+      <path class="cls-2" d="M15.6,59.2c-.6,0-1.1-.2-1.5-.6-.4-.4-.6-.9-.6-1.4s.2-1,.6-1.4.9-.6,1.5-.6,1.1.2,1.5.6c.4.4.6.9.6,1.4s-.2,1-.6,1.4-.9.6-1.5.6ZM38.3,58.9h-3.7l-9.8-15.4c-.2-.4-.4-.8-.6-1.2h0c0,.4,0,1.4,0,2.9v13.7h-3.3v-20.9h3.9l9.4,15c.4.6.7,1.1.8,1.3h0c0-.6,0-1.5,0-2.8v-13.5h3.3v20.9h0ZM54.3,58.9h-11.5v-20.9h11v2.9h-7.6v5.9h7v2.9h-7v6.2h8.1v2.9h0ZM70.6,40.9h-5.9v18h-3.4v-18h-5.9v-2.9h15.1v2.9h.1Z"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,372 @@
+.rh-hackathon-dashboard .rh-page-title-dashboard {
+    margin-top: 104px;
+    margin-bottom: 10px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.rh-hackathon-dashboard .rh-dashboard-section {
+    margin-top: 0;
+}
+
+.rh-hackathon-dashboard .rh-themes-container {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.rh-hackathon-dashboard .rh-title-dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.rh-hackathon-dashboard .rh-page-title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.rh-hackathon-dashboard .rh-new-hackathon-btn {
+    background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+.rh-hackathon-dashboard .rh-new-hackathon-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
+}
+
+.rh-hackathon-dashboard .rh-plus-icon {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.rh-hackathon-dashboard .rh-hackathons-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.rh-hackathon-dashboard .rh-hackathon-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    margin: 15px 0;
+}
+
+.rh-hackathon-dashboard .rh-hackathon-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transform: none;
+}
+
+.rh-hackathon-dashboard .rh-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.rh-hackathon-dashboard .rh-header-left {
+    flex: 1;
+}
+
+.dashboard .rh-hackathon-dashboard .rh-hackathon-title,
+.rh-hackathon-dashboard .rh-hackathon-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 4px 0;
+}
+
+.rh-hackathon-dashboard .rh-hackathon-dates {
+    font-size: 14px;
+    color: #6B7280;
+    margin: 0;
+    font-weight: 400;
+}
+
+.rh-hackathon-dashboard .rh-status-badge {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: white;
+    display: inline-block;
+    line-height: 1;
+}
+
+.rh-hackathon-dashboard .rh-status-badge.is-active {
+    background-color: #10B981;
+}
+
+.rh-hackathon-dashboard .rh-status-badge.is-upcoming {
+    background-color: #F97316;
+}
+
+.rh-hackathon-dashboard .rh-status-badge.is-completed {
+    background-color: #6B7280;
+}
+
+.rh-hackathon-dashboard .rh-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.rh-hackathon-dashboard .rh-stats-section {
+    display: flex;
+    flex-direction: row;
+    gap: 92px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.rh-hackathon-dashboard .rh-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.rh-hackathon-dashboard .rh-stat-item.rh-submissions {
+    flex: 0 0 auto;
+}
+
+.rh-hackathon-dashboard .rh-stat-item.rh-engagement {
+    flex: 1;
+}
+
+.rh-hackathon-dashboard .rh-stat-circle {
+    position: relative;
+}
+
+.rh-hackathon-dashboard .rh-progress-ring {
+    transform: rotate(-90deg);
+}
+
+.rh-hackathon-dashboard .rh-progress-ring-circle-bg {
+    transition: stroke-dasharray 0.5s ease;
+}
+
+.rh-hackathon-dashboard .rh-progress-ring-circle {
+    transition: stroke-dasharray 0.5s ease;
+    stroke-linecap: round;
+}
+
+.rh-hackathon-dashboard .rh-progress-text {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.rh-hackathon-dashboard .rh-engagement-icon {
+    width: 64px;
+    height: 64px;
+    background: #FFF7ED;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rh-hackathon-dashboard .rh-stat-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.rh-hackathon-dashboard .rh-stat-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #6B7280;
+    margin: 0;
+}
+
+.rh-hackathon-dashboard .rh-stat-value {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+}
+
+.rh-hackathon-dashboard .rh-engagement-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: #F97316;
+    line-height: 1;
+}
+
+.rh-hackathon-dashboard .rh-stat-subtitle {
+    font-size: 13px;
+    color: #9CA3AF;
+    margin: 0;
+}
+
+.rh-hackathon-dashboard .rh-card-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.rh-hackathon-dashboard .rh-action-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    border: 1px solid #E5E7EB;
+    background: white;
+    color: #374151;
+}
+
+.rh-hackathon-dashboard .rh-action-btn:hover {
+    background: #F9FAFB;
+    border-color: #D1D5DB;
+}
+
+.rh-hackathon-dashboard .rh-action-btn .icon {
+    font-size: 16px;
+}
+
+.dashboard .rh-hackathon-dashboard .rh-card-actions .rh-btn-view,
+.rh-hackathon-dashboard .rh-card-actions .rh-btn-view {
+    margin-left: auto;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    background: #F97316;
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.dashboard .rh-hackathon-dashboard .rh-card-actions .rh-btn-view:hover,
+.rh-hackathon-dashboard .rh-card-actions .rh-btn-view:hover {
+    background: #EA580C;
+    color: white;
+}
+
+.rh-hackathon-dashboard .rh-no-hackathons {
+    text-align: center;
+    padding: 80px 20px;
+    border-radius: 16px;
+    color: #6B7280;
+}
+
+.rh-hackathon-dashboard .rh-loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    font-size: 18px;
+    color: #6B7280;
+}
+
+@media (max-width: 1024px) {
+    .rh-hackathon-dashboard .rh-page-title-dashboard {
+        margin-top: 104px;
+    }
+
+    .rh-hackathon-dashboard .rh-themes-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .rh-hackathon-dashboard .rh-stats-section {
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+    }
+
+    .rh-hackathon-dashboard .rh-stat-item.rh-engagement {
+        width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .rh-hackathon-dashboard .rh-page-title-dashboard {
+        margin-top: 104px;
+    }
+
+    .rh-hackathon-dashboard .rh-themes-container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .rh-hackathon-dashboard .rh-title-dashboard {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .rh-hackathon-dashboard .rh-new-hackathon-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .rh-hackathon-dashboard .rh-hackathon-card {
+        padding: 20px;
+    }
+
+    .rh-hackathon-dashboard .rh-card-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .rh-hackathon-dashboard .rh-hackathon-title {
+        font-size: 20px;
+    }
+
+    .rh-hackathon-dashboard .rh-card-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .rh-hackathon-dashboard .rh-action-btn,
+    .rh-hackathon-dashboard .rh-btn-view {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+    }
+
+    .rh-hackathon-dashboard .rh-stats-section {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: nowrap;
+    }
+
+    .rh-hackathon-dashboard .rh-stat-item {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .rh-hackathon-dashboard .rh-stat-item.rh-submissions {
+        flex-direction: column;
+        align-items: center;
+    }
+}

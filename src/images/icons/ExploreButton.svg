@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="157" height="46" viewBox="0 0 157 46">
+  <defs>
+    <linearGradient id="linear-gradient" x1="1.171" y1="1.138" x2="0.004" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fbbb5c"/>
+      <stop offset="1" stop-color="#e66a0e"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_364" data-name="Group 364" transform="translate(854 -1483)">
+    <rect id="Rectangle_178" data-name="Rectangle 178" width="157" height="46" rx="6" transform="translate(-854 1483)" fill="url(#linear-gradient)"/>
+    <text id="Explore" transform="translate(-830.5 1511.5)" fill="#fff" font-size="16" font-family="Poppins-SemiBold, Poppins" font-weight="600"><tspan x="0" y="0">Explore</tspan></text>
+    <rect id="Rectangle_479" data-name="Rectangle 479" width="34" height="34" rx="4" transform="translate(-737 1489)" fill="#fff"/>
+    <path id="Path_531" data-name="Path 531" d="M-742.2,1457.555l6.369-6.369,6.369,6.369" transform="translate(734.978 2241.833) rotate(90)" fill="none" stroke="#f7ab4c" stroke-linecap="round" stroke-width="1"/>
+  </g>
+</svg>

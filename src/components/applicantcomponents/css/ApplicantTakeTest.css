@@ -1,0 +1,716 @@
+.test-container {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.6); /* dark overlay */
+    backdrop-filter: blur(1px); /* Blur background */
+    -webkit-backdrop-filter: blur(1px); /* Safari support */
+    z-index: 11000 !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 50px;
+    
+}
+
+@media (max-width: 634px) {
+  .duration-text {
+    font-size: calc(25px - 8px) !important;
+    margin-right: 5px !important;
+  }
+}
+
+
+.test-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 10px 20px !important;
+    background-color: #ffffff !important; /* White background for the header */
+    z-index: 12000 !important;
+}
+
+.instructions-page {
+    width: 50% !important;
+    margin: 20px auto !important;
+    padding: 30px !important;
+    background: #fff !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 16px !important;
+}
+
+/* Media query for screens below 767px */
+@media (max-width: 1035px) {
+    .instructions-page {
+        width: 85% !important;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .instructions-page {
+        padding: 10px !important;
+    }
+  }
+
+.test-page
+{
+    border-radius: 16px !important;
+    width: 90% !important;
+    margin: 30px auto !important;
+    padding: 30px !important;
+    background: #fff !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+    min-height: 75%; /* Adjust this value as needed for height */
+    justify-content: space-between;
+    padding-bottom: 20px;
+     border: 2px solid #FF9D01 !important;
+}
+
+.instructions-page h2, .test-page h3 {
+    font-size: 24px !important;
+    margin-bottom: 20px !important;
+}
+
+.instructions-page p, .test-page p {
+    margin-bottom: 10px !important;
+    font-size: 16px !important;
+}
+
+.timer {
+    color: #F46F16 !important;
+    font-weight: bold !important;
+    border: 1px solid #F46F16;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 16px !important;
+}
+
+@media (max-width: 480px) {
+    .timer
+    {
+        font-size: 12px !important;
+        padding: 3px;
+        margin-right: -17px;
+    }
+    .timer-svg
+    {
+        width: 14px !important;
+        height: 14px !important;
+    }
+
+  }
+
+.logo1 {
+    width: 195px !important;
+    height: 60px !important;
+}
+
+.exit-btn {
+    background-color: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    color: #7F7F7F !important;
+    font-family: "Plus Jakarta Sans";
+    font-size: 20px !important;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-right: 2.5%;
+}
+
+@media (max-width: 480px) {
+    .exit-btn 
+    {
+        width: 95px !important;
+        margin-right: -20px !important;
+        font-size: 17px !important;
+    }
+    .exit-svg
+    {
+        width: 18px !important;
+        height: 18px !important;
+    }
+  }
+
+.timesup-popup,
+.exit-confirmation {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    padding: 20px !important;
+    background-color: white !important;
+    border: 1px solid #ddd !important;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.validation {
+    color: red !important;
+    margin-top: 10px !important;
+}
+
+.test-page .header {
+    /* display: flex !important; */
+    justify-content: space-between !important;
+    align-items: left !important;
+}
+
+.start-btn{
+    background: #F46F16 !important;
+    color: #fff !important;
+    padding: 10px 40px !important;
+    border: none !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+}
+
+.navigation-btn[disabled] {
+    background: #ccc !important;
+    cursor: not-allowed !important;
+}
+
+.instructions-header {
+    background-color: #F8F8F8 !important;
+    padding: 15px !important;
+    border-radius: 16px !important;
+}
+
+.instructions-title {
+    color: #000 !important;
+    font-family: "Plus Jakarta Sans" !important;
+    font-size: 18px !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: 20px !important; /* 111.111% */
+    padding: 15px !important;
+}
+
+.instructions-list {
+    list-style-type: disc !important;
+    padding: 15px 15px 15px 30px !important;
+    color: #756E6E !important;
+    font-family: "Plus Jakarta Sans" !important;
+    font-size: 15px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 36px !important; /* 200% */
+}
+
+.duration-container {
+    display: flex !important;
+   
+    gap: 10px !important; /* Adds space between the boxes */
+    flex-wrap: wrap !important; /* Allows wrapping on smaller screens */
+}
+
+.duration-box {
+    border-radius: 16px !important;
+    border: 2px solid #ECECEC !important;
+    background: #F0F0F0 !important;
+    /* padding: 10px !important; */
+    width: 110px !important;
+    height: 70px !important;
+    flex-shrink: 0 !important;
+    text-align: center !important; 
+    color: #9E9E9E !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+}
+
+.duration-value {
+    color: #484848 !important;
+    display: block !important; 
+    font-weight: bold !important; 
+}
+
+.exit-popup {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 12000 !important;
+    /* backdrop-filter: blur(4px) !important; */
+}
+
+/* .exit-popup {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    padding: 20px !important;
+    background-color: white !important;
+    border: 1px solid #ddd !important;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1) !important;
+    z-index: 12000 !important; 
+} */
+
+.exit-popup button {
+    margin: 5px !important;
+}
+
+.text-name {
+    color: #FF8E26 !important;
+    font-family: "Plus Jakarta Sans" !important;
+    font-size: 24px !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: 25px !important; /* 69.444% */
+}
+
+.text-name1 {
+  color: #000 !important;
+  font-family: "Plus Jakarta Sans" !important;
+  font-size: 24px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: 25px !important; /* 69.444% */
+  text-transform: capitalize !important;
+}
+
+@media (max-width: 480px) {
+    .text-name
+    {
+        font-size: 18px !important;
+    }
+    .test-sub
+{
+    font-size: 14px !important;
+  }
+}
+.topics-covered
+{
+color: #000000 !important;
+font-family: "Plus Jakarta Sans" !important;
+font-size: 16px !important;
+font-style: normal !important;
+font-weight: 500 !important;
+
+}
+
+
+
+  @media (max-width: 480px) {
+    .start-btn {
+        background: #ff6600 !important;
+        color: #fff !important;
+        padding: 10px 40px !important;
+        border: none !important;
+        border-radius: 8px !important;
+        cursor: pointer !important;
+        width: 100% !important; /* Make the button full width */
+        display: block !important; /* Ensure it's a block-level element */
+        text-align: center !important; /* Center the text */
+        margin: 0 auto !important; /* Center the button horizontally */
+    }
+}
+
+.test-sub
+{
+color: #F68318;
+font-family: "Plus Jakarta Sans";
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: 25px; /* 156.25% */
+text-transform: capitalize;
+margin-top: 10px;
+}
+
+.separator {
+    border-top: 1px solid #E6E6E6;
+    margin: -10px 0px 20px -30px; /* Negative margins to extend beyond the container's padding */
+    width: calc(101.5% + 40px); /* Adjust the width to compensate for negative margins */
+    box-sizing: content-box; /* Ensure the width calculation excludes padding and borders */
+   
+  }
+  
+  
+  .footer1 {
+    display: flex;
+    justify-content: flex-start; /* Align buttons to the right */
+    gap: 10px; /* Space between buttons */
+    padding-right: 20px; /* Adjust padding as needed */
+  }
+  
+.navigation-btn {
+    background: #ff6600 !important;
+    color: #fff !important;
+    padding: 10px 20px !important;
+    border: none !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+  }
+    
+  .navigation-btn:disabled {
+    border-color: #ccc; /* Disabled state border color */
+    color: #ccc; /* Disabled state text color */
+    cursor: not-allowed;
+  }
+  
+  .second-btn 
+  {
+    color: #ff6600 !important;
+    padding: 10px 20px !important;
+    border: 1px solid #ff6600 !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+  }
+    
+  .second-btn:disabled {
+    color: #D0D0D0 !important; /* Disabled state text color */
+    cursor: not-allowed;
+    border: 1px solid #D0D0D0 !important;
+    background: #FFFFFF !important;
+    
+  }
+ 
+  
+  @media (max-width: 480px) {
+    .footer1 {
+      justify-content: space-between; /* Distribute space evenly between buttons */
+      padding-right: 0; /* Remove right padding */
+      padding-left: 0; /* Optional: remove left padding */
+    }
+  
+    .navigation-btn, .second-btn {
+      width: 50%; /* Each button takes up 50% of the width */
+      text-align: center; /* Center text inside the buttons */
+    }
+  }
+
+
+
+  .question
+  {
+    color: #000 !important;
+    font-family: "Plus Jakarta Sans" !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    line-height: 40px !important; /* 156.25% */
+    margin-top: 10px !important;
+  }
+
+  .question1
+  {
+    color: #000 !important;
+    font-family: "Plus Jakarta Sans" !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    line-height: 25px !important; /* 156.25% */
+    
+  }
+
+  .question-label
+  {
+    margin-left: 3%;
+    width: 100% !important;
+   }
+
+
+/* Base styles for the radio button */
+.question-radio{
+
+    width: 16px;
+    height: 16px;
+    background-color: #EAEAEA !important;
+    border-radius: 50%; /* Circular shape */
+    /* border-color: #F68318; */
+    border: none !important;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+   
+   
+  }
+  
+  /* Checked state - change bubble fill color */
+ 
+  
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 16px;
+  height: 16px;
+  background-color: #EAEAEA;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  outline: none !important;
+  border: 2px solid #ccc;
+  border-radius: 50%  !important;
+   outline: none !important;
+  box-shadow: none !important;
+}
+ 
+ 
+input[type="radio"]:checked::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #F68318;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+ 
+   outline: none ;
+  box-shadow: none ;
+}
+
+  
+  .no-select {
+    user-select: none; /* Standard syntax */
+    -webkit-user-select: none; /* Chrome, Safari, Opera */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+  }
+  
+  .test-container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .blur-background {
+    filter: blur(5px); /* Blur the background when "Go Back to Test" button is shown */
+  }
+  
+  .go-back-button-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100; /* Ensure it appears above other content */
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .go-back-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .go-back-button:hover {
+    background-color: #0056b3;
+  }
+  /* --------------------- */
+
+ /* ========== Layout Container ========== */
+.test-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* ========== Left Section (Question Area) ========== */
+.test-left {
+  flex: 2;
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  border: 2px solid #f8f8f8; /* ✅ subtle separation border */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ========== Right Section (Timer + Questions) ========== */
+.test-right {
+  flex: 1;
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+  border: 2px solid #f8f8f8; /* ✅ matches design */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
+}
+
+/* ========== Timer Section ========== */
+.timer-box {
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.timer-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #000;
+  text-align: left;
+}
+
+.timer-digits {
+  display: flex;
+  justify-content: center;
+  gap: 71px;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.time-num {
+  font-size: 32px;
+  font-weight: 700;
+  color: #f46f16;
+  line-height: 1;
+}
+
+.timer-digits p {
+  font-size: 12px;
+  font-weight: 500;
+  color: #000;
+  margin-top: 4px;
+}
+
+.divider-line {
+  width: 100%;
+  height: 1px;
+  background: #e0e0e0;
+  margin: 15px 0;
+}
+
+/* ========== Question Tracker ========== */
+.questions-box {
+  width: 100%;
+}
+
+.questions-title {
+  font-weight: 700;
+  font-size: 18px;
+  color: #000;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.question-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.question-indicator {
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #e0e0e0;
+  transition: all 0.2s ease-in-out;
+}
+
+.question-indicator.answered {
+  background-color: #1aae55;
+  color: #fff;
+}
+
+.question-indicator.not-answered {
+  background-color: #fbbb5c;
+  color: #fff;
+}
+
+.question-indicator.current {
+  background-color: #000;
+  color: #fff;
+}
+
+.question-indicator:not(.answered):not(.not-answered):not(.current) {
+  background-color: #fff;
+  color: #000;
+}
+
+.question-legend {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #333;
+}
+
+.legend-box {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  margin-right: 5px;
+  border-radius: 2px;
+}
+
+.legend-box.not-attempted {
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.legend-box.answered {
+  background-color: #1aae55;
+}
+
+.legend-box.not-answered {
+  background-color: #fbbb5c;
+}
+
+.legend-box.current {
+  background-color: #000;
+}
+
+/* ========== Full-width Progress Bar ========== */
+.progress-bar-container {
+  width: 100%;
+  height: 6px;
+  background-color: #f2f2f2;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #fbbb5c 0%, #e66a0e 100%);
+  border-radius: 4px;
+  transition: width 0.5s ease-in-out;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 765px) {
+  .test-content {
+    flex-direction: column;
+  }
+
+  .test-right {
+    display: none; /* ✅ hides timer + question grid on small screens */
+  }
+
+  .test-left {
+    width: 100%;
+  }
+}
+
+

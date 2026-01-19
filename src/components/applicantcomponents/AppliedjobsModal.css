@@ -1,0 +1,146 @@
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Content */
+.modal-text {
+  background-color: white;
+  border-radius: 16px;
+  padding: 15px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: clamp(340px,60vw,620px);
+}
+
+.close-button1 {
+  position: absolute;
+  top: -5px !important;
+  right: 0px !important;
+  background: transparent !important;
+  border: 0px !important; ;
+  font-size: 22px !important;
+  color: #6C6C6C !important;
+  height: 30px !important;
+  flex-shrink: 0 !important;
+}
+
+
+
+.horizontal-align {
+  display: flex;
+  align-items: center;
+  gap: 43px;
+  margin-top: -8px;
+}
+
+/* Media query to remove display: flex; for screens smaller than 799px */
+@media (max-width: 810px) {
+  .horizontal-align {
+    display: block;
+  }
+}
+
+
+.responsive-margin {
+  /* Default margin for all screen sizes */
+  margin-top: 0;
+}
+
+@media (min-width: 810px) {
+  .responsive-margin {
+    /* Margin for screens above 810px */
+    margin-top: -20px;
+  }
+}
+
+
+
+/* Check Icon */
+.icon-check {
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+/* Heading */
+h3 {
+  /* margin: 20px 0; */
+  /* text-align: center; */
+  color: #333;
+font-family: "Plus Jakarta Sans";
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: 25px; /* 125% */
+}
+
+/* Enhance Section */
+.enhance-section {
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 20px;
+  text-align: left;
+  width: 101%;
+  margin-bottom: -15px;
+  /* height: 90px; */
+  margin-left: -3px;
+}
+
+/* Paragraphs */
+.enhance-section p {
+  /* margin: 5px 0; */
+ 
+font-family: "Plus Jakarta Sans";
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+line-height: 25px;
+}
+
+/* Upskill Button */
+.upskill-button {
+  background-color: #ff6f00 !important;
+  color: white !important;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px !important;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: -15px !important;
+  width:115px;
+  height: 30px;
+  margin-top: 5px !important;
+}
+
+.Create-Resume {
+  background-color: #ff6f00 !important;
+  color: white !important;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px !important;
+  cursor: pointer;
+  font-family: "Plus Jakarta Sans";
+  margin-top: 5px;
+}
+
+
+
+
+.enhanced-paragraph {
+  color: #000 !important;
+  font-family: "Plus Jakarta Sans";
+  font-size: 15px ;
+  font-style: normal;
+  font-weight: 600 !important;
+  line-height: 25px; /* 166.667% */
+}

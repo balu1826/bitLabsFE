@@ -1,0 +1,12 @@
+.modal-open {
+  pointer-events: none;
+}
+
+.modal-open .MuiDialog-root {
+  pointer-events: auto;
+}
+
+/* Add this CSS for ModalClose to be interactive */
+.modal-open .modal-close-wrapper {
+  pointer-events: auto;
+}

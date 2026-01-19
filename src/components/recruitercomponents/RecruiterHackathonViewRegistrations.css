@@ -1,0 +1,133 @@
+.registrations-table-container {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+@media (max-width: 1200px) {
+  .hackathon-page-wrapper {
+    padding: 0 20px;
+  }
+}
+
+.hackathon-count{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.hackathon-stat-card{
+  border: 1px solid #E0E0E0;
+  width: 49%;
+  padding: 2%;
+  margin: 1%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+}
+
+.hackathon-stat-card h3{
+  display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+.hackathon-stat-card p{
+  font-size: 28px;
+    margin: 0;
+    color: #F97316;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 1024px) {
+  .hackathon-stats-wrapper{
+    flex-direction: row;
+    display: flex;
+  }
+  .hackathon-stats-wrapper .hackathon-info-box, .hackathon-count {
+    width: 50%;
+  }
+.hackathon-count{
+  align-items: stretch;
+  margin: -0.5% 0;
+}
+}
+@media screen and (max-width: 640px){
+  .hackathon-stats-wrapper{
+    flex-direction: column;
+  }
+   .hackathon-stats-wrapper .hackathon-info-box, .hackathon-count {
+    width: 100%;
+  }
+}
+
+.hackathon-registrations-table-wrapper {
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+.hackathon-registrations-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.hackathon-registrations-table th,
+.hackathon-registrations-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+.hackathon-registrations-table th{
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.hackathon-status-submitted {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.hackathon-status-not-submitted {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.hackathon-registrations-table .hackathon-btn-view-submission,
+.hackathon-registrations-table .hackathon-btn-declare-winner {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.hackathon-registrations-table .hackathon-btn-view-submission {
+  background-color: #2563eb;
+}
+
+.hackathon-registrations-table .hackathon-btn-declare-winner {
+  background-color: #f97316;
+}
+
+.hackathon-btn-declare-winner.loading {
+  background-color: #d97706;
+  cursor: not-allowed;
+}
+
+.hackathon-registrations-empty {
+  color: #555;
+  text-align: center;
+  padding: 1rem;
+}
+
+.hackathon-no-submission {
+  color: #888;
+}

@@ -1,0 +1,70 @@
+.banner {
+    display: flex;
+    align-items: center;
+    background-color: #021230;
+    color: white;
+    padding: 20px;
+    position: relative;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.banner-content {
+    flex: 1;
+    z-index: 1;
+}
+
+.banner h1 {
+    margin: 0;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+}
+
+.banner p {
+    margin: 6px 0;
+    color: rgba(255, 255, 255, 0.897);
+    word-wrap: break-word;
+}
+
+.banner .create-new-button {
+    background: linear-gradient(135deg, #f77307, #FFA500);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: background 0.5s ease;
+    border-radius: 10px;
+    width: 100px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.banner .create-new-button:hover {
+    background: linear-gradient(135deg, #f09f09, #FF8C00);
+}
+
+.banner-image {
+    flex-shrink: 0;
+}
+.banner-image img {
+    height: auto;
+    max-height: 100%;
+    width: auto;
+    max-width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+.pdf-container {
+    position: relative;
+}
+
+.pdf-container .react-pdf__Document {
+    width: 100%;
+}

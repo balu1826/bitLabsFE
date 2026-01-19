@@ -1,0 +1,402 @@
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.subtitle1 {
+  color: #000;
+font-family: "Plus Jakarta Sans";
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: 26px; 
+}
+
+.description1 {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.progress-bar1 {
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+  margin-bottom: 30px;
+
+}
+
+.step1 {
+  text-align: center;
+}
+
+.step1 .circle1 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  color: #fff;
+  line-height: 30px;
+  margin-bottom: 8px;
+  margin-left: 40px;
+}
+
+.step1.active1 .circle1 {
+  background-color: #22c55e; 
+}
+
+.test-card1 {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+  height: auto;
+}
+
+.test-info {
+  flex: 1; 
+}
+
+.test-info h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.test-info p {
+  font-size: 14px;
+  color: #666;
+}
+
+.test-action1 {
+  margin-right: 20px;
+  justify-content: flex-start;
+  margin-top: 20px; 
+  
+}
+
+.take-test-button1 {
+  background-color: #f46f16;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  
+}
+
+.take-test-button1:hover {
+  background-color: #d65c10;
+}
+
+.test-image1 {
+  margin-left: 20px; 
+}
+
+.test-image1 img {
+  max-width: 100px;
+  height: auto;
+}
+
+/* Skill Badge style starts here*/
+
+/* .skill-badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; 
+  margin-bottom: 50px;
+  margin-left: 15px;
+  width:"100%";
+} */
+.skillBadgeHeading{
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+/* .skill-badge-card {
+  background: #FFFFFF;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  text-align: center;
+  width: 180px;
+  height: 185px;
+  margin-bottom: 20px;
+} */
+
+.skill-badge-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 8px;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.skill-badge-card {
+  width: 180px;
+  height: 185px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  text-align: center;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 750px) {
+   .skill-badge-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    width: 100%;
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+
+  .skill-badge-card {
+    width: 100%;      /* VERY IMPORTANT */
+    max-width: 100%;
+  }
+
+}
+@media (max-width: 444px) {
+  .skill-badge-card {
+    width: 100%;
+  }
+  .skill-badge-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+  }
+}
+@media (max-width: 380px) {
+  .skill-badge-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Even smaller gap for narrow screens */
+    justify-content: flex-start; /* Align items to the left */
+    padding-left: 22px; /* Add padding for space on the left */
+  }
+
+  .col-lg-10.col-md-12 {
+    padding: 0px; /* Remove padding on very small screens */
+  }
+
+  .skillBadgeHeading {
+    padding-left: 25px;
+  }
+
+  .skill-badge-card {
+    background: #FFFFFF;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    text-align: center;
+    width: 170px;
+    /* height: 220px; */
+    margin-bottom: 12px;
+  }
+
+  /* Align the last card in the last row to the left when odd */
+  .skill-badge-container .skill-badge-card:nth-last-child(odd) {
+    margin-left: 0; 
+   
+  }
+}
+
+
+  
+  
+
+.badge {
+  background: #FFFFFF;
+  color: #000000;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: 600px;
+  
+}
+
+.status {
+  font-size: 14px;
+  color: #555;
+}
+
+.skill-required-card h5 {
+  margin: 0;
+}
+
+
+
+/* Top section: Status */
+.status {
+  text-align: right;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.status-passed {
+  background-color: #E4FFE4; /* Green for passed */
+  color: #0A8D08;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  padding: 4px 6px;
+  
+}
+
+.status-failed {
+  background-color: #FEE9E9; /* Red for failed */
+  color:red;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  padding: 4px 6px;
+  
+}
+
+.status-empty {
+  visibility: hidden; /* Makes the element invisible but retains its space */
+height: 10px; /* Keeps the space */
+background-color: transparent;
+}
+
+/* Second section: Badge */
+.badge {
+  text-align: center;
+  
+  
+}
+
+.skill-image {
+  width: 60px;
+  height: 90px;
+}
+
+.skill-name {
+  display: block;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+
+/* Third section: Test actions */
+.test {
+text-align: left;
+margin-top: 4px;
+
+}
+
+.test-action {
+padding: 20px;
+width: 100%;
+/* display: flex; */
+justify-content: space-between;
+align-items: center;
+font-size: 16px;
+cursor: pointer; 
+border: none;
+text-align: left;
+border-bottom-left-radius: 8px; /* Bottom left radius */
+border-bottom-right-radius: 8px; /* Bottom right radius */
+height: 53px;
+}
+
+.test-action.take {
+background-color: black; /* Take test background */
+color: white;
+}
+
+.test-action.retake {
+background-color: #121212; /* Retake test background */
+color: black;
+}
+
+.test-action.verified {
+background: linear-gradient(90deg, rgb(252, 170, 69) 0%, rgb(230, 106, 14) 100%);  /* Verified background */
+color: white;
+align-items: center;
+cursor: default;
+}
+
+.tick-mark {
+align-items: center;
+color: white;
+margin-left: 30px;
+}
+
+.external-link-symbol {
+
+font-size: 14px;
+}
+
+
+
+/* skill badge style ends here*/
+.skeleton-card {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.skeleton-icon {
+  width: 70px;
+  height: 70px;
+  background: #e0e0e0;
+  border-radius: 8px;    /* rectangle */
+  margin: 0 auto 12px auto;
+}
+
+.skeleton-text {
+  width: 90px;
+  height: 16px;
+  background: #d6d6d6;
+  border-radius: 4px;
+  margin: 0 auto;
+}
+
+/* Make skeleton button EXACTLY like the real Start test area */
+.skeleton-button {
+  width: 100% !important;
+  height: 50px !important;        /* EXACT height of the real Start test bar */
+  background: #e0e0e0 !important;
+  border-radius: 0 0 12px 12px;   /* match real card bottom rounding */
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block;
+    transform: scaleX(1.5);
+}
+
+
+
+/* FORCE REMOVE ALL ANIMATIONS FROM SKELETON */
+.skeleton-card *,
+.skeleton-text,
+.skeleton-button,
+.skeleton-icon {
+  animation: none !important;
+  -webkit-animation: none !important;
+  background-image: none !important;
+}
+
+/* ENSURE TEXT SKELETON IS SOLID GRAY */
+.skeleton-text {
+  background-color: #d6d6d6 !important;
+  background: #d6d6d6 !important;
+}
+
+/* Also remove gradient shimmer if inherited */
+.skeleton-card::before,
+.skeleton-card::after {
+  animation: none !important;
+  background: none !important;
+}
