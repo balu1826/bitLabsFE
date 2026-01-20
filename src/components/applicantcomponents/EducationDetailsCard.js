@@ -150,7 +150,7 @@ const EducationDetailsCard = ({ applicantId }) => {
               <div className="pd-select-wrap">
                 <div className={`profile-dropdown common_style ${!g.marksPercent ? 'placeholder' : ''}`}>
                   <div className="pd-selected">
-                    {g.marksPercent + "%" || "Marks in %age"}
+                       {g.marksPercent != null ? `${g.marksPercent}%` :"Marks in % (35-100)"}
                   </div>
                 </div>
               </div>
@@ -186,7 +186,7 @@ const EducationDetailsCard = ({ applicantId }) => {
               <div className="pd-select-wrap">
                 <div className={`profile-dropdown common_style ${!xii.marksPercent ? 'placeholder' : ''}`}>
                   <div className="pd-selected">
-                    {xii.marksPercent + "%" || "Marks in %age"}
+                         {xii.marksPercent != null ? `${xii.marksPercent}%` :"Marks in % (35-100)"}
                   </div>
                 </div>
               </div>
@@ -221,7 +221,7 @@ const EducationDetailsCard = ({ applicantId }) => {
               <div className="pd-select-wrap">
                 <div className={`profile-dropdown common_style ${!x.marksPercent ? 'placeholder' : ''}`}>
                   <div className="pd-selected">
-                    {x.marksPercent + "%" || "Marks in %age"}
+                    {x.marksPercent != null ? `${x.marksPercent}%` :"Marks in % (35-100)"}
                   </div>
                 </div>
               </div>

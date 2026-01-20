@@ -315,6 +315,16 @@
   padding: 0 !important;
   width: 100% !important;
 }
+/* change calendar text color */
+input.pd-input.raw[type="date"]::-webkit-datetime-edit {
+  color: #9E9E9E !important;
+}
+
+/* optional: gray out calendar icon */
+input.pd-input.raw[type="date"]::-webkit-calendar-picker-indicator {
+  filter: grayscale(1);
+  opacity: 0.6;
+}
 
 .pd-input.with-icon,
 .pd-input.with-add {
