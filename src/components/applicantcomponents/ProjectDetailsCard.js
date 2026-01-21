@@ -117,7 +117,7 @@ const ProjectDetailsCard = ({ applicantId }) => {
   return (
     <>
       <div className="col-lg-12 col-md-12 common_style">
-        {items.filter(p => p.id).map((proj, idx) => (
+        {(items.filter(p => p.id).length > 0 ? items.filter(p => p.id) : [{}]).map((proj, idx) => (
         <div className="card-base soft-shadow">
           <div className="card-title-row">
             <div>
@@ -182,7 +182,7 @@ const ProjectDetailsCard = ({ applicantId }) => {
             />
           </div>
         </div>))}
-     {items.length < 3 && (   <div style={{ display: "flex", justifyContent: "center", marginTop: "12px"  }}>
+     {items.filter(p => p.id).length > 0 && items.filter(p => p.id).length < 3 && (  <div style={{ display: "flex", justifyContent: "center", marginTop: "12px"  }}>
   <button
     type="button"
     className="portfolio-edit-btn"
