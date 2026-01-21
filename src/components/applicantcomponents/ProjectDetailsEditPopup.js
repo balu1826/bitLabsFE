@@ -147,6 +147,7 @@ const ChipEditor = ({ value = "", onChange, placeholder, inputName, ariaLabel })
 /* Main component */
 const ProjectDetailsEditPopup = ({ applicantId, initial = {}, onClose, onSuccess, onError }) => {
   const [form, setForm] = useState({
+    id: initial?.id || null,
     projectTitle: initial?.projectTitle || "",
     specialization: initial?.specialization || "",
     technologiesUsed: initial?.technologiesUsed || "",
@@ -163,6 +164,7 @@ const ProjectDetailsEditPopup = ({ applicantId, initial = {}, onClose, onSuccess
   useEffect(() => {
     // Keep form synced if `initial` changes while open
     setForm({
+      id: initial?.id || null,
       projectTitle: initial?.projectTitle || "",
       specialization: initial?.specialization || "",
       technologiesUsed: initial?.technologiesUsed || "",
@@ -228,9 +230,33 @@ const ProjectDetailsEditPopup = ({ applicantId, initial = {}, onClose, onSuccess
     try {
       setSaving(true);
       const jwt = localStorage.getItem("jwtToken");
-      await axios.put(`${PROJ_API}/${applicantId}/saveApplicantProject`, payload, {
-        headers: { Authorization: `Bearer ${jwt}`, "Content-Type": "application/json" },
-      });
+       // 🚀 Check if existing or new based on initial.projectTitle
+    if (form.id) {
+      console.log("form id" ,form.id)
+      // === EXISTING PROJECT → PUT ===
+      await axios.put(
+        `${PROJ_API}/${applicantId}/updateApplicantProject/${form.id}`, // your existing update endpoint
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    } else {
+      // === NEW PROJECT → POST ===
+      await axios.post(
+        `${PROJ_API}/${applicantId}/saveApplicantProject`, // your new create endpoint
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    }
       triggerRefresh();
       onSuccess?.(); // let parent know save succeeded
     } catch (err) {
