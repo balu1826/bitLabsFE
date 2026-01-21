@@ -113,6 +113,23 @@ const ProjectDetailsCard = ({ applicantId }) => {
         .filter(Boolean),
     [proj.skillsUsed]
   );
+const deleteProject = async (projectId) => {
+  try {
+    const jwt = localStorage.getItem("jwtToken");
+
+    await axios.delete(
+      `${PROJ_API}/${applicantId}/deleteApplicantProject/${projectId}`,
+      { headers: { Authorization: `Bearer ${jwt}` } }
+    );
+
+    await fetchProjects(); // refresh list
+    addSnackbar({ message: "Project deleted successfully", type: "success" });
+  } catch (error) {
+    console.error("Delete failed:", error);
+    addSnackbar({ message: "Failed to delete project", type: "error" });
+  }
+};
+
 
   return (
     <>
@@ -128,6 +145,17 @@ const ProjectDetailsCard = ({ applicantId }) => {
                 Stand out for employers by adding details about projects you have done in college, internships, or at work
               </p>
             </div>
+            {proj.id && (
+  <button
+    type="button"
+    className="portfolio-edit-btn"
+    style={{ marginLeft: "8px", backgroundColor: "#e74c3c" }}
+    onClick={() => deleteProject(proj.id)}
+  >
+    Delete
+  </button>
+)}
+
             <button
               type="button"
               className="portfolio-edit-btn"
