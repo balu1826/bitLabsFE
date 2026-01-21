@@ -54,6 +54,7 @@ const ProjectDetailsCard = ({ applicantId }) => {
   const [items, setItems] = useState([]);
   const [editOpen, setEditOpen] = useState(false);
   const [snackbars, setSnackbars] = useState([]);
+  const [isNewProject, setIsNewProject] = useState(false);
   const width = useWindowWidth();
   const isMobile = width <= 992;
 
@@ -176,6 +177,21 @@ const ProjectDetailsCard = ({ applicantId }) => {
             />
           </div>
         </div>
+     {items.length < 3 && (   <div style={{ display: "flex", justifyContent: "center", marginTop: "12px"  }}>
+  <button
+    type="button"
+    className="portfolio-edit-btn"
+     style={{ minWidth: "200px" }} 
+     onClick={() => {
+  setIsNewProject(true); // creating new
+  setEditOpen(true);
+}}
+
+  >
+    Add Another Project
+  </button>
+</div>
+     )}
       </div>
 
       {/* Edit modal */}
@@ -197,10 +213,11 @@ const ProjectDetailsCard = ({ applicantId }) => {
 
         <ProjectDetailsEditPopup
           applicantId={applicantId}
-          initial={proj}
+          initial={isNewProject ? {} : proj}
           onClose={() => {
+            setIsNewProject(false);
             // only close the modal, do NOT call save or show snack here
-            setEditOpen(false);
+            setEditOpen(true);
           }}
           onSuccess={async () => {
             // called only after Save completes successfully
