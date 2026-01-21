@@ -55,6 +55,7 @@ const ProjectDetailsCard = ({ applicantId }) => {
   const [editOpen, setEditOpen] = useState(false);
   const [snackbars, setSnackbars] = useState([]);
   const [isNewProject, setIsNewProject] = useState(false);
+  const [editIndex, setEditIndex] = useState(null);
   const width = useWindowWidth();
   const isMobile = width <= 992;
 
@@ -116,11 +117,12 @@ const ProjectDetailsCard = ({ applicantId }) => {
   return (
     <>
       <div className="col-lg-12 col-md-12 common_style">
+        {items.filter(p => p.id).map((proj, idx) => (
         <div className="card-base soft-shadow">
           <div className="card-title-row">
             <div>
               <h3 className="card-title">
-                Project details <span className="req">*</span>
+                Project {idx+1} Details  <span className="req">*</span>
               </h3>
               <p className="card-subtitle">
                 Stand out for employers by adding details about projects you have done in college, internships, or at work
@@ -129,7 +131,10 @@ const ProjectDetailsCard = ({ applicantId }) => {
             <button
               type="button"
               className="portfolio-edit-btn"
-              onClick={() => setEditOpen(true)}>
+              onClick={() => {
+                setIsNewProject(false);
+                setEditIndex(idx);
+                setEditOpen(true);}}>
               Edit <FontAwesomeIcon icon={faPen} style={{ marginRight: "6px" }} />
             </button>
           </div>
@@ -150,7 +155,7 @@ const ProjectDetailsCard = ({ applicantId }) => {
 
             {/* row 2 */}
             <div className="pd-input with-add">
-              <Pills items={techList} />
+              <Pills items={(proj.technologiesUsed || "").split(",").map(s => s.trim()).filter(Boolean)} />
             </div>
 
             {!isMobile ? (
@@ -176,7 +181,7 @@ const ProjectDetailsCard = ({ applicantId }) => {
               value={proj.projectDescription}
             />
           </div>
-        </div>
+        </div>))}
      {items.length < 3 && (   <div style={{ display: "flex", justifyContent: "center", marginTop: "12px"  }}>
   <button
     type="button"
@@ -213,7 +218,7 @@ const ProjectDetailsCard = ({ applicantId }) => {
 
         <ProjectDetailsEditPopup
           applicantId={applicantId}
-          initial={isNewProject ? {} : proj}
+         initial={isNewProject ? {} : items[editIndex] || {}}
           onClose={() => {
             setIsNewProject(false);
             // only close the modal, do NOT call save or show snack here
