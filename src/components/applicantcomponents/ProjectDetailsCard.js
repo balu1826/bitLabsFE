@@ -145,6 +145,17 @@ const deleteProject = async (projectId) => {
                 Stand out for employers by adding details about projects you have done in college, internships, or at work
               </p>
             </div>
+             <div className="project-action-buttons">
+              
+            <button
+              type="button"
+              className="portfolio-edit-btn"
+              onClick={() => {
+                setIsNewProject(false);
+                setEditIndex(idx);
+                setEditOpen(true);}}>
+              Edit <FontAwesomeIcon icon={faPen} style={{ marginRight: "6px" }} />
+            </button>
             {proj.id && (
   <button
     type="button"
@@ -156,15 +167,7 @@ const deleteProject = async (projectId) => {
   </button>
 )}
 
-            <button
-              type="button"
-              className="portfolio-edit-btn"
-              onClick={() => {
-                setIsNewProject(false);
-                setEditIndex(idx);
-                setEditOpen(true);}}>
-              Edit <FontAwesomeIcon icon={faPen} style={{ marginRight: "6px" }} />
-            </button>
+          </div>
           </div>
 
           <div
