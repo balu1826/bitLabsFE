@@ -113,121 +113,124 @@ const ProjectDetailsCard = ({ applicantId }) => {
         .filter(Boolean),
     [proj.skillsUsed]
   );
-const deleteProject = async (projectId) => {
-  try {
-    const jwt = localStorage.getItem("jwtToken");
+  const deleteProject = async (projectId) => {
+    try {
+      const jwt = localStorage.getItem("jwtToken");
 
-    await axios.delete(
-      `${PROJ_API}/${applicantId}/deleteApplicantProject/${projectId}`,
-      { headers: { Authorization: `Bearer ${jwt}` } }
-    );
+      await axios.delete(
+        `${PROJ_API}/${applicantId}/deleteApplicantProject/${projectId}`,
+        { headers: { Authorization: `Bearer ${jwt}` } }
+      );
 
-    await fetchProjects(); // refresh list
-    addSnackbar({ message: "Project deleted successfully", type: "success" });
-  } catch (error) {
-    console.error("Delete failed:", error);
-    addSnackbar({ message: "Failed to delete project", type: "error" });
-  }
-};
+      await fetchProjects(); // refresh list
+      addSnackbar({ message: "Project deleted successfully", type: "success" });
+    } catch (error) {
+      console.error("Delete failed:", error);
+      addSnackbar({ message: "Failed to delete project", type: "error" });
+    }
+  };
 
 
   return (
     <>
       <div className="col-lg-12 col-md-12 common_style">
-        {(items.filter(p => p.id).length > 0 ? items.filter(p => p.id) : [{}]).map((proj, idx) => (
         <div className="card-base soft-shadow">
-          <div className="card-title-row">
-            <div>
-              <h3 className="card-title">
-                Project {idx+1} Details  <span className="req">*</span>
-              </h3>
-              <p className="card-subtitle">
-                Stand out for employers by adding details about projects you have done in college, internships, or at work
-              </p>
-            </div>
-             <div className="project-action-buttons">
-              
-            <button
-              type="button"
-              className="portfolio-edit-btn"
-              onClick={() => {
-                setIsNewProject(false);
-                setEditIndex(idx);
-                setEditOpen(true);}}>
-              Edit <FontAwesomeIcon icon={faPen} style={{ marginRight: "6px" }} />
-            </button>
-            {proj.id && (
-  <button
-    type="button"
-    className="portfolio-edit-btn"
-    style={{ marginLeft: "8px", backgroundColor: "#e74c3c" }}
-    onClick={() => deleteProject(proj.id)}
-  >
-    Delete
-  </button>
-)}
+        {(items.filter(p => p.id).length > 0 ? items.filter(p => p.id) : [{}]).map((proj, idx) => (
+          <div className="card-base soft-shadow">
+            <div className="card-title-row">
+              <div>
+                <h3 className="card-title">
+                  Project {idx + 1} Details  <span className="req">*</span>
+                </h3>
+                <p className="card-subtitle">
+                  Stand out for employers by adding details about projects you have done in college, internships, or at work
+                </p>
+              </div>
+              <div className="project-action-buttons">
 
-          </div>
-          </div>
+                <button
+                  type="button"
+                  className="portfolio-edit-btn"
+                  onClick={() => {
+                    setIsNewProject(false);
+                    setEditIndex(idx);
+                    setEditOpen(true);
+                  }}>
+                  Edit <FontAwesomeIcon icon={faPen} style={{ marginRight: "6px" }} />
+                </button>
+                {proj.id && (
+                  <button
+                    type="button"
+                    className="portfolio-edit-btn"
+                    style={{ marginLeft: "8px", backgroundColor: "#e74c3c" }}
+                    onClick={() => deleteProject(proj.id)}
+                  >
+                    Delete
+                  </button>
+                )}
 
-          <div
-            className="pd-grid"
-            style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 12 }}
-          >
-            {/* row 1 */}
-            <ReadonlyInput
-              placeholder="Project title"
-              value={proj.projectTitle}
-            />
-            <ReadonlyInput
-              placeholder="Specialisation on the project"
-              value={proj.specialization}
-            />
-
-            {/* row 2 */}
-            <div className="pd-input with-add">
-              <Pills items={(proj.technologiesUsed || "").split(",").map(s => s.trim()).filter(Boolean)} />
+              </div>
             </div>
 
-            {!isMobile ? (
-              <ReadonlyTextarea
-                placeholder="Project team size"
-                value={proj.teamSize ? String(proj.teamSize) : ""}
-              />
-            ) : (
+            <div
+              className="pd-grid"
+              style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 12 }}
+            >
+              {/* row 1 */}
               <ReadonlyInput
-                placeholder="Project team size"
-                value={proj.teamSize ? String(proj.teamSize) : ""}
+                placeholder="Project title"
+                value={proj.projectTitle}
               />
-            )}
+              <ReadonlyInput
+                placeholder="Specialisation on the project"
+                value={proj.specialization}
+              />
+
+              {/* row 2 */}
+              <div className="pd-input with-add">
+                <Pills items={(proj.technologiesUsed || "").split(",").map(s => s.trim()).filter(Boolean)} />
+              </div>
+
+              {!isMobile ? (
+                <ReadonlyTextarea
+                  placeholder="Project team size"
+                  value={proj.teamSize ? String(proj.teamSize) : ""}
+                />
+              ) : (
+                <ReadonlyInput
+                  placeholder="Project team size"
+                  value={proj.teamSize ? String(proj.teamSize) : ""}
+                />
+              )}
 
 
-            {/* row 4 */}
-            <ReadonlyTextarea
-              placeholder="Role description"
-              value={proj.roleDescription}
-            />
-            <ReadonlyTextarea
-              placeholder="Project description"
-              value={proj.projectDescription}
-            />
-          </div>
-        </div>))}
-     {items.filter(p => p.id).length > 0 && items.filter(p => p.id).length < 3 && (  <div style={{ display: "flex", justifyContent: "center", marginTop: "12px"  }}>
-  <button
-    type="button"
-    className="portfolio-edit-btn"
-     style={{ minWidth: "200px" }} 
-     onClick={() => {
-  setIsNewProject(true); // creating new
-  setEditOpen(true);
-}}
+              {/* row 4 */}
+              <ReadonlyTextarea
+                placeholder="Role description"
+                value={proj.roleDescription}
+              />
+              <ReadonlyTextarea
+                placeholder="Project description"
+                value={proj.projectDescription}
+              />
+            </div>
+          </div>))}
+        {items.filter(p => p.id).length > 0 && items.filter(p => p.id).length < 3 && (<div style={{ display: "flex", justifyContent: "center", marginTop: "12px" }}>
+          <button
+            type="button"
+            className="portfolio-edit-btn"
+            style={{ minWidth: "200px" }}
+            onClick={() => {
+              setIsNewProject(true); // creating new
+              setEditOpen(true);
+            }}
 
-  >
-    Add Another Project
-  </button>
-</div>
-     )}
+          >
+            Add Another Project
+          </button>
+        </div>
+        )}
+        </div>
       </div>
 
       {/* Edit modal */}
@@ -249,7 +252,7 @@ const deleteProject = async (projectId) => {
 
         <ProjectDetailsEditPopup
           applicantId={applicantId}
-         initial={isNewProject ? {} : items[editIndex] || {}}
+          initial={isNewProject ? {} : items[editIndex] || {}}
           onClose={() => {
             setIsNewProject(false);
             // only close the modal, do NOT call save or show snack here
