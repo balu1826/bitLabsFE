@@ -20,7 +20,7 @@ const PersonalDetailsCard = ({ applicantId }) => {
   const [resumeAvailable, setResumeAvailable] = useState(false);
   const fileInputRef = useRef(null);
   const { refreshKey } = useRefresh();
-
+  const [generating, setGenerating] = useState(false);
   const addSnackbar = (snackbar) => setSnackbars((p) => [...p, snackbar]);
   const handleCloseSnackbar = (index) =>
     setSnackbars((p) => p.filter((_, i) => i !== index));
@@ -129,6 +129,48 @@ const PersonalDetailsCard = ({ applicantId }) => {
       addSnackbar({ message: "Unable to open resume.", type: "error" });
     }
   };
+  const onGenerateATSResume = async () => {
+  try {
+    const jwtToken = localStorage.getItem("jwtToken");
+
+    const payload = {
+      applicantId: applicantId,
+      jd: "We are looking for", // you can later make this dynamic
+      resumeVersion: " ",
+    };
+
+    const response = await axios.post(
+      "http://localhost:8081/api/resume/download/resume",
+      payload,
+      {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+          "Content-Type": "application/json",
+        },
+        responseType: "blob", // IMPORTANT for PDF
+      }
+    );
+
+    const blob = new Blob([response.data], { type: "application/pdf" });
+    const url = window.URL.createObjectURL(blob);
+    window.open(url, "_blank", "noopener,noreferrer");
+
+    addSnackbar({
+      message: "ATS resume generated successfully!",
+      type: "success",
+    });
+  } catch (error) {
+    console.error("ATS resume generation failed:", error);
+    addSnackbar({
+      message: "Failed to generate ATS resume.",
+      type: "error",
+    });
+  }
+  finally {
+    setGenerating(false); // ✅ always runs
+  }
+};
+
 
 
   return (
@@ -238,6 +280,22 @@ const PersonalDetailsCard = ({ applicantId }) => {
               )}
             </div>
           </div>
+    <div className="resume-drop common_style">
+  <div className="resume-drop-inner">
+    <span
+      className="resume-pill"
+      onClick={onGenerateATSResume}
+      style={{
+        opacity: generating ? 0.6 : 1,
+        pointerEvents: generating ? "none" : "auto",
+      }}
+    >
+      {generating ? "Generating ATS Resume..." : "Generate Your ATS Resume"}
+    </span>
+  </div>
+</div>
+
+
           <input
             ref={fileInputRef}
             type="file"
