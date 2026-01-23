@@ -250,7 +250,7 @@ const PersonalDetailsEditPopup = ({ applicantId, initial, onSuccess, onError }) 
         {/* DOB (ISO) */}
         <div className="pd-input with-icon" style={{ height: "50px" }}>
           <input
-            className="pd-input raw"
+            className={`pd-input raw ${!form.dateOfBirth ? "date-empty" : "date-filled"}`}
             type="date"
             placeholder="* Date of birth"
             value={form.dateOfBirth}

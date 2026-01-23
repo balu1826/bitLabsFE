@@ -325,13 +325,19 @@
   padding: 0 !important;
   width: 100% !important;
 }
-/* change calendar text color */
-input.pd-input.raw[type="date"]::-webkit-datetime-edit {
+
+/* Empty (acts like placeholder) */
+.date-empty {
   color: #9E9E9E !important;
 }
 
-/* optional: gray out calendar icon */
-input.pd-input.raw[type="date"]::-webkit-calendar-picker-indicator {
+/* Selected value */
+.date-filled {
+  color: #000;
+}
+
+/* Optional calendar icon styling */
+input[type="date"]::-webkit-calendar-picker-indicator {
   filter: grayscale(1);
   opacity: 0.6;
 }
