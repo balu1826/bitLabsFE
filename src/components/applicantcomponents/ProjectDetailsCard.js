@@ -58,6 +58,7 @@ const ProjectDetailsCard = ({ applicantId }) => {
   const [editIndex, setEditIndex] = useState(null);
   const width = useWindowWidth();
   const isMobile = width <= 992;
+   const [loading, setLoading] = useState(true);
 
   const addSnackbar = (snackbar) => setSnackbars((p) => [...p, snackbar]);
   const handleCloseSnackbar = (idx) =>
@@ -74,6 +75,9 @@ const ProjectDetailsCard = ({ applicantId }) => {
       console.error("Projects GET failed:", e?.response || e);
       setItems([]);
     }
+     finally {
+    setLoading(false);
+  }
   };
 
   function useWindowWidth() {
@@ -128,8 +132,63 @@ const ProjectDetailsCard = ({ applicantId }) => {
       console.error("Delete failed:", error);
       addSnackbar({ message: "Failed to delete project", type: "error" });
     }
+     finally {
+    setLoading(false);
+  }
   };
 
+
+if (loading) {
+  return (
+    <div className="col-lg-12 col-md-12 common_style">
+      <div className="card-base soft-shadow">
+
+        {/* Show 2 skeleton project blocks */}
+        {[1, 2].map((_, idx) => (
+          <div key={idx} className="card-base soft-shadow" style={{ marginBottom: 20 }}>
+            
+            {/* Title row */}
+            <div className="card-title-row">
+              <div>
+                <div className="skeleton" style={{ width: 200, height: 22 }} />
+                <div
+                  className="skeleton"
+                  style={{ width: 450, height: 14, marginTop: 8 }}
+                />
+              </div>
+              <div className="skeleton" style={{ width: 60, height: 20 }} />
+            </div>
+
+            {/* Grid */}
+            <div
+              className="pd-grid"
+              style={{ gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 12, marginTop: 15 }}
+            >
+              {[...Array(6)].map((_, i) => (
+                <div
+                  key={i}
+                  className="skeleton"
+                  style={{ height: 40, borderRadius: 8 }}
+                />
+              ))}
+
+              <div
+                className="skeleton"
+                style={{ height: 120, borderRadius: 8 }}
+              />
+
+              <div
+                className="skeleton"
+                style={{ height: 120, borderRadius: 8 }}
+              />
+            </div>
+          </div>
+        ))}
+
+      </div>
+    </div>
+  );
+}
 
   return (
     <>

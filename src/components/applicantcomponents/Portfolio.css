@@ -902,3 +902,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   gap: 10px;
   }
 }
+.badge-progress-wrapper {
+  width: 100%;
+}

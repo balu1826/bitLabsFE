@@ -233,7 +233,7 @@ const ApplicantHeaderComponent = ({ applicantId }) => {
   const { user } = useUserContext();
   const CARD_API = `${apiUrl}/applicant-card/${user?.id}/getApplciantCard`;
   const { refreshKey } = useRefresh();
-
+   const [loading, setLoading] = useState(true);
   const bronzeScore = 150;
   const silverScore = 300;
   const goldScore = 500;
@@ -389,9 +389,13 @@ const ApplicantHeaderComponent = ({ applicantId }) => {
   };
 
   useEffect(() => {
-    fetchCard();
-    fetchPhoto();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+   const loadAll = async () => {
+    setLoading(true);
+    await Promise.all([fetchCard(), fetchPhoto()]);
+    setLoading(false);
+  };
+
+  loadAll();
   }, [applicantId, refreshKey]);
 
   const fullName = useMemo(() => (card?.name?.trim() ? card.name : "—"), [card]);
@@ -415,7 +419,45 @@ const ApplicantHeaderComponent = ({ applicantId }) => {
       year: "numeric",
     });
   }, [card?.lastUpdated]);
+if (loading) {
+  return (
+    <>
+      <div className="portfolio-card">
+        <div className="portfolio-left">
+          <div
+            className="skeleton"
+            style={{ width: 100, height: 100, borderRadius: "50%" }}
+          />
 
+          <div style={{ marginLeft: 20 }}>
+            <div className="skeleton" style={{ width: 180, height: 20, marginBottom: 10 }} />
+            <div className="skeleton" style={{ width: 120, height: 15, marginBottom: 10 }} />
+            <div className="skeleton" style={{ width: 180, height: 15 }} />
+          </div>
+        </div>
+
+        <div className="portfolio-divider" />
+
+        <div className="portfolio-middle">
+          <div className="skeleton" style={{ width: 220, height: 15, marginBottom: 10 }} />
+          <div className="skeleton" style={{ width: 200, height: 15, marginBottom: 10 }} />
+          <div className="skeleton" style={{ width: 180, height: 15, marginBottom: 10 }} />
+          <div className="skeleton" style={{ width: 120, height: 15 }} />
+        </div>
+
+        <div className="portfolio-right">
+          <div className="skeleton" style={{ width: 40, height: 15, marginBottom: 10 }} />
+          <div className="skeleton" style={{ width: 50, height: 30 }} />
+        </div>
+      </div>
+
+      <div className="badge-progress-wrapper" style={{ padding: 20 }}>
+        <div className="skeleton" style={{ width: 200, height: 15, marginBottom: 10 }} />
+        <div className="skeleton" style={{ width: "100%", height: 20 }} />
+      </div>
+    </>
+  );
+}
   return (
     <>
       <div className="portfolio-card">
