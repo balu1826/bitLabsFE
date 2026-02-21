@@ -451,7 +451,7 @@ if (loading) {
         </div>
       </div>
 
-      <div className="badge-progress-wrapper" style={{ padding: 20 }}>
+      <div className="badge-progress-wrapper-skeleton" style={{ padding: 20 }}>
         <div className="skeleton" style={{ width: 200, height: 15, marginBottom: 10 }} />
         <div className="skeleton" style={{ width: "100%", height: 20 }} />
       </div>
