@@ -58,6 +58,9 @@ const ApplicantDashboard = () => {
   const didInitRef = useRef(false);
   const [dashboardScore, setDashboardScore] = useState(0);   
   const [cappedScore, setCappedScore] = useState(0);
+  const [portfolioLoading, setPortfolioLoading] = useState(true);
+  const [askNewtonLoading, setAskNewtonLoading] = useState(true);
+const [badgeLoading, setBadgeLoading] = useState(true);
   const bronzeScore = 150;
   const silverScore = 300;
   const goldScore = 500;
@@ -221,6 +224,9 @@ const ApplicantDashboard = () => {
       console.warn("Failed to fetch dashboard score:", err?.response || err);
       setDashboardScore(0);
     }
+    finally {
+  setBadgeLoading(false);
+}
   };
 
 
@@ -349,6 +355,9 @@ const ApplicantDashboard = () => {
       } catch (error) {
         console.error('Error updating profile status:', error);
       }
+       finally {
+      setPortfolioLoading(false);
+    }
     };
 
     fetchUserData();
@@ -561,7 +570,25 @@ const ApplicantDashboard = () => {
                       </div>
                     </div>
                   </div>
+                  
                   <div className="badge-progress-wrapper">
+                    {badgeLoading ? (
+
+  <div className="adb-badge-skeleton-container">
+
+    <div className="adb-badge-skeleton-title-row">
+      <div className="adb-badge-skeleton-heading adb-badge-skeleton-heading-lg"></div>
+      <div className="adb-badge-skeleton-heading adb-badge-skeleton-heading-sm"></div>
+    </div>
+
+    <div className="adb-badge-skeleton-bar"></div>
+
+    <div className="adb-badge-skeleton-indicator"></div>
+
+  </div>
+
+) : (
+   <>
                     <div className="progress-text">
                       <p>Badge achievement level</p>
                       {Math.round((cappedScore / goldScore) * 100)}%
@@ -602,6 +629,9 @@ const ApplicantDashboard = () => {
                     {!nextBadge && (
                       <p className="congrats-text"> Congrats Buddy! You unlocked all badges!</p>
                     )}
+                     </>
+)}
+                   
                   </div>
 
                 </div>
@@ -610,6 +640,7 @@ const ApplicantDashboard = () => {
             <div className="col-lg-12 col-md-12">
               <div className="row dash-count profile-cards">
                 <div className="profile-card-row1">
+                  
                   {/* Arena Online */}
                   <div className="arena">
                     <div className="arena-topSection">
@@ -761,6 +792,40 @@ const ApplicantDashboard = () => {
                   </div>
 
                   {/*  My Portfolio */}
+                  {portfolioLoading ? (
+ <div className="portfolio">
+
+    {/* Header */}
+    <div className="portfolio-heading">
+      <div className="adb-portfolio-skeleton-heading adb-portfolio-skeleton-heading-lg"></div>
+      <div className="adb-portfolio-skeleton-heading adb-portfolio-skeleton-heading-sm"></div>
+    </div>
+
+    {/* Profile + Score */}
+    <div className="profile-side-section adb-portfolio-skeleton-profile">
+
+      <div className="adb-portfolio-skeleton-avatar"></div>
+
+      <div className="portfolio-score-details">
+        <div className="adb-portfolio-skeleton-text adb-portfolio-skeleton-text-short"></div>
+        <div className="adb-portfolio-skeleton-score"></div>
+      </div>
+
+    </div>
+
+    {/* Name */}
+    <div className="adb-portfolio-skeleton-text adb-portfolio-skeleton-name"></div>
+
+    {/* Skills */}
+    <div className="skills-container adb-portfolio-skeleton-skills">
+      {[...Array(6)].map((_, i) => (
+        <div key={i} className="adb-portfolio-skeleton-pill"></div>
+      ))}
+    </div>
+
+  </div>
+) : (
+  
                   <div className="portfolio">
                     <div className="portfolio-heading">
                       <h4 style={{ margin: 0, fontWeight: "700", color: "#1A1A1A" }} id="tour-portfolio">
@@ -878,8 +943,9 @@ const ApplicantDashboard = () => {
                       })()}
                     </div>
 
-                  </div>
+                  </div>)}
                 </div>
+                  
                 <div className="profile-card-row2">
                   {/* Download our App */}
                   <div className="app-card">
