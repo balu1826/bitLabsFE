@@ -28,7 +28,7 @@ function ApplicantNavBar() {
   const hiddenRoutes = ["/applicant-interview-prep", "/applicanthome"];
   const [isOpen, setIsOpen] = useState(
     window.innerWidth >= 1302 &&
-      !hideSidebarRoutes.some((route) => location.pathname.startsWith(route))
+    !hideSidebarRoutes.some((route) => location.pathname.startsWith(route))
   );
   const { user } = useUserContext();
   const [imageSrc, setImageSrc] = useState("");
@@ -413,19 +413,19 @@ function ApplicantNavBar() {
                     id="specificDiv"
                     className="header-customize-item account"
                   >
-                    
+
                     <div className="profile-icon">
-                      <a href="/applicant-view-profile"> 
-                      <img 
-                        width="32px"
-                        height="32px"
-                        src={imageSrc || "../images/user/avatar/image-01.jpg"}
-                        alt="Profile"
-                        onClick={toggleSubAccount}
-                        onError={() =>
-                          setImageSrc("../images/user/avatar/image-01.jpg")
-                        }
-                      />
+                      <a href="/applicant-view-profile">
+                        <img
+                          width="32px"
+                          height="32px"
+                          src={imageSrc || "../images/user/avatar/image-01.jpg"}
+                          alt="Profile"
+                          onClick={toggleSubAccount}
+                          onError={() =>
+                            setImageSrc("../images/user/avatar/image-01.jpg")
+                          }
+                        />
                       </a>
                     </div>
                     {userData && (
@@ -436,29 +436,28 @@ function ApplicantNavBar() {
                       </div>
                     )}
                     <div>
-                    <div
-                      className="toggle-subaccount-icon"
-                      onClick={toggleSubAccount}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
+                      <div
+                        className="toggle-subaccount-icon"
+                        onClick={toggleSubAccount}
                       >
-                        <path
-                          d="M11.9998 14.6038C11.8844 14.6038 11.7769 14.5833 11.6773 14.5423C11.5776 14.5013 11.4851 14.4365 11.3998 14.348L6.96602 9.91451C6.82769 9.77918 6.75894 9.61601 6.75977 9.42501C6.76077 9.23401 6.83211 9.07026 6.97377 8.93376C7.11544 8.79709 7.27894 8.72876 7.46427 8.72876C7.64944 8.72876 7.81027 8.79709 7.94677 8.93376L11.9998 12.9865L16.0528 8.93376C16.1828 8.80359 16.342 8.73693 16.5305 8.73376C16.719 8.73043 16.8841 8.79709 17.0258 8.93376C17.1674 9.07026 17.2404 9.23243 17.2445 9.42026C17.2487 9.60809 17.1799 9.77284 17.0383 9.91451L12.6045 14.348C12.516 14.4365 12.4219 14.5013 12.3223 14.5423C12.2226 14.5833 12.1151 14.6038 11.9998 14.6038Z"
-                          fill="#5F6368"
-                        />
-                      </svg>
-                    </div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M11.9998 14.6038C11.8844 14.6038 11.7769 14.5833 11.6773 14.5423C11.5776 14.5013 11.4851 14.4365 11.3998 14.348L6.96602 9.91451C6.82769 9.77918 6.75894 9.61601 6.75977 9.42501C6.76077 9.23401 6.83211 9.07026 6.97377 8.93376C7.11544 8.79709 7.27894 8.72876 7.46427 8.72876C7.64944 8.72876 7.81027 8.79709 7.94677 8.93376L11.9998 12.9865L16.0528 8.93376C16.1828 8.80359 16.342 8.73693 16.5305 8.73376C16.719 8.73043 16.8841 8.79709 17.0258 8.93376C17.1674 9.07026 17.2404 9.23243 17.2445 9.42026C17.2487 9.60809 17.1799 9.77284 17.0383 9.91451L12.6045 14.348C12.516 14.4365 12.4219 14.5013 12.3223 14.5423C12.2226 14.5833 12.1151 14.6038 11.9998 14.6038Z"
+                            fill="#5F6368"
+                          />
+                        </svg>
+                      </div>
                     </div>
 
                     <div
-                      className={`sub-account ${
-                        isSubAccountVisible ? "show" : ""
-                      }`}
+                      className={`sub-account ${isSubAccountVisible ? "show" : ""
+                        }`}
                     >
                       <div className="sub-account-item">
                         <a href="/applicant-change-password">
@@ -701,8 +700,8 @@ function ApplicantNavBar() {
                   to="/applicant-hackathon"
                   className={
                     location.pathname === "/applicant-hackathon" ||
-                    frompath === "/applicant-hackathon" ||
-                    location.pathname.includes("/applicant-hackathon")
+                      frompath === "/applicant-hackathon" ||
+                      location.pathname.includes("/applicant-hackathon")
                       ? "tf-effect active"
                       : ""
                   }
@@ -751,6 +750,7 @@ function ApplicantNavBar() {
                   </span>
                 </Link>
               </li>
+
             </ul>
 
             {/* Logout Button */}

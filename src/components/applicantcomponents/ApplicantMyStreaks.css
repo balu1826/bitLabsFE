@@ -1,0 +1,193 @@
+.my-streaks-page {
+  padding: 30px;
+  background-color: #fffaf5;
+  min-height: 100vh;
+}
+
+.my-streaks-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+.my-streaks-title-text {
+  font-size: 24px;
+  font-weight: 600;
+  color: #EA7B20;
+  margin-left: 15px;
+}
+
+.my-streaks-card-area {
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  margin-bottom: 60px;
+  /* Ensures the bottom of the card is visible above dashboard bounds */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+}
+
+.submission-streak-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+
+.calendar-scroll-wrapper {
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 1000px;
+  /* Forces scrolling on small screens */
+}
+
+.calendar-header-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.calendar-month-spacer {
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.calendar-header-day {
+  width: 22px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+.calendar-month-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.calendar-month-label {
+  width: 90px;
+  font-size: 14px;
+  color: #444;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.calendar-cell {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  margin-right: 6px;
+  transition: transform 0.2s ease;
+}
+
+.calendar-cell:hover {
+  transform: scale(1.1);
+}
+
+.calendar-cell.empty {
+  background-color: transparent;
+}
+
+.calendar-cell.filled {
+  background-color: #f2f2f2;
+  border: 1px solid #e0e0e0;
+}
+
+.calendar-cell.green {
+  background-color: #00c853;
+  border-color: #00c853;
+}
+
+.calendar-cell.red {
+  background-color: #ff3b30;
+  border-color: #ff3b30;
+}
+
+.calendar-cell.orange {
+  background-color: #ff9500;
+  border-color: #ff9500;
+}
+
+.calendar-legend-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 40px;
+}
+
+.calendar-legend {
+  display: flex;
+  gap: 25px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-text {
+  font-size: 13px;
+  color: #444;
+  font-weight: 600;
+}
+
+.legend-box {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.legend-box.green {
+  background-color: #00c853;
+}
+
+.legend-box.red {
+  background-color: #ff3b30;
+}
+
+.legend-box.orange {
+  background-color: #ff9500;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .my-streaks-card-area {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .my-streaks-page {
+    padding: 15px;
+  }
+
+  .my-streaks-card-area {
+    padding: 15px;
+  }
+
+  .submission-streak-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .calendar-legend-container {
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .calendar-legend {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+}
