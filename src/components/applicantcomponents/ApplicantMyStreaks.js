@@ -3,12 +3,19 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../common/UserProvider";
 import "./ApplicantMyStreaks.css";
+import { apiUrl } from "../../services/ApplicantAPIService";
 
 const ApplicantMyStreaks = () => {
     const { user } = useUserContext();
     const navigate = useNavigate();
     const [streakDetails, setStreakDetails] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    // Answer Reveals State
+    const todayStr = new Date().toISOString().split("T")[0];
+    const [selectedDate, setSelectedDate] = useState(todayStr);
+    const [revealedAnswers, setRevealedAnswers] = useState(null);
+    const [answersLoading, setAnswersLoading] = useState(false);
 
     useEffect(() => {
         const fetchStreakDetails = async () => {
@@ -17,7 +24,7 @@ const ApplicantMyStreaks = () => {
                 const jwtToken = localStorage.getItem("jwtToken");
                 if (!user?.id) return;
                 const response = await axios.get(
-                    `http://localhost:8081/streak/${user.id}/getStreakDetails`,
+                    `${apiUrl}/streak/${user.id}/getStreakDetails`,
                     {
                         headers: { Authorization: `Bearer ${jwtToken}` },
                     }
@@ -31,6 +38,69 @@ const ApplicantMyStreaks = () => {
         };
         fetchStreakDetails();
     }, [user?.id]);
+
+    useEffect(() => {
+        if (user?.id) {
+            fetchAnswersForDate(todayStr);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [user?.id]);
+
+    const fetchAnswersForDate = async (dateStr) => {
+        if (!dateStr || !user?.id) return;
+        try {
+            setAnswersLoading(true);
+            const jwtToken = localStorage.getItem("jwtToken");
+            // Assuming API supports filtering by date or we get all and filter locally for now.
+            // Using the full fetch as an example, update API path if date query is supported.
+            const response = await axios.get(
+                `${apiUrl}/streak/${user.id}/questions/attempted`,
+                {
+                    headers: { Authorization: `Bearer ${jwtToken}` },
+                }
+            );
+
+            // Filter locally to be safe if the endpoint returns all history
+            if (response.data && Array.isArray(response.data)) {
+                const filtered = response.data.filter(q => {
+                    // Our mock was looking for attemptDate string, but the API sends a 'date' array
+                    if (!q.date || !Array.isArray(q.date)) {
+                        // fallback check for attemptDate just in case
+                        if (q.attemptDate && typeof q.attemptDate === 'string') {
+                            return q.attemptDate.startsWith(dateStr);
+                        }
+                        return false;
+                    }
+                    const [year, month, day] = q.date;
+                    const formattedMonth = String(month).padStart(2, '0');
+                    const formattedDay = String(day).padStart(2, '0');
+                    const apiDateStr = `${year}-${formattedMonth}-${formattedDay}`;
+                    return apiDateStr === dateStr;
+                });
+                setRevealedAnswers(filtered.length > 0 ? filtered : null);
+                // If API response is flat (not an array but a single object of questions wrapper), 
+                // we'd adjust here. Assuming array for now based on typical list endpoint.
+            } else {
+                setRevealedAnswers(response.data || null);
+            }
+
+        } catch (err) {
+            console.error("Failed to fetch answers for date:", err);
+            setRevealedAnswers(null);
+        } finally {
+            setAnswersLoading(false);
+        }
+    };
+
+    const handleDateChange = (e) => {
+        const dateStr = e.target.value;
+        setSelectedDate(dateStr);
+        if (dateStr) {
+            fetchAnswersForDate(dateStr);
+        } else {
+            setRevealedAnswers(null);
+        }
+    };
 
     const goBack = () => {
         navigate("/applicanthome");
@@ -179,6 +249,86 @@ const ApplicantMyStreaks = () => {
                         </div>
                     </div>
 
+                </div>
+
+                {/* Answer Reveals UI Section */}
+                <div className="answer-reveals-section">
+                    <div className="answer-reveals-header">
+                        <div className="answer-reveals-title-area">
+                            <h3 className="answer-reveals-title">Answer Reveals</h3>
+                            {revealedAnswers && revealedAnswers.length > 0 && (
+                                <span className="answer-reveals-badge">Submitted</span>
+                            )}
+                        </div>
+                        <div className="answer-reveals-date-picker">
+                            <input
+                                type="date"
+                                className="date-picker-input"
+                                value={selectedDate}
+                                onChange={handleDateChange}
+                                max={new Date().toISOString().split("T")[0]}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="answer-reveals-content">
+                        {answersLoading ? (
+                            <div className="answer-loading-container">
+                                {[1, 2, 3].map((i) => (
+                                    <div key={i} className="answer-skeleton-block">
+                                        <div className="skeleton-line title"></div>
+                                        <div className="skeleton-line option"></div>
+                                        <div className="skeleton-line option"></div>
+                                        <div className="skeleton-box explanation"></div>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : revealedAnswers && revealedAnswers.length > 0 ? (
+                            <div className="revealed-questions-list">
+                                {revealedAnswers.map((item, index) => (
+                                    <div key={index} className="revealed-question-block">
+                                        <h4 className="r-question-text">{item.questionText || item.question}</h4>
+                                        <div className="r-options-container">
+                                            {item.options && Object.entries(item.options).some(([key, val]) => item.correctAnswer === key || item.correctAnswer === val) ? (
+                                                Object.entries(item.options).map(([key, val]) => {
+                                                    const isCorrectAnswer = item.correctAnswer === key || item.correctAnswer === val;
+
+                                                    if (!isCorrectAnswer) return null; // Only show the correct answer
+
+                                                    return (
+                                                        <div key={key} className="r-option correct">
+                                                            <span className="r-option-letter">{key}</span>
+                                                            <span className="r-option-val">{val}</span>
+                                                            <span className="r-icon">✓</span>
+                                                        </div>
+                                                    );
+                                                })
+                                            ) : (
+                                                <div className="r-option correct">
+                                                    <span className="r-option-letter">Ans</span>
+                                                    <span className="r-option-val">{item.correctAnswer}</span>
+                                                    <span className="r-icon">✓</span>
+                                                </div>
+                                            )}
+                                        </div>
+                                        {(item.explanation || item.description) && (
+                                            <div className="r-explanation-box">
+                                                <strong>Explanation: </strong> {item.explanation || item.description}
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="revealed-questions-list">
+                                <div className="revealed-question-block" style={{ textAlign: "center", padding: "40px 20px" }}>
+                                    <h4 className="r-question-text" style={{ margin: 0, color: "#666" }}>
+                                        No Question attempted on this day, select another date.
+                                    </h4>
+                                </div>
+                            </div>
+                        )}
+                    </div>
                 </div>
 
             </div>

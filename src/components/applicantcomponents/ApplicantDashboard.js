@@ -141,7 +141,7 @@ const ApplicantDashboard = () => {
         setStreakLoading(true);
         const jwtToken = localStorage.getItem('jwtToken');
         if (!user?.id) return;
-        const response = await axios.get(`http://localhost:8081/streak/${user.id}/getStreakDetails`, {
+        const response = await axios.get(`${apiUrl}/streak/${user.id}/getStreakDetails`, {
           headers: { Authorization: `Bearer ${jwtToken}` }
         });
         setStreakDetails(response.data);
@@ -159,12 +159,12 @@ const ApplicantDashboard = () => {
       setStreakLoading(true);
       const jwtToken = localStorage.getItem('jwtToken');
       if (!user?.id) return;
-      await axios.put(`http://localhost:8081/streak/${user.id}/restore`, {}, {
+      await axios.put(`${apiUrl}/streak/${user.id}/restore`, {}, {
         headers: { Authorization: `Bearer ${jwtToken}` }
       });
 
       // Update details after restoring
-      const response = await axios.get(`http://localhost:8081/streak/${user.id}/getStreakDetails`, {
+      const response = await axios.get(`${apiUrl}/streak/${user.id}/getStreakDetails`, {
         headers: { Authorization: `Bearer ${jwtToken}` }
       });
       setStreakDetails(response.data);

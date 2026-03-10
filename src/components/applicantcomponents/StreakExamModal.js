@@ -37,7 +37,7 @@ const StreakExamModal = ({ userId, onClose, onExamCompleted }) => {
       const dateString = `${year}-${month}-${day}`;
 
       console.log(`Fetching questions for date: ${dateString}...`);
-      const response = await axios.get(`http://localhost:8081/streak/questions/${dateString}`, {
+      const response = await axios.get(`${apiUrl}/streak/questions/${dateString}`, {
         headers: { Authorization: `Bearer ${jwtToken}` }
       });
 
@@ -82,7 +82,7 @@ const StreakExamModal = ({ userId, onClose, onExamCompleted }) => {
       const jwtToken = localStorage.getItem('jwtToken');
 
       // Hit completion endpoint using {applicantId}/complete
-      await axios.post(`http://localhost:8081/streak/${userId}/complete`, selectedAnswers, {
+      await axios.post(`${apiUrl}/streak/${userId}/complete`, selectedAnswers, {
         headers: { Authorization: `Bearer ${jwtToken}` }
       });
 
