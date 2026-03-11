@@ -185,80 +185,113 @@ const StreakExamModal = ({ userId, onClose, onExamCompleted }) => {
         </div>
 
         {/* Progress Bar */}
-        <div className="streak-progress-section">
-          <div className="streak-progress-bars">
-            {questions.map((_, index) => (
-              <div
-                key={index}
-                className={`progress-segment ${index <= currentQuestionIndex ? 'active' : ''}`}
-              ></div>
-            ))}
+        {!isSubmitted && (
+          <div className="streak-progress-section">
+            <div className="streak-progress-bars">
+              {questions.map((_, index) => (
+                <div
+                  key={index}
+                  className={`progress-segment ${index <= currentQuestionIndex ? 'active' : ''}`}
+                ></div>
+              ))}
+            </div>
+            <div className="streak-question-count">
+              Question {currentQuestionIndex + 1}/{questions.length}
+            </div>
           </div>
-          <div className="streak-question-count">
-            Question {currentQuestionIndex + 1}/{questions.length}
-          </div>
-        </div>
+        )}
 
         {/* Question Body */}
-        <div className="streak-question-body">
-          <h3 className="streak-question-text">{currentQuestion.question}</h3>
+        <div className={`streak-question-body ${isSubmitted ? 'submitted-questions-list' : ''}`}>
+          {isSubmitted ? (
+            questions.map((q, qIndex) => (
+              <div key={qIndex} className="submitted-question-block">
+                <h3 className="streak-question-text">
+                  {qIndex + 1}. {q.question}
+                </h3>
+                <div className="streak-options-container">
+                  {q.options && Object.entries(q.options).map(([key, value]) => {
+                    const isSelected = selectedAnswers[qIndex] === key;
+                    let optionClass = "streak-option";
 
-          <div className="streak-options-container">
-            {currentQuestion.options && Object.entries(currentQuestion.options).map(([key, value]) => {
-              const isSelected = selectedAnswers[currentQuestionIndex] === key;
-              let optionClass = "streak-option";
+                    if (isSelected) optionClass += " selected";
+                    if (key === q.correctAnswer) {
+                      optionClass += " correct";
+                    } else if (isSelected && key !== q.correctAnswer) {
+                      optionClass += " incorrect";
+                    }
 
-              if (isSelected) optionClass += " selected";
+                    return (
+                      <label key={key} className={optionClass}>
+                        <input
+                          type="radio"
+                          disabled
+                          checked={isSelected || key === q.correctAnswer}
+                          readOnly
+                        />
+                        <span className="option-text">{value}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+                {q.description && (
+                  <div className="streak-description-box">
+                    <strong>Explanation:</strong> {q.description}
+                  </div>
+                )}
+              </div>
+            ))
+          ) : (
+            <>
+              <h3 className="streak-question-text">{currentQuestion.question}</h3>
 
-              if (isSubmitted) {
-                if (key === currentQuestion.correctAnswer) {
-                  optionClass += " correct";
-                } else if (isSelected && key !== currentQuestion.correctAnswer) {
-                  optionClass += " incorrect";
-                }
-              }
+              <div className="streak-options-container">
+                {currentQuestion.options && Object.entries(currentQuestion.options).map(([key, value]) => {
+                  const isSelected = selectedAnswers[currentQuestionIndex] === key;
+                  let optionClass = "streak-option";
 
-              return (
-                <label key={key} className={optionClass}>
-                  <input
-                    type="radio"
-                    name={`question-${currentQuestionIndex}`}
-                    value={key}
-                    checked={isSelected}
-                    onChange={() => handleOptionSelect(key)}
-                    disabled={isSubmitted}
-                  />
-                  <span className="option-text">{value}</span>
-                </label>
-              );
-            })}
-          </div>
+                  if (isSelected) optionClass += " selected";
 
-          {/* Description Section (Revealed post-submit) */}
-          {isSubmitted && currentQuestion.description && (
-            <div className="streak-description-box">
-              <strong>Explanation:</strong> {currentQuestion.description}
-            </div>
+                  return (
+                    <label key={key} className={optionClass}>
+                      <input
+                        type="radio"
+                        name={`question-${currentQuestionIndex}`}
+                        value={key}
+                        checked={isSelected}
+                        onChange={() => handleOptionSelect(key)}
+                        disabled={isSubmitted}
+                      />
+                      <span className="option-text">{value}</span>
+                    </label>
+                  );
+                })}
+              </div>
+            </>
           )}
         </div>
 
         {/* Footer Actions */}
         <div className="streak-modal-footer">
           <div className="footer-left-buttons">
-            <button
-              className="streak-nav-btn"
-              onClick={handlePrev}
-              disabled={currentQuestionIndex === 0}
-            >
-              Prev
-            </button>
-            <button
-              className="streak-nav-btn"
-              onClick={handleNext}
-              disabled={currentQuestionIndex === questions.length - 1}
-            >
-              Next
-            </button>
+            {!isSubmitted && (
+              <>
+                <button
+                  className="streak-nav-btn"
+                  onClick={handlePrev}
+                  disabled={currentQuestionIndex === 0}
+                >
+                  Prev
+                </button>
+                <button
+                  className="streak-nav-btn"
+                  onClick={handleNext}
+                  disabled={currentQuestionIndex === questions.length - 1}
+                >
+                  Next
+                </button>
+              </>
+            )}
           </div>
           <div className="footer-right-buttons">
             {!isSubmitted ? (

@@ -179,16 +179,17 @@ const ApplicantDashboard = () => {
     if (!user?.id) return;
 
     // Check if the streak modal has been shown today
-    // const currentDay = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
-    // const STREAK_MODAL_KEY = `streak_modal_shown_${currentDay}_${user.id}`;
+    const currentDay = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
+    const STREAK_MODAL_KEY = `streak_modal_shown_${currentDay}_${user.id}`;
 
-    // const hasBeenShownToday = safeGet(STREAK_MODAL_KEY);
+    const hasBeenShownToday = safeGet(STREAK_MODAL_KEY);
 
-    // For testing, always show it:
-    setTimeout(() => {
-      console.log("Setting show streak modal to true!");
-      setShowStreakModal(true);
-    }, 1000); // Slight delay for better UX
+    if (!hasBeenShownToday) {
+      setTimeout(() => {
+        setShowStreakModal(true);
+        safeSet(STREAK_MODAL_KEY, "true");
+      }, 1000); // Slight delay for better UX
+    }
   }, [user?.id]);
 
 
