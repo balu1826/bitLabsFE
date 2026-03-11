@@ -855,62 +855,66 @@ const ApplicantDashboard = () => {
                   <div className="portfolio-group-col">
 
                     {/* Recent Streaks */}
-                    <div className="recent-streaks-card">
-                      <div className="streak-left-section">
+                    {streakLoading ? (
+                      <div className="adb-streak-skeleton-card"></div>
+                    ) : (
+                      <div className="recent-streaks-card">
+                        <div className="streak-left-section">
 
-                        <div className="streak-text-container">
-                          <span className="streak-label">Streak</span>
-                          <span className="streak-number">{streakDetails?.currentStreak || 0}</span>
+                          <div className="streak-text-container">
+                            <span className="streak-label">Streak</span>
+                            <span className="streak-number">{streakDetails?.currentStreak || 0}</span>
+                          </div>
                         </div>
-                      </div>
-                      <div className="streak-right-section">
-                        <div className="streak-days-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <span>Recent Streaks</span>
-                          <span onClick={() => navigate('/applicant-my-streaks')} style={{ cursor: 'pointer', fontSize: '13px', color: '#FFFFFF', fontWeight: 'bold' }}>
-                            Explore &gt;
-                          </span>
-                        </div>
-                        <div className="streak-days-row">
-                          {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((dayName, index) => {
-                            const todayIndex = new Date().getDay();
-                            const currentStreak = streakDetails?.currentStreak || 0;
-                            const streakStart = todayIndex - currentStreak + 1;
+                        <div className="streak-right-section">
+                          <div className="streak-days-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span>Recent Streaks</span>
+                            <span onClick={() => navigate('/applicant-my-streaks')} style={{ cursor: 'pointer', fontSize: '13px', color: '#FFFFFF', fontWeight: 'bold' }}>
+                              Explore &gt;
+                            </span>
+                          </div>
+                          <div className="streak-days-row">
+                            {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((dayName, index) => {
+                              const todayIndex = new Date().getDay();
+                              const currentStreak = streakDetails?.currentStreak || 0;
+                              const streakStart = todayIndex - currentStreak + 1;
 
-                            let status = 'upcoming';
-                            if (index <= todayIndex && index >= streakStart) {
-                              status = 'taken';
-                            } else if (index <= todayIndex && index < streakStart) {
-                              status = 'missed';
-                            }
+                              let status = 'upcoming';
+                              if (index <= todayIndex && index >= streakStart) {
+                                status = 'taken';
+                              } else if (index <= todayIndex && index < streakStart) {
+                                status = 'missed';
+                              }
 
-                            const lostDayIndex = currentStreak === 0 ? todayIndex - 1 : todayIndex - currentStreak;
-                            if (streakDetails?.restoreAvailable && index === lostDayIndex && lostDayIndex >= 0) {
-                              status = 'restore-blink';
-                            }
+                              const lostDayIndex = currentStreak === 0 ? todayIndex - 1 : todayIndex - currentStreak;
+                              if (streakDetails?.restoreAvailable && index === lostDayIndex && lostDayIndex >= 0) {
+                                status = 'restore-blink';
+                              }
 
-                            return (
-                              <div key={dayName} className={`streak-day-block ${status}`}>
-                                <div
-                                  className="streak-status-icon"
-                                  onClick={status === 'restore-blink' ? handleRestoreStreak : undefined}
-                                  title={status === 'restore-blink' ? "Click to Re-store Streak" : ""}
-                                >
-                                  {status === 'taken' && <span className="tick-circle">✓</span>}
-                                  {status === 'missed' && <span className="cross-circle">!</span>}
-                                  {status === 'upcoming' && <span className="pending-circle"></span>}
-                                  {status === 'restore-blink' && <span className="restore-circle" style={{ fontSize: '13px', display: 'flex' }}>↺</span>}
+                              return (
+                                <div key={dayName} className={`streak-day-block ${status}`}>
+                                  <div
+                                    className="streak-status-icon"
+                                    onClick={status === 'restore-blink' ? handleRestoreStreak : undefined}
+                                    title={status === 'restore-blink' ? "Click to Re-store Streak" : ""}
+                                  >
+                                    {status === 'taken' && <span className="tick-circle">✓</span>}
+                                    {status === 'missed' && <span className="cross-circle">!</span>}
+                                    {status === 'upcoming' && <span className="pending-circle"></span>}
+                                    {status === 'restore-blink' && <span className="restore-circle" style={{ fontSize: '13px', display: 'flex' }}>↺</span>}
+                                  </div>
+                                  <div className="streak-day-name">{dayName}</div>
                                 </div>
-                                <div className="streak-day-name">{dayName}</div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                        <div className="longest-streak-bar">
-                          <span className="longest-streak-text">Longest Day Streak</span>
-                          <span className="longest-streak-num">{(streakDetails?.longestStreak || 0).toString().padStart(2, '0')}</span>
+                              );
+                            })}
+                          </div>
+                          <div className="longest-streak-bar">
+                            <span className="longest-streak-text">Longest Day Streak</span>
+                            <span className="longest-streak-num">{(streakDetails?.longestStreak || 0).toString().padStart(2, '0')}</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    )}
 
                     {/*  My Portfolio */}
                     {portfolioLoading ? (
