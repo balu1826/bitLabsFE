@@ -20,6 +20,7 @@ const PersonalDetailsCard = ({ applicantId }) => {
   const [resumeAvailable, setResumeAvailable] = useState(false);
   const fileInputRef = useRef(null);
   const { refreshKey } = useRefresh();
+   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
   const addSnackbar = (snackbar) => setSnackbars((p) => [...p, snackbar]);
   const handleCloseSnackbar = (index) =>
@@ -54,9 +55,13 @@ const PersonalDetailsCard = ({ applicantId }) => {
 
   useEffect(() => {
     if (!applicantId) return;
-    fetchBD();
-    probeResume();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+   const loadAll = async () => {
+    setLoading(true);
+    await Promise.all([fetchBD(), probeResume()]);
+    setLoading(false);
+  };
+
+  loadAll();
   }, [applicantId, refreshKey]);
 
   const fullName = useMemo(() => (bd?.name || "").trim(), [bd]);
@@ -173,6 +178,35 @@ const PersonalDetailsCard = ({ applicantId }) => {
 
 
 
+if (loading) {
+  return (
+    <div className="col-lg-12 col-md-12 common_style">
+      <div className="card-base soft-shadow">
+        <div className="card-title-row">
+          <div className="skeleton" style={{ width: 180, height: 20 }} />
+          <div className="skeleton" style={{ width: 60, height: 20 }} />
+        </div>
+
+        <div className="skeleton" style={{ width: 320, height: 15, marginTop: 10 }} />
+
+        <div className="pd-grid" style={{ marginTop: 20 }}>
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={i}
+              className="skeleton"
+              style={{ height: 40, borderRadius: 8 }}
+            />
+          ))}
+        </div>
+
+        <div
+          className="skeleton"
+          style={{ height: 80, marginTop: 20, borderRadius: 10 }}
+        />
+      </div>
+    </div>
+  );
+}
   return (
     <>
       <div className="col-lg-12 col-md-12 common_style">

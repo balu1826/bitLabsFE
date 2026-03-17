@@ -902,3 +902,75 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   gap: 10px;
   }
 }
+.badge-progress-wrapper-skeleton{
+   background: white;
+  border-radius: 6px;
+  box-shadow: 0px 0px 15px #F7AA4B;
+  box-sizing: border-box;
+  width: 100%;
+}
+/* ===================== */
+/* Portfolio Skeleton    */
+/* ===================== */
+
+.portfolio-skeleton-heading {
+  height: 18px;
+  background: #eee;
+  border-radius: 4px;
+}
+
+.portfolio-skeleton-heading.large {
+  width: 100px;
+}
+
+.portfolio-skeleton-heading.small {
+  width: 50px;
+}
+
+.portfolio-skeleton-profile {
+  margin-top: 10px;
+}
+
+.portfolio-skeleton-avatar {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: #eee;
+  border: 2px solid #eee;
+}
+
+.portfolio-skeleton-text {
+  height: 16px;
+  background: #eee;
+  border-radius: 4px;
+}
+
+.portfolio-skeleton-text.short {
+  width: 40px;
+}
+
+.portfolio-skeleton-text.name {
+  width: 80px;
+  margin: 10px 0;
+}
+
+.portfolio-skeleton-score {
+  width: 30px;
+  height: 22px;
+  background: #eee;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.portfolio-skeleton-skills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.portfolio-skeleton-pill {
+  width: 60px;
+  height: 28px;
+  background: #eee;
+  border-radius: 20px;
+}

@@ -31,6 +31,8 @@ const KeySkillsCard = ({ applicantId }) => {
 
   useEffect(() => {
     if (applicantId) fetchSkills();
+     setLoading(true);
+  fetchSkills();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [applicantId]);
 
@@ -49,9 +51,25 @@ const KeySkillsCard = ({ applicantId }) => {
         Add skills that best define your expertise (e.g., Java, React, SQL). Minimum 1.
       </p>
 
-      {loading ? (
-        <div style={{ color: "#777" }}>Loading skills…</div>
-      ) : skills.length ? (
+     {loading ? (
+  <div className="skills-pad">
+    <div className="skills-list">
+      {[...Array(6)].map((_, i) => (
+        <div
+          key={i}
+          className="skeleton"
+          style={{
+            width: 100,
+            height: 32,
+            borderRadius: 20,
+            marginRight: 10,
+            marginBottom: 10
+          }}
+        />
+      ))}
+    </div>
+  </div>
+) : skills.length ? (
         <div className="skills-pad">
           <div className="skills-list">
             {skills.map((s) => (

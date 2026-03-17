@@ -14,7 +14,7 @@ import botImage from '../../images/dashboard/mobilebanners/Bot.png';
 import characterImg from '../../images/dashboard/mobilebanners/Group.png';
 import './ApplicantDashboard.css';
 import GuidedTour from "./GuidedTour";
-
+import StreakExamModal from "./StreakExamModal";
 
 const safeGet = (key) => {
   if (!key) return null;
@@ -56,8 +56,14 @@ const ApplicantDashboard = () => {
   const maxVideos = window.innerWidth > 1700 ? 6 : 4;
   const [showTour, setShowTour] = useState(false);
   const didInitRef = useRef(false);
-  const [dashboardScore, setDashboardScore] = useState(0);   
+  const [showStreakModal, setShowStreakModal] = useState(false);
+  const [dashboardScore, setDashboardScore] = useState(0);
   const [cappedScore, setCappedScore] = useState(0);
+  const [portfolioLoading, setPortfolioLoading] = useState(true);
+  const [askNewtonLoading, setAskNewtonLoading] = useState(true);
+  const [badgeLoading, setBadgeLoading] = useState(true);
+  const [streakDetails, setStreakDetails] = useState(null);
+  const [streakLoading, setStreakLoading] = useState(true);
   const bronzeScore = 150;
   const silverScore = 300;
   const goldScore = 500;
@@ -128,6 +134,63 @@ const ApplicantDashboard = () => {
   useEffect(() => {
     fetchCard();
   }, [applicantId]);
+
+  useEffect(() => {
+    const fetchStreakDetails = async () => {
+      try {
+        setStreakLoading(true);
+        const jwtToken = localStorage.getItem('jwtToken');
+        if (!user?.id) return;
+        const response = await axios.get(`${apiUrl}/streak/${user.id}/getStreakDetails`, {
+          headers: { Authorization: `Bearer ${jwtToken}` }
+        });
+        setStreakDetails(response.data);
+      } catch (err) {
+        console.error("Failed to fetch streak details:", err);
+      } finally {
+        setStreakLoading(false);
+      }
+    };
+    fetchStreakDetails();
+  }, [user?.id]);
+
+  const handleRestoreStreak = async () => {
+    try {
+      setStreakLoading(true);
+      const jwtToken = localStorage.getItem('jwtToken');
+      if (!user?.id) return;
+      await axios.put(`${apiUrl}/streak/${user.id}/restore`, {}, {
+        headers: { Authorization: `Bearer ${jwtToken}` }
+      });
+
+      // Update details after restoring
+      const response = await axios.get(`${apiUrl}/streak/${user.id}/getStreakDetails`, {
+        headers: { Authorization: `Bearer ${jwtToken}` }
+      });
+      setStreakDetails(response.data);
+    } catch (err) {
+      console.error("Failed to restore streak:", err);
+    } finally {
+      setStreakLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!user?.id) return;
+
+    // Check if the streak modal has been shown today
+    const currentDay = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
+    const STREAK_MODAL_KEY = `streak_modal_shown_${currentDay}_${user.id}`;
+
+    const hasBeenShownToday = safeGet(STREAK_MODAL_KEY);
+
+    if (!hasBeenShownToday) {
+      setTimeout(() => {
+        setShowStreakModal(true);
+        safeSet(STREAK_MODAL_KEY, "true");
+      }, 1000); // Slight delay for better UX
+    }
+  }, [user?.id]);
 
 
   useEffect(() => {
@@ -220,6 +283,9 @@ const ApplicantDashboard = () => {
     } catch (err) {
       console.warn("Failed to fetch dashboard score:", err?.response || err);
       setDashboardScore(0);
+    }
+    finally {
+      setBadgeLoading(false);
     }
   };
 
@@ -348,6 +414,9 @@ const ApplicantDashboard = () => {
         localStorage.setItem('userData', JSON.stringify(newData));
       } catch (error) {
         console.error('Error updating profile status:', error);
+      }
+      finally {
+        setPortfolioLoading(false);
       }
     };
 
@@ -561,47 +630,68 @@ const ApplicantDashboard = () => {
                       </div>
                     </div>
                   </div>
+
                   <div className="badge-progress-wrapper">
-                    <div className="progress-text">
-                      <p>Badge achievement level</p>
-                      {Math.round((cappedScore / goldScore) * 100)}%
-                    </div>
-                    <div style={{ position: "relative" }}>
-                      <div className="badge-bar">
+                    {badgeLoading ? (
 
-                        <div className="segment bronze" style={{ width: `${bronzeWidth}%` }}>
-                          <span>Bronze</span>
+                      <div className="adb-badge-skeleton-container">
+
+                        <div className="adb-badge-skeleton-title-row">
+                          <div className="adb-badge-skeleton-heading adb-badge-skeleton-heading-lg"></div>
+                          <div className="adb-badge-skeleton-heading adb-badge-skeleton-heading-sm"></div>
                         </div>
 
-                        <div className="segment silver" style={{ width: `${silverWidth}%` }}>
-                          <span>Silver</span>
-                        </div>
+                        <div className="adb-badge-skeleton-bar"></div>
 
-                        <div className="segment gold" style={{ width: `${goldWidth}%` }}>
-                          <span>Gold</span>
-                        </div>
+                        <div className="adb-badge-skeleton-indicator"></div>
 
-                        <div
-                          className="progress-fill"
-                          style={{
-                            width: `${Math.min(100, (cappedScore / goldScore) * 100)}%`,
-                          }}
-                        ></div>
                       </div>
 
-                      <div
-                        className="bubble-indicator"
-                        style={{
-                          left: `${(cappedScore / goldScore) * 100}%`,
-                          transform: "translateX(-50%)",
-                        }}
-                      >
-                        {cappedScore} / {nextBadge ? nextBadge.score : goldScore}
-                      </div>
-                    </div>
-                    {!nextBadge && (
-                      <p className="congrats-text"> Congrats Buddy! You unlocked all badges!</p>
+                    ) : (
+                      <>
+                        <div className="progress-text">
+                          <p>Badge achievement level</p>
+                          {Math.round((cappedScore / goldScore) * 100)}%
+                        </div>
+                        <div style={{ position: "relative" }}>
+                          <div className="badge-bar">
+
+                            <div className="segment bronze" style={{ width: `${bronzeWidth}%` }}>
+                              <span>Bronze</span>
+                            </div>
+
+                            <div className="segment silver" style={{ width: `${silverWidth}%` }}>
+                              <span>Silver</span>
+                            </div>
+
+                            <div className="segment gold" style={{ width: `${goldWidth}%` }}>
+                              <span>Gold</span>
+                            </div>
+
+                            <div
+                              className="progress-fill"
+                              style={{
+                                width: `${Math.min(100, (cappedScore / goldScore) * 100)}%`,
+                              }}
+                            ></div>
+                          </div>
+
+                          <div
+                            className="bubble-indicator"
+                            style={{
+                              left: `${(cappedScore / goldScore) * 100}%`,
+                              transform: "translateX(-50%)",
+                            }}
+                          >
+                            {cappedScore} / {nextBadge ? nextBadge.score : goldScore}
+                          </div>
+                        </div>
+                        {!nextBadge && (
+                          <p className="congrats-text"> Congrats Buddy! You unlocked all badges!</p>
+                        )}
+                      </>
                     )}
+
                   </div>
 
                 </div>
@@ -610,6 +700,7 @@ const ApplicantDashboard = () => {
             <div className="col-lg-12 col-md-12">
               <div className="row dash-count profile-cards">
                 <div className="profile-card-row1">
+
                   {/* Arena Online */}
                   <div className="arena">
                     <div className="arena-topSection">
@@ -760,43 +851,142 @@ const ApplicantDashboard = () => {
                     )}
                   </div>
 
-                  {/*  My Portfolio */}
-                  <div className="portfolio">
-                    <div className="portfolio-heading">
-                      <h4 style={{ margin: 0, fontWeight: "700", color: "#1A1A1A" }} id="tour-portfolio">
-                        My portfolio
-                      </h4>
-                      <span
-                        onClick={handleRedirectResume}
-                      >
-                        Explore
-                      </span>
-                    </div>
-                    <div className="profile-side-section">
-                      <div>
-                        <img src={imageSrc || '../images/user/avatar/image-01.jpg'} alt="Profile" onError={() => setImageSrc('../images/user/avatar/image-01.jpg')} style={{
-                          borderRadius: "85%",
-                          width: "65px",
-                          height: "65px",
-                          border: "2px solid #EA7B20"
-                        }} />
-                        <span className="badges">
-                          {earnedBadges.map(badge => (
-                            <img
-                              key={badge.name}
-                              src={`./images/dashboard/badge-${badge.name}.png`}
-                              width="15"
-                              height="23"
-                            />
-                          ))}
-                        </span>
+                  {/* Right Column Wrapper for Streak and Portfolio */}
+                  <div className="portfolio-group-col">
+
+                    {/* Recent Streaks */}
+                    {streakLoading ? (
+                      <div className="adb-streak-skeleton-card"></div>
+                    ) : (
+                      <div className="recent-streaks-card">
+                        <div className="streak-left-section">
+
+                          <div className="streak-text-container">
+                            <span className="streak-label">Streak</span>
+                            <span className="streak-number">{streakDetails?.currentStreak || 0}</span>
+                          </div>
+                        </div>
+                        <div className="streak-right-section">
+                          <div className="streak-days-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span>Recent Streaks</span>
+                            <span onClick={() => navigate('/applicant-my-streaks')} style={{ cursor: 'pointer', fontSize: '13px', color: '#FFFFFF', fontWeight: 'bold' }}>
+                              Explore &gt;
+                            </span>
+                          </div>
+                          <div className="streak-days-row">
+                            {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((dayName, index) => {
+                              const todayIndex = new Date().getDay();
+                              const currentStreak = streakDetails?.currentStreak || 0;
+                              const streakStart = todayIndex - currentStreak + 1;
+
+                              let status = 'upcoming';
+                              if (index <= todayIndex && index >= streakStart) {
+                                status = 'taken';
+                              } else if (index <= todayIndex && index < streakStart) {
+                                status = 'missed';
+                              }
+
+                              const lostDayIndex = currentStreak === 0 ? todayIndex - 1 : todayIndex - currentStreak;
+                              if (streakDetails?.restoreAvailable && index === lostDayIndex && lostDayIndex >= 0) {
+                                status = 'restore-blink';
+                              }
+
+                              return (
+                                <div key={dayName} className={`streak-day-block ${status}`}>
+                                  <div
+                                    className="streak-status-icon"
+                                    onClick={status === 'restore-blink' ? handleRestoreStreak : undefined}
+                                    title={status === 'restore-blink' ? "Click to Re-store Streak" : ""}
+                                  >
+                                    {status === 'taken' && <span className="tick-circle">✓</span>}
+                                    {status === 'missed' && <span className="cross-circle">!</span>}
+                                    {status === 'upcoming' && <span className="pending-circle"></span>}
+                                    {status === 'restore-blink' && <span className="restore-circle" style={{ fontSize: '13px', display: 'flex' }}>↺</span>}
+                                  </div>
+                                  <div className="streak-day-name">{dayName}</div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                          <div className="longest-streak-bar">
+                            <span className="longest-streak-text">Longest Day Streak</span>
+                            <span className="longest-streak-num">{(streakDetails?.longestStreak || 0).toString().padStart(2, '0')}</span>
+                          </div>
+                        </div>
                       </div>
-                      <div className="profile-extra-details">
-                        <span>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="#EA7B20" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2
+                    )}
+
+                    {/*  My Portfolio */}
+                    {portfolioLoading ? (
+                      <div className="portfolio">
+
+                        {/* Header */}
+                        <div className="portfolio-heading">
+                          <div className="adb-portfolio-skeleton-heading adb-portfolio-skeleton-heading-lg"></div>
+                          <div className="adb-portfolio-skeleton-heading adb-portfolio-skeleton-heading-sm"></div>
+                        </div>
+
+                        {/* Profile + Score */}
+                        <div className="profile-side-section adb-portfolio-skeleton-profile">
+
+                          <div className="adb-portfolio-skeleton-avatar"></div>
+
+                          <div className="portfolio-score-details">
+                            <div className="adb-portfolio-skeleton-text adb-portfolio-skeleton-text-short"></div>
+                            <div className="adb-portfolio-skeleton-score"></div>
+                          </div>
+
+                        </div>
+
+                        {/* Name */}
+                        <div className="adb-portfolio-skeleton-text adb-portfolio-skeleton-name"></div>
+
+                        {/* Skills */}
+                        <div className="skills-container adb-portfolio-skeleton-skills">
+                          {[...Array(6)].map((_, i) => (
+                            <div key={i} className="adb-portfolio-skeleton-pill"></div>
+                          ))}
+                        </div>
+
+                      </div>
+                    ) : (
+
+                      <div className="portfolio">
+                        <div className="portfolio-heading">
+                          <h4 style={{ margin: 0, fontWeight: "700", color: "#1A1A1A" }} id="tour-portfolio">
+                            My portfolio
+                          </h4>
+                          <span
+                            onClick={handleRedirectResume}
+                          >
+                            Explore
+                          </span>
+                        </div>
+                        <div className="profile-side-section">
+                          <div>
+                            <img src={imageSrc || '../images/user/avatar/image-01.jpg'} alt="Profile" onError={() => setImageSrc('../images/user/avatar/image-01.jpg')} style={{
+                              borderRadius: "85%",
+                              width: "65px",
+                              height: "65px",
+                              border: "2px solid #EA7B20"
+                            }} />
+                            <span className="badges">
+                              {earnedBadges.map(badge => (
+                                <img
+                                  key={badge.name}
+                                  src={`./images/dashboard/badge-${badge.name}.png`}
+                                  width="15"
+                                  height="23"
+                                />
+                              ))}
+                            </span>
+                          </div>
+                          <div className="profile-extra-details">
+                            <span>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="#EA7B20" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2
            19.86 19.86 0 0 1-8.63-3.07
            19.5 19.5 0 0 1-6-6
            19.86 19.86 0 0 1-3.07-8.63
@@ -806,80 +996,83 @@ const ApplicantDashboard = () => {
            a16 16 0 0 0 6 6l1.98-1.98
            a2 2 0 0 1 2.11-.45c.97.37 2 .62 3.06.74
            A2 2 0 0 1 22 16.92z" />
-                          </svg>
-                          <p>{card?.mobileNumber}</p>
-                        </span>
-                        <span>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="#EA7B20" stroke="white" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <rect x="2" y="3" width="20" height="18" rx="2" ry="2"></rect>
-                            <polyline points="22 6 12 13 2 6"></polyline>
-                          </svg>
-                          <p>{profileData?.applicant?.email}</p>
-                        </span>
-                      </div>
-                      <div className="portfolio-score-details">
-                        <h3>score</h3>
-                        <p>{dashboardScore ?? 0}</p>
-                      </div>
-
-                    </div>
-                    <h3 style={{ color: 'black', fontWeight: 'bold', margin: 0 }}>
-                      {card?.name}
-                    </h3>
-                    <div className="skills-container" style={{ display: 'flex', flexWrap: 'wrap' }}>
-                      {(() => {
-                        const addedBadges =
-                          profileData?.applicant?.applicantSkillBadges
-                            ?.filter(badge => badge.flag === 'added')
-                            .map(badge => ({
-                              id: badge.id,
-                              name: badge.skillBadge.name,
-                              status: badge.status,
-                              flag: badge.flag,
-                            })) || [];
-
-                        const requiredSkills =
-                          profileData?.skillsRequired?.map(skillReq => ({
-                            id: skillReq.id,
-                            name: skillReq.skillName,
-                            status: 'REQUIRED',
-                            flag: 'required',
-                          })) || [];
-
-                        const allSkills = [...addedBadges, ...requiredSkills];
-
-                        allSkills.sort((a, b) => {
-                          const lenDiff = a.name.length - b.name.length;
-                          if (lenDiff !== 0) return lenDiff;
-                          return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' });
-                        });
-
-                        return allSkills.map(skill => (
-                          <React.Fragment key={skill.id}>
-                            <span>
-                              <a>
-                                <ul
-                                  className="skill-but"
-                                  style={{
-                                    color: 'black',
-                                    backgroundColor: skill.flag === 'removed' ? '#D9534F' : '#E8E8E8',
-                                    display: 'inline-flex',
-                                    marginRight: '2px',
-                                  }}
-                                >
-                                  <li style={{ display: 'flex', alignItems: 'center' }}>{skill.name}</li>
-                                </ul>
-                              </a>
+                              </svg>
+                              <p>{card?.mobileNumber}</p>
                             </span>
-                          </React.Fragment>
-                        ));
-                      })()}
-                    </div>
+                            <span>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="#EA7B20" stroke="white" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="18" rx="2" ry="2"></rect>
+                                <polyline points="22 6 12 13 2 6"></polyline>
+                              </svg>
+                              <p>{profileData?.applicant?.email}</p>
+                            </span>
+                          </div>
+                          <div className="portfolio-score-details">
+                            <h3>score</h3>
+                            <p>{dashboardScore ?? 0}</p>
+                          </div>
+
+                        </div>
+                        <h3 style={{ color: 'black', fontWeight: 'bold', margin: 0 }}>
+                          {card?.name}
+                        </h3>
+                        <div className="skills-container" style={{ display: 'flex', flexWrap: 'wrap' }}>
+                          {(() => {
+                            const addedBadges =
+                              profileData?.applicant?.applicantSkillBadges
+                                ?.filter(badge => badge.flag === 'added')
+                                .map(badge => ({
+                                  id: badge.id,
+                                  name: badge.skillBadge.name,
+                                  status: badge.status,
+                                  flag: badge.flag,
+                                })) || [];
+
+                            const requiredSkills =
+                              profileData?.skillsRequired?.map(skillReq => ({
+                                id: skillReq.id,
+                                name: skillReq.skillName,
+                                status: 'REQUIRED',
+                                flag: 'required',
+                              })) || [];
+
+                            const allSkills = [...addedBadges, ...requiredSkills];
+
+                            allSkills.sort((a, b) => {
+                              const lenDiff = a.name.length - b.name.length;
+                              if (lenDiff !== 0) return lenDiff;
+                              return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' });
+                            });
+
+                            return allSkills.map(skill => (
+                              <React.Fragment key={skill.id}>
+                                <span>
+                                  <a>
+                                    <ul
+                                      className="skill-but"
+                                      style={{
+                                        color: 'black',
+                                        backgroundColor: skill.flag === 'removed' ? '#D9534F' : '#E8E8E8',
+                                        display: 'inline-flex',
+                                        marginRight: '2px',
+                                      }}
+                                    >
+                                      <li style={{ display: 'flex', alignItems: 'center' }}>{skill.name}</li>
+                                    </ul>
+                                  </a>
+                                </span>
+                              </React.Fragment>
+                            ));
+                          })()}
+                        </div>
+
+                      </div>)}
 
                   </div>
                 </div>
+
                 <div className="profile-card-row2">
                   {/* Download our App */}
                   <div className="app-card">
@@ -1063,6 +1256,20 @@ const ApplicantDashboard = () => {
           open={showTour}
           onClose={handleTourClose}
           steps={tourSteps}
+        />
+      )}
+      {showStreakModal && (
+        <StreakExamModal
+          userId={user.id}
+          onClose={() => {
+            const currentDay = new Date().toISOString().split('T')[0];
+            safeSet(`streak_modal_shown_${currentDay}_${user.id}`, "true");
+            setShowStreakModal(false);
+          }}
+          onExamCompleted={() => {
+            const idToUse = applicantId ?? profileData?.applicant?.id;
+            if (idToUse) fetchDashboardScore(idToUse); // Refresh score
+          }}
         />
       )}
 

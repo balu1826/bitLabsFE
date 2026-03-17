@@ -37,6 +37,7 @@ const EducationDetailsCard = ({ applicantId }) => {
   const [openX, setOpenX] = useState(true);
   const [editOpen, setEditOpen] = useState(false);
   const [snackbars, setSnackbars] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const addSnackbar = (snackbar) => setSnackbars((p) => [...p, snackbar]);
   const handleCloseSnackbar = (i) =>
@@ -57,6 +58,9 @@ const EducationDetailsCard = ({ applicantId }) => {
         classX: {},
       });
     }
+     finally {
+    setLoading(false);
+  }
   };
 
   useEffect(() => {
@@ -67,7 +71,66 @@ const EducationDetailsCard = ({ applicantId }) => {
   const g = useMemo(() => data?.graduation || {}, [data]);
   const xii = useMemo(() => data?.classXii || {}, [data]);
   const x = useMemo(() => data?.classX || {}, [data]);
+if (loading) {
+  return (
+    <div className="col-lg-12 col-md-12 common_style">
+      <div className="card-base soft-shadow">
+        {/* Title */}
+        <div className="card-title-row">
+          <div className="skeleton" style={{ width: 200, height: 24 }} />
+          <div className="skeleton" style={{ width: 60, height: 20 }} />
+        </div>
 
+        <div
+          className="skeleton"
+          style={{ width: 450, height: 14, marginTop: 10 }}
+        />
+
+        {/* Graduation section */}
+        <div style={{ marginTop: 20 }}>
+          <div className="skeleton" style={{ width: 160, height: 18, marginBottom: 15 }} />
+          <div className="pd-grid">
+            {[...Array(6)].map((_, i) => (
+              <div
+                key={`grad-${i}`}
+                className="skeleton"
+                style={{ height: 40, borderRadius: 8 }}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Class XII */}
+        <div style={{ marginTop: 30 }}>
+          <div className="skeleton" style={{ width: 140, height: 18, marginBottom: 15 }} />
+          <div className="pd-grid">
+            {[...Array(3)].map((_, i) => (
+              <div
+                key={`xii-${i}`}
+                className="skeleton"
+                style={{ height: 40, borderRadius: 8 }}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Class X */}
+        <div style={{ marginTop: 30 }}>
+          <div className="skeleton" style={{ width: 120, height: 18, marginBottom: 15 }} />
+          <div className="pd-grid">
+            {[...Array(3)].map((_, i) => (
+              <div
+                key={`x-${i}`}
+                className="skeleton"
+                style={{ height: 40, borderRadius: 8 }}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
   return (
     <>
       <div className="col-lg-12 col-md-12 common_style">
