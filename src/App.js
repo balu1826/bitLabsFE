@@ -22,6 +22,7 @@ import TermsOfServices from './components/common/TermsOfServices';
 import ApplicantBasicDetails from './components/applicantcomponents/ApplicantBasicDetails';
 import JobWidget from './components/jobWidget';
 // import ChatBotWidget from './ChatBotWidget';
+import ApplicantMyStreaks from './components/applicantcomponents/ApplicantMyStreaks';
 import FinalizeBlog from "./components/applicantcomponents/FinalizeBlog";
 import InterviewPrepPage from './pages/applicantpages/InterviewPrepPage';
 import MentorConnectFeedbackForm from './pages/feedbackpage/MentorConnectFeedbackForm';
@@ -125,6 +126,7 @@ function App() {
                     <Route path="/applicant-delete-profile" element={<ApplicantHomePage />} />
                     <Route path="/applicant-job-alerts" element={<ApplicantHomePage />} />
                     <Route path="/applicant-take-test" element={<ApplicantHomePage />} />
+                     <Route path="/applicant-my-streaks" element={<ApplicantHomePage />} />
                     <Route path="/applicant-resume" element={<ApplicantHomePage />} />
                     <Route path="/applicant-hackathon" element={<ApplicantHomePage />} />
                     <Route path="/applicant-hackathon-details/:id" element={<ApplicantHomePage />} />

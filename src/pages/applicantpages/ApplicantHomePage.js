@@ -30,6 +30,7 @@ import BlogSingle from '../../components/applicantcomponents/BlogSingle';
 import ApplicantMentorConnect from '../../components/applicantcomponents/ApplicantMentorConnect';
 import MyJobs from '../../components/applicantcomponents/MyJobs';
 import InterviewPrepPage from './InterviewPrepPage';
+import ApplicantMyStreaks from '../../components/applicantcomponents/ApplicantMyStreaks';
 import FeedbackFormsList from '../../components/applicantcomponents/FeedbackFormsList';
 import FeedbackFormFill from '../../components/applicantcomponents/FeedbackFormFill';
 import ResumeTemplates from '../../components/applicantcomponents/ApplicantAtsResume/ResumeTemplates';
@@ -101,6 +102,9 @@ function ApplicantHomePage() {
         break;
         case '/applicant-interview-status':
           setActiveRoute('interviewstatus');
+        break;
+        case '/applicant-my-streaks':
+          setActiveRoute('mystreaks');
         break;
         case '/applicant-change-password':
           setActiveRoute('changepassword');
@@ -180,6 +184,7 @@ function ApplicantHomePage() {
      {activeRoute === 'findjobs' && (<ApplicantFindJobs setSelectedJobId={setSelectedJobId} /> )}
      {activeRoute === 'myjobs' && (<MyJobs setSelectedJobId={setSelectedJobId} /> )}
      {activeRoute === 'dashboard' && <ApplicantDashboard />}
+     {activeRoute === 'mystreaks' && <ApplicantMyStreaks />}
      {activeRoute === 'profile' && <ApplicantUpdateProfile />}
      {activeRoute === 'viewprofile' && <ApplicantViewProfile />}
      {activeRoute === 'editprofile' && <ApplicantEditProfile />}

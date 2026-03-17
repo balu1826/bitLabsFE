@@ -7,6 +7,7 @@ const clearUserData = () => {
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('user');
     localStorage.removeItem('userType');
+    sessionStorage.clear();
   } catch (error) {
     console.error('Error clearing user data:', error);
   }
