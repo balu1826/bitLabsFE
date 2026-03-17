@@ -1,0 +1,236 @@
+.mentor-rating-container {
+    padding: 24px;
+    background-color: #f9fafb;
+    min-height: calc(100vh - 80px);
+}
+
+.mentor-rating-header {
+    margin-bottom: 32px;
+}
+
+.mentor-rating-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.mentor-search-container {
+    margin-top: 20px;
+}
+
+.mentors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.mentor-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform 0.2s;
+}
+
+.mentor-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.mentor-info h3 {
+    margin: 0 0 16px 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.mentor-card-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 6px;
+}
+
+.college-select-wrapper {
+    width: 100%;
+}
+
+.mentor-college-dropdown {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background-color: #f9fafb;
+    font-size: 14px;
+    color: #374151;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.mentor-college-dropdown:focus {
+    outline: none;
+    border-color: #F97316;
+}
+
+.selected-college-display {
+    font-size: 13px;
+    color: #6b7280;
+    padding: 8px 12px;
+    background: #f3f4f6;
+    border-radius: 6px;
+    border-left: 3px solid #F97316;
+}
+
+.view-rating-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #F97316;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s, background-color 0.2s;
+}
+
+.view-rating-btn:hover:not(.disabled) {
+    background-color: #ea580c;
+}
+
+.view-rating-btn.disabled {
+    background-color: #d1d5db;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.rating-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.rating-modal {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #9ca3af;
+}
+
+.modal-header h3 {
+    margin: 0 0 8px 0;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.modal-header p {
+    color: #6b7280;
+    margin: 0 0 24px 0;
+}
+
+.rating-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.rating-item {
+    background: #fdf2f8;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.rating-item.college {
+    background: #eff6ff;
+}
+
+.rating-label {
+    display: block;
+    font-size: 14px;
+    color: #4b5563;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.rating-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: #1f2937;
+}
+
+.rating-stars {
+    color: #fbbf24;
+    margin-top: 4px;
+}
+
+.loading-container,
+.no-mentors {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 12px;
+    border: 1px dashed #d1d5db;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.filter-container {
+    display: flex;
+    align-items: center;
+}
+
+.feedback-filter-dropdown {
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 5px;
+    border: 1px solid #CBCBCB;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4b5563;
+    background-color: white;
+    cursor: pointer;
+    width: 220px;
+    box-sizing: border-box;
+}
+
+.feedback-filter-dropdown:focus {
+    outline: none;
+    border-color: #F97316;
+}
+
+.hackathon-search-box {
+    width: 220px !important;
+    height: 36px !important;
+    box-sizing: border-box;
+}

@@ -1,0 +1,240 @@
+@import '../applicantcomponents/hackathon.css';
+
+.success-message {
+  background: #dcfce7;
+  border: 1px solid #bbf7d0;
+  color: #16a34a;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.success-message p {
+  margin: 0;
+}
+
+.recruiter-edit-feedback-form .question-text input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  color: #3a2e2e;
+  font-size: 14px;
+}
+
+.recruiter-edit-feedback-form .question-text input:focus {
+  outline: none;
+  border-color: #F97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+.recruiter-edit-feedback-form .question-required-section {
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+
+.recruiter-edit-feedback-form .question-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.recruiter-edit-feedback-form .question-number {
+  background: #F97316;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.recruiter-edit-feedback-form .question-type-select {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  color: #3a2e2e;
+  font-size: 12px;
+  min-width: 120px;
+}
+
+.recruiter-edit-feedback-form .question-type-select:focus {
+  outline: none;
+  border-color: #F97316;
+}
+
+.recruiter-edit-feedback-form .required-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #3a2e2e;
+  cursor: pointer;
+}
+
+.recruiter-edit-feedback-form .required-checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #F97316;
+}
+
+.recruiter-edit-feedback-form .remove-question-btn {
+  background: #FF7171;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 8px;
+  cursor: pointer;
+  font-size: 11px;
+  transition: all 0.3s ease;
+  margin-left: auto;
+}
+
+.recruiter-edit-feedback-form .remove-question-btn:hover {
+  background: #ff5252;
+}
+
+.recruiter-edit-feedback-form .options-builder {
+  margin-top: 12px;
+}
+
+.recruiter-edit-feedback-form .options-builder label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #3a2e2e;
+  margin-bottom: 8px;
+}
+
+.recruiter-edit-feedback-form .option-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.recruiter-edit-feedback-form .option-input input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  color: #3a2e2e;
+  font-size: 13px;
+}
+
+.recruiter-edit-feedback-form .add-option-btn {
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.recruiter-edit-feedback-form .add-option-btn:hover {
+  background: #059669;
+}
+
+.recruiter-edit-feedback-form .remove-option-btn {
+  background: #FF7171;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 8px;
+  cursor: pointer;
+  font-size: 11px;
+  transition: all 0.3s ease;
+}
+
+.recruiter-edit-feedback-form .remove-option-btn:hover {
+  background: #FF7171;
+}
+
+.recruiter-edit-feedback-form .add-question-btn {
+  background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 16px;
+}
+
+.recruiter-edit-feedback-form .add-question-btn:hover {
+  background: linear-gradient(135deg, #EA580C 0%, #F97316 100%);
+  transform: translateY(-1px);
+}
+
+.recruiter-edit-feedback-form .form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.recruiter-edit-feedback-form .form-actions button {
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.recruiter-edit-feedback-form .form-actions button:first-child {
+  background: #f3f4f6;
+  color: #666;
+  border: 1px solid #ccc;
+}
+
+.recruiter-edit-feedback-form .form-actions button:first-child:hover {
+  background: #e5e7eb;
+}
+
+.recruiter-edit-feedback-form .form-actions button:nth-child(2) {
+  background: #dc3545;
+  color: white;
+  border: none;
+}
+
+.recruiter-edit-feedback-form .form-actions button:nth-child(2):hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+}
+
+.recruiter-edit-feedback-form .form-actions button:last-child {
+  background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+.recruiter-edit-feedback-form .form-actions button:last-child:hover {
+  background: linear-gradient(135deg, #EA580C 0%, #F97316 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
+}
+
+.recruiter-edit-feedback-form .form-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}

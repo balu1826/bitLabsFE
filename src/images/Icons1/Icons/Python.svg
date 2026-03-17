@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 84 96">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-4 {
+        fill: #e7f6fd;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="2395.3" y1="-713.7" x2="2398.4" y2="-710.6" gradientTransform="translate(-29931 8935.6) scale(12.5)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3a7fb9"/>
+      <stop offset="1" stop-color="#376a95"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="2397.2" y1="-711.7" x2="2400.6" y2="-708.5" gradientTransform="translate(-29931 8935.6) scale(12.5)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fee053"/>
+      <stop offset="1" stop-color="#ffc433"/>
+    </linearGradient>
+  </defs>
+  <!-- Generator: Adobe Illustrator 28.6.0, SVG Export Plug-In . SVG Version: 1.2.0 Build 709)  -->
+  <g>
+    <g id="Layer_1">
+      <rect class="cls-4" x="-1.9" y="-2.1" width="87.8" height="99.5"/>
+      <path class="cls-1" d="M4803.7-375.5h2500v2500h-2500V-375.5Z"/>
+      <path class="cls-3" d="M41.4,7.2c-20,0-18.8,8.7-18.8,8.7v9h19.1v2.7H15s-12.8-1.5-12.8,18.7,11.2,19.5,11.2,19.5h6.7v-9.4s-.4-11.2,11-11.2h18.9s10.6.2,10.6-10.3v-17.3s1.6-10.5-19.3-10.5h0ZM30.8,13.2c1.9,0,3.4,1.5,3.4,3.4s-1.5,3.4-3.4,3.4-3.4-1.5-3.4-3.4h0c0-1.9,1.5-3.4,3.4-3.4Z"/>
+      <path class="cls-2" d="M41.9,85.6c20,0,18.8-8.7,18.8-8.7v-9h-19.1v-2.7h26.7s12.8,1.5,12.8-18.7-11.2-19.5-11.2-19.5h-6.7v9.4s.4,11.2-11,11.2h-18.9s-10.6-.2-10.6,10.3v17.3s-1.6,10.5,19.3,10.5h0ZM52.5,79.5c-1.9,0-3.4-1.5-3.4-3.4h0c0-1.9,1.5-3.4,3.4-3.4s3.4,1.5,3.4,3.4-1.5,3.4-3.4,3.4Z"/>
+    </g>
+  </g>
+</svg>

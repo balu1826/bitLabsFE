@@ -1,0 +1,141 @@
+
+.author-profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* Add relative positioning */
+  }
+  
+  .author-details {
+    display: flex;
+    align-items: center;
+  }
+  
+  .img-box {
+    margin-right: 20px;
+  }
+  
+  .img-box img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+  
+  .author-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .author-info h2 {
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .author-info a {
+    font-size: 14px;
+    color: #1e90ff;
+    text-decoration: none;
+  }
+  
+  .author-info p {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+  }
+  
+  .social-links {
+    margin-top: 15px;
+  }
+  
+  .social-links a {
+    margin-right: 10px;
+    font-size: 18px;
+    color: #666;
+    transition: color 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    color: #1e90ff;
+  }
+  
+  .fa {
+    font-size: 20px;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    .author-profile {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .author-details {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .img-box {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  
+    .author-info h2 {
+      font-size: 18px;
+    }
+  
+    .author-info a, .author-info p {
+      font-size: 12px;
+    }
+  }
+  
+
+  .edit-btn {
+    position: absolute; /* Make the pen icon position absolute */
+    top: 10px; /* Adjust the vertical alignment */
+    right: 10px; /* Align it to the right corner */
+    font-size: 16px;
+    color: #1e90ff;
+    text-decoration: none;
+  }
+  
+  .edit-btn i {
+    font-size: 20px;
+  }
+  
+  .author-info h2 {
+    font-size: 20px;
+    color: #333;
+    display: flex;
+    align-items: center;
+  }
+  
+  .author-info h2 i {
+    margin-right: 8px; /* Add space between the icon and the text */
+  }
+  
+  .author-info a {
+    font-size: 14px;
+    color: #1e90ff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+  }
+  
+  .author-info a i {
+    margin-right: 5px; /* Space between the icon and the link */
+  }
+  
+  .author-info p {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .author-info p i {
+    margin-right: 5px; /* Space between the icon and the address */
+  }
+  

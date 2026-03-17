@@ -1,0 +1,104 @@
+{
+  "name": "talentstreamfrontendkarun",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.11.0"
+  },
+  "dependencies": {
+    "@ant-design/colors": "^7.0.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mui/icons-material": "^5.15.20",
+    "@mui/material": "^5.15.20",
+    "@popperjs/core": "^2.11.8",
+    "@react-oauth/google": "^0.12.1",
+    "@react-pdf-viewer/default-layout": "^3.12.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "ajv": "^8.12.0",
+    "ajv-keywords": "^5.1.0",
+    "antd": "^5.14.1",
+    "axios": "^1.6.0",
+    "crypto-js": "^4.2.0",
+    "datatables.net": "^1.13.8",
+    "firebase": "^12.3.0",
+    "html2canvas": "^1.4.1",
+    "interactjs": "^1.10.26",
+    "jquery": "^3.7.1",
+    "jquery.cookie": "^1.4.1",
+    "jspdf": "^2.5.2",
+    "jwt-decode": "^4.0.0",
+    "metismenu": "^3.0.7",
+    "moment": "^2.30.1",
+    "notistack": "^3.0.1",
+    "npmlog": "^6.0.0",
+    "pdf-lib": "^1.17.1",
+    "pdf2image": "^1.2.3",
+    "react": "18.2.0",
+    "react-bootstrap": "^2.10.2",
+    "react-bootstrap-typeahead": "^6.3.2",
+    "react-calendar-timeline": "^0.28.0",
+    "react-csv": "^2.2.2",
+    "react-dom": "^18.2.0",
+    "react-ga": "^3.3.1",
+    "react-icons": "^4.12.0",
+    "react-international-phone": "^4.2.5",
+    "react-loading-skeleton": "^3.5.0",
+    "react-markdown": "^10.1.0",
+    "react-modal": "^3.16.1",
+    "react-pdf": "^7.7.3",
+    "react-player": "^2.16.1",
+    "react-progressbar-semicircle": "^1.2.1",
+    "react-quill": "^2.0.0",
+    "react-responsive": "^9.0.2",
+    "react-router-dom": "^6.18.0",
+    "react-scripts": "^5.0.1",
+    "react-semicircle-progressbar": "^1.1.0",
+    "react-spinners": "^0.13.8",
+    "react-table": "^7.8.0",
+    "react-toastify": "^11.0.5",
+    "react-toggle": "^4.1.3",
+    "remark-gfm": "^4.0.1",
+    "swiper": "^11.0.6",
+    "web-vitals": "^2.1.4",
+    "wow.js": "^1.2.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "start:staging": "env-cmd -f .env.staging react-scripts start",
+    "start:production": "env-cmd -f .env.production react-scripts start",
+    "build:staging": "env-cmd -f .env.staging react-scripts build",
+    "build:production": "env-cmd -f .env.production react-scripts build",
+    "test:staging": "env-cmd -f .env.staging react-scripts test",
+    "test:production": "env-cmd -f .env.production react-scripts test"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0"
+  }
+}

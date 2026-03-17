@@ -1,0 +1,80 @@
+.exit-popup {
+    position: fixed !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 10000 !important;
+}
+
+.exit-popup-content {
+    background-color: #fff !important;
+    border-radius: 8px !important;
+    width: 400px !important;
+    padding: 20px !important;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2) !important;
+    position: relative !important;
+}
+
+.exit-popup-header {
+    display: flex !important;
+    justify-content: flex-end !important;
+}
+
+.exit-popup-close {
+    font-size: 25px !important;
+    cursor: pointer !important;
+}
+
+.exit-popup-body {
+    text-align: center !important;
+}
+
+.exit-popup-warning-icon img {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.exit-popup-title {
+    font-size: 18px !important;
+    font-weight: bold !important;
+    margin: 20px 0 10px 0 !important;
+}
+
+.exit-popup-message {
+    font-size: 14px !important;
+    color: #666 !important;
+}
+
+.exit-popup-footer {
+    display: flex !important;
+    /* justify-content: space-between !important; */
+    margin-top: 20px !important;
+    width: 100% !important; /* Ensure the footer takes the full width */
+    justify-content: center !important;
+}
+
+.exit-popup-btn {
+    width: 40% !important; /* Each button takes 50% of the footer's width */
+    padding: 10px !important;
+    border: none !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    text-align: center !important; /* Center the button text */
+
+}
+
+.exit-popup-cancel-btn {
+    border: 1px solid #9D9D9D !important;
+    color: #9D9D9D !important;
+}
+
+.exit-popup-confirm-btn {
+    background-color: #f47c3c !important;
+    color: #fff !important;
+}
+
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 84 96">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #364a5e;
+      }
+
+      .cls-3 {
+        fill: #ebf6f0;
+      }
+
+      .cls-4 {
+        fill: #43b883;
+      }
+    </style>
+  </defs>
+  <!-- Generator: Adobe Illustrator 28.6.0, SVG Export Plug-In . SVG Version: 1.2.0 Build 709)  -->
+  <g>
+    <g id="Layer_1">
+      <path class="cls-1" d="M4803.7-375.5h2500v2500h-2500V-375.5Z"/>
+      <rect class="cls-3" x="-1.8" y="-2.1" width="87.8" height="99.5"/>
+      <g>
+        <path class="cls-4" d="M66.7,12.7h16.3l-40.9,70.5L1.2,12.7h31.3l9.6,16.3,9.4-16.3h15.2Z"/>
+        <path class="cls-4" d="M1.3,12.7l40.9,70.5L83.1,12.7h-16.3l-24.5,42.3L17.6,12.7H1.3Z"/>
+        <path class="cls-2" d="M17.4,12.7l24.7,42.5,24.5-42.5h-15.1l-9.4,16.3-9.6-16.3s-15.1,0-15.1,0Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,138 @@
+.blog-single-container {
+  max-width: 1000px;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  margin: 110px auto;
+  margin-left: 320px;
+}
+
+.blog-header {
+  margin-bottom: 2rem;
+  text-align: center;
+  
+}
+.back-btn-wrapper-topsingle{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.blog-title-single {
+  font-size: 1.7rem!important;
+  font-weight: 600 !important;
+  color: #111827;
+  margin-left: 50px;
+  font-family: Plus Jakarta Sans, sans-serif !important;
+}
+
+.blog-meta {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6b7280;
+  margin-top: 0.2rem;
+}
+
+.blog-meta .author {
+  font-weight: 600;
+  color: #f97316;
+}
+
+/* Body Layout */
+.blog-body {
+  line-height: 1.7;
+  font-size: 1rem;
+  color: #374151;
+}
+
+/* Float image right */
+.blog-main-image {
+  float: right;
+  margin: 0 0 1rem 1.5rem;
+  max-width: 320px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: fill;
+}
+
+/* Ensure text wraps around */
+.blog-content-single::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.section-heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #f97316;
+  margin-top: 1.5rem;
+}
+
+.bullet-point {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.bullet-point::before {
+  content: "•";
+  color: #f97316;
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}
+
+.paragraph {
+  margin-bottom: 1rem;
+}
+
+/* Back Button */
+.back-btn-wrapper {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.back-btn {
+  padding: 0.6rem 1.2rem;
+  background: #f97316;
+  color: #ffffff !important;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #ea580c;
+}
+
+@media (max-width: 1302px) {
+  .blog-single-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5rem;
+  }
+}
+
+/* 📱 Responsive Fixes */
+@media (max-width: 992px) {
+  .blog-single-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5rem;
+  }
+
+  .blog-main-image {
+    float: none;
+    display: block;
+    margin: 0 auto 1.5rem auto;
+    max-width: 100%;
+  }
+
+  .blog-content-single {
+    text-align: justify;
+  }
+}
