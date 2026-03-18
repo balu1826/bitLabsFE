@@ -224,6 +224,12 @@ const allLoadingDone =
     fetchStreakDetails();
   }, [user?.id]);
 
+  // Reset sessionSkipped state when user logs in (user.id changes)
+  // This ensures the streak modal appears on fresh login even if it was skipped before logout
+  useEffect(() => {
+    setSessionSkipped(false);
+  }, [user?.id]);
+
   // Fetch attempted dates from new API
   useEffect(() => {
     const fetchAttemptedDates = async () => {

@@ -52,6 +52,7 @@ function App() {
     setIsLoggedIn(true);
   };
   const handleLogout = () => {
+    console.log('🔍 App.js handleLogout called');
     setIsLoggedIn(false);
     window.location.href = '/';
   };
