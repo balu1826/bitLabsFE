@@ -240,9 +240,12 @@
   align-items: center;
   justify-content: center;
   padding: 10px 5px;
-  background: rgba(0, 0, 0, 0.15);
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
-  gap: 10px;
+  background: #ffffff;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  margin: 5px;
+  gap: 2px;
 }
 
 .streak-flame-icon {
@@ -259,19 +262,11 @@
 }
 
 .streak-label {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
-  letter-spacing: 0.5px;
-}
-
-
-.streak-fire-emoji {
-  font-size: 20px;
-  line-height: 1;
-  margin-bottom: -4px;
-  filter: drop-shadow(0 0 5px #e66a0e);
+  color: #1a1a1a;
+  z-index: 2;
+  margin-left: 20px;
 }
 
 .streak-number {
@@ -279,13 +274,18 @@
   line-height: 1;
   font-weight: 950;
   font-family: 'Poppins', sans-serif;
-  text-transform: uppercase;
-  background: linear-gradient(0deg, #E66A0E 0%, #FBBB5C 40%, #fff 90%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8)) drop-shadow(0 -2px 4px #fbbb5c) drop-shadow(0 -5px 12px #e66a0e);
-  display: inline-block;
+  color: #ea7b20;
+  z-index: 2;
+  margin-left: 20px;
+}
+
+.streak-flame-img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 60px;
+  width: auto;
+  z-index: 1;
 }
 
 .streak-right-section {

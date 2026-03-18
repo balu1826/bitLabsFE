@@ -46,18 +46,27 @@
 }
 
 .streak-close-btn {
-  background: none;
-  border: none;
-  font-size: 24px;
-  font-weight: bold;
-  color: #888;
+  background: transparent;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
   cursor: pointer;
-  line-height: 1;
-  padding: 4px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.streak-close-btn:focus,
+.streak-close-btn:active,
+.streak-close-btn:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
 }
 
 .streak-close-btn:hover {
-  color: #333;
+  background-color: transparent !important;
 }
 
 /* Progress Segment Styles */
@@ -221,25 +230,31 @@
 
 /* Warning Modal Styles */
 .streak-warning-overlay {
-  position: absolute;
-  /* Cover the parent modal */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
-  border-radius: 12px;
+  z-index: 1000;
 }
 
 .streak-warning-modal {
+  background-color: #ffffff;
+  border-radius: 12px;
   text-align: center;
-  padding: 32px;
+  padding: 48px 32px 40px;
   position: relative;
-  width: 100%;
+  width: 90%;
+  max-width: 540px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.warning-content-wrapper {
+  margin-top: 0;
 }
 
 .streak-warning-modal .streak-close-btn {
@@ -249,41 +264,43 @@
 }
 
 .warning-icon-wrapper {
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .warning-siren-icon {
-  font-size: 48px;
+  width: 80px;
+  height: auto;
 }
 
 .warning-title {
   color: #ff4d4f;
   margin: 0 0 16px 0;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
 }
 
 .warning-text {
-  font-size: 14px;
+  font-size: 15px;
   color: #1a1a1a;
   line-height: 1.5;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   font-weight: 600;
 }
 
 .warning-sure-btn {
-  background-color: #ea7b20;
-  color: #fff;
-  border: none;
-  padding: 10px 32px;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
+  background: #ea7b20 !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 12px 48px !important;
+  border-radius: 8px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s !important;
 }
 
 .warning-sure-btn:hover {
-  background-color: #d66a15;
+  background: #d66a15 !important;
 }
 
 /* Loading State */

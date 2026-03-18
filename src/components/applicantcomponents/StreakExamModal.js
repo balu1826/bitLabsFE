@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './StreakExamModal.css';
 import { apiUrl } from '../../services/ApplicantAPIService';
+import sirenImg from '../../images/dashboard/siren.png';
 
 const StreakExamModal = ({ userId, onClose, onExamCompleted }) => {
   const [questions, setQuestions] = useState([]);
@@ -154,7 +155,13 @@ const StreakExamModal = ({ userId, onClose, onExamCompleted }) => {
             <div className="streak-header-titles">
               <h2>Today streak exam</h2>
             </div>
-            <button className="streak-close-btn" onClick={onClose}>&times;</button>
+            <button className="streak-close-btn" onClick={onClose} aria-label="Close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" fill="#2A4157" fillOpacity="0.24" />
+                <path d="M16 8L8 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M8 8L16 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
           </div>
           <div className="streak-question-body" style={{ textAlign: "center", padding: "40px 0" }}>
             <p>{error || "No questions found for today."}</p>
@@ -188,9 +195,15 @@ const StreakExamModal = ({ userId, onClose, onExamCompleted }) => {
         {showWarning && (
           <div className="streak-warning-overlay">
             <div className="streak-warning-modal">
-              <button className="streak-close-btn" onClick={handleCancelClose}>&times;</button>
+              <button className="streak-close-btn" onClick={handleCancelClose} aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="9" fill="#2A4157" fillOpacity="0.24" />
+                  <path d="M16 8L8 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M8 8L16 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
               <div className="warning-icon-wrapper">
-                <div className="warning-siren-icon">&#128680;</div>
+                <img src={sirenImg} alt="Warning Icon" className="warning-siren-icon" />
               </div>
               <h2 className="warning-title">Warning!</h2>
               <p className="warning-text">You are about to close the exam.<br />Unsaved progress will be lost. Do you wish to continue?</p>
@@ -206,7 +219,13 @@ const StreakExamModal = ({ userId, onClose, onExamCompleted }) => {
             <span className="streak-date">{formattedDate}</span>
           </div>
 
-          <button className="streak-close-btn" onClick={handleCloseClick}>&times;</button>
+          <button className="streak-close-btn" onClick={handleCloseClick} aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" fill="#2A4157" fillOpacity="0.24" />
+              <path d="M16 8L8 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M8 8L16 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
         </div>
 
         {/* Progress Bar */}

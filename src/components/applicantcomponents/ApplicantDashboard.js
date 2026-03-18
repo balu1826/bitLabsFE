@@ -13,6 +13,7 @@ import appStoreIcon from "../../images/dashboard/mobilebanners/appstoreicon.png"
 import playStore from "../../images/dashboard/mobilebanners/playstore.png";
 import botImage from '../../images/dashboard/mobilebanners/Bot.png';
 import characterImg from '../../images/dashboard/mobilebanners/Group.png';
+import flameImg from '../../images/dashboard/flame.png';
 import './ApplicantDashboard.css';
 import GuidedTour from "./GuidedTour";
 
@@ -1052,10 +1053,11 @@ const allLoadingDone =
                     ) : (
                       <div className="recent-streaks-card">
                         <div className="streak-left-section">
-                          <span className="streak-label">STREAK</span>
+                          <span className="streak-label">Streak:</span>
                           <div className="streak-text-container">
                             <span className="streak-number">{streakDetails?.currentStreak || 0}</span>
                           </div>
+                          <img src={flameImg} alt="Flame" className="streak-flame-img" />
                         </div>
                         <div className="streak-right-section">
                           <div className="streak-days-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

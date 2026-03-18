@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../common/UserProvider";
 import "./ApplicantMyStreaks.css";
 import { apiUrl } from "../../services/ApplicantAPIService";
+import calendarGuyImg from '../../images/empty-state-images/calendar-guy.png';
 
 const ApplicantMyStreaks = () => {
     const { user } = useUserContext();
@@ -370,10 +371,9 @@ const ApplicantMyStreaks = () => {
                             </div>
                         ) : (
                             <div className="revealed-questions-list">
-                                <div className="revealed-question-block" style={{ textAlign: "center", padding: "40px 20px" }}>
-                                    <h4 className="r-question-text" style={{ margin: 0, color: "#666" }}>
-                                        No Question attempted on this day, select another date.
-                                    </h4>
+                                <div className="empty-answers-container">
+                                    <img src={calendarGuyImg} alt="No answers" className="empty-calendar-img" />
+                                    <h4 className="empty-answers-text">Choose the attempted date to reveal the answers</h4>
                                 </div>
                             </div>
                         )}
