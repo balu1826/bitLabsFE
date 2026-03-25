@@ -1571,7 +1571,7 @@ const allLoadingDone =
                 You have a streak to restore from yesterday!
               </p>
               <p style={{ fontSize: '13px', color: '#888' }}>
-                Restore now to keep your streak, or take today's test first.
+                Restore now to keep your streak, or start fresh by taking today's test.
               </p>
             </div>
             <div className="streak-modal-footer" style={{ justifyContent: 'center', gap: '12px' }}>
@@ -1582,7 +1582,7 @@ const allLoadingDone =
                   setShowStreakModal(true); // proceed to test
                 }}
               >
-                Take Test First
+                Take Test
               </button>
               <button
                 className="streak-submit-btn"
