@@ -108,7 +108,27 @@ useEffect(() => {
 
   for (const url of candidates) {
     try {
-      await axios.post(url, form, { headers: { Authorization: `Bearer ${jwt}` } });
+      const res=await axios.post(url, form, { headers: { Authorization: `Bearer ${jwt}` } });
+        // ✅ Handle backend string errors (your case)
+    if (typeof res.data === "string") {
+      const msg = res.data.toLowerCase();
+
+      if (msg.includes("file size")) {
+        addSnackbar({
+          message: "File size should be less than 5MB",
+          type: "error"
+        });
+        return;
+      }
+
+      if (msg.includes("error") || msg.includes("fail")) {
+        addSnackbar({
+          message: res.data,
+          type: "error"
+        });
+        return;
+      }
+    }
       success = true;
       addSnackbar({ message: "Resume uploaded successfully!", type: "success" });
       await probeResume?.(); // if you have this in your file
