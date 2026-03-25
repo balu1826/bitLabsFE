@@ -327,13 +327,14 @@ const StreakExamModal = ({ userId, onClose, onExamCompleted }) => {
                 >
                   Prev
                 </button>
-                <button
-                  className="streak-nav-btn"
-                  onClick={handleNext}
-                  disabled={currentQuestionIndex === questions.length - 1}
-                >
-                  Next
-                </button>
+              {currentQuestionIndex < questions.length - 1 && (
+  <button
+    className="streak-nav-btn"
+    onClick={handleNext}
+  >
+    Next
+  </button>
+)}
               </>
             )}
           </div>
