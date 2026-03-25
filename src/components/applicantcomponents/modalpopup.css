@@ -1,0 +1,513 @@
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  z-index: 1000 !important;
+  border-radius: 16px !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.modal-content2 {
+  border-radius: 16px !important;
+  z-index: 1001 !important;
+  position: relative !important;
+  background: white !important;
+  padding: 20px !important;
+
+ 
+ 
+  overflow-y: auto !important;
+}
+.modal-content3 {
+  border-radius: 16px !important;
+  z-index: 1001 !important;
+  position: relative !important;
+  background: white !important;
+  padding: 20px !important;
+  width: 50% !important; 
+ margin-bottom: 50px !important;
+ margin-top: 50px;
+ 
+  overflow-y: auto !important;
+}
+.modal-content {
+  
+  border-radius: 16px !important;
+  z-index: 1001 !important;
+  position: relative !important;
+  background: white !important;
+  padding: 20px !important;
+  width: 50% !important; 
+  
+  width:50% !important;
+  overflow-y: auto !important;
+  margin-top: 15% !important;
+  margin-bottom: 10% !important; 
+}
+.modal-content1 {
+  border-radius: 16px !important;
+  z-index: 1001 !important;
+  position: relative !important;
+  background: white !important;
+  padding: 20px !important;
+  overflow-y: auto !important;
+}
+.features-job-view2 {
+margin-left: 30px ;
+margin-bottom: 32px;
+margin-right: 30px;
+margin-top:30px;
+gap: 32;
+
+padding: 24px;
+-webkit-transition: all 0.3s ease 0s;
+-moz-transition: all 0.3s ease 0s;
+-ms-transition: all 0.3s ease 0s;
+-o-transition: all 0.3s ease 0s;
+transition: all 0.3s ease 0s;
+position: relative;
+
+z-index: 1;
+width: 70%;
+border-radius: 16px;
+box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05) ;
+background-color: #FFF;
+flex-shrink: 0;
+
+}
+@media(min-width: 320px) and (max-width: 550px) {
+   .modal-content {
+    
+      height:65% !important;
+      
+  }
+}
+@media(min-width: 320px) and (max-width: 450px) {
+  .modal-content2 {
+      width: 95% !important;
+      top:30px;
+  }
+  .modal-content1 {
+      max-width: 95% !important; 
+  }
+  .modal-content {
+    margin-top: auto;
+    margin-bottom: 10px;
+      width: 95% !important;
+    
+
+  }
+
+
+}
+
+@media (min-width: 450px) and (max-width: 1023px) {
+  .modal-content2 {
+      width: 90% !important; 
+  }
+  .modal-content1 {
+      max-width: 85% !important; 
+  }
+  .modal-content {
+      width: 90% !important;
+      margin-top: auto;
+      margin-bottom: 20px;
+     
+  }
+
+}
+@media (min-width: 320px) and (max-width: 800px) {
+
+.modal-content3 {
+  width: 80% !important; 
+}
+.row-editprofile{
+display: flex !important;
+align-items: center !important;
+flex-direction: column !important;
+}
+.file-name-input-resume{
+width: 100% !important;
+}
+.save-resume{
+
+justify-content:center!important ;
+
+}
+}
+@media (min-width: 600px) and (max-width: 800px) {
+
+.modal-content3 {
+  width: 70% !important; 
+}
+}
+
+
+@media (min-width: 800px) and (max-width: 1000px) {
+
+.modal-content3 {
+  width: 90% !important; 
+}
+
+.file-name-input-resume{
+width: 70% !important;
+}
+}
+@media (min-width: 1000px) and (max-width: 1200px) {
+
+.modal-content3 {
+  width: 70% !important; 
+}
+
+.file-name-input-resume{
+width: 80% !important;
+}
+
+}
+@media (min-width: 1200px) and (max-width: 3000px) {
+
+.modal-content3 {
+  width: 50% !important; 
+}
+
+.file-name-input-resume{
+width: 50% !important;
+}
+
+}
+
+
+@media (min-width: 1024px) {
+  .modal-content2 {
+      width: 50% !important; 
+  }
+ 
+}
+@media (min-width: 1918px) and (max-width:3000px) {
+.features-job-view2 {
+  width: 60%;
+}
+}
+
+@media (min-width: 1920px) {
+.features-job-view {
+    width: 60%;
+    
+}
+.features-job-view1 {
+  width: 60%;
+}
+
+.edit-icon {
+    top: 40px;
+    right: 40px;
+}
+}
+@media (min-width: 1200px) and (max-width: 1300px) {
+.features-job-view {
+    width: 95%;
+    margin: auto;
+}
+.features-job-view2 {
+  width: 90%;
+  margin: auto;
+  margin-top: 30px;
+}
+.features-job-view1 {
+width: 90%;
+margin: auto;
+}
+
+
+.edit-icon {
+    top: 35px;
+    right: 35px;
+}
+}
+
+
+@media (min-width: 1301px) and (max-width: 1919px) {
+.features-job-view {
+    width: 70%;
+}
+.features-job-view1 {
+  width: 70%;
+}
+
+.edit-icon {
+    top: 35px;
+    right: 35px;
+}
+}
+
+
+@media (min-width: 992px) and (max-width: 1199px) {
+.features-job-view {
+    width: 83%;
+    margin:auto;
+}
+.features-job-view1 {
+  width: 80%;
+  margin:auto;
+}
+.features-job-view2 {
+width: 80%;
+margin:auto;
+margin-top: 30px;
+
+}
+.edit-icon {
+    top: 30px;
+    right: 30px;
+}
+
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+.features-job-view {
+    width: 94%;
+    margin:auto;
+}
+.features-job-view1 {
+  width: 90%;
+  margin:auto;
+}
+.features-job-view2 {
+width: 90%;
+margin: 30px auto;
+}
+.edit-icon {
+    top: 25px;
+    right: 25px;
+}
+
+}
+
+
+@media (min-width: 320px) and (max-width: 767px) {
+.features-job-view {
+    width: 95%;
+    margin:auto;
+}
+.features-job-view1 {
+  width: 90%;
+  margin:auto;
+}
+.features-job-view2 {
+width: 90%;
+margin: 30px auto;
+
+}
+.edit-icon {
+    top: 20px;
+    right: 20px;
+}
+.input-container-basicdetails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+ 
+}
+#upload-resume-editprofile {
+  text-align: center;
+  padding: 20px;
+}
+
+.popup-heading-editprofile {
+  display: flex;
+width: 398px;
+height: 25px;
+flex-direction: column;
+justify-content: center;
+color: #333;
+
+font-family: "Plus Jakarta Sans";
+font-size: 28px;
+font-style: normal;
+font-weight: 700;
+line-height: 25px; 
+}
+.popup-heading-editprofile1 {
+  display: flex;
+width: 398px;
+height: 25px;
+
+justify-content: flex-start;
+color: #333;
+
+font-family: "Plus Jakarta Sans";
+font-size: 28px;
+font-style: normal;
+font-weight: 700;
+line-height: 25px; 
+}
+
+.file-upload-editprofile {
+  display: none;
+}
+
+.buttons-editprofile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-editprofile {
+  background-color: #F97316;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+.up-file {
+  display: none; 
+}
+
+
+.browse-btn-resume {
+  flex-shrink: 0;
+  border-radius: 8px;
+background: #7E7E7E;
+
+width: 113px;
+height: 35px;
+color: #FFF;
+text-align: center;
+font-family: "Plus Jakarta Sans";
+font-size: 15px;
+font-style: normal;
+font-weight: 700;
+line-height: 15px;
+text-transform: capitalize;
+margin-left:31px;
+margin-right: 9px;
+border-color:#7E7E7E !important
+}
+.build-btn-resume {
+  
+  flex-shrink: 0;
+  border-radius: 8px;
+background: #7E7E7E;
+text-transform: capitalize;
+width: 191px;
+height: 35px;
+color: #FFF;
+
+text-align: center;
+font-family: "Plus Jakarta Sans";
+font-size: 15px;
+font-style: normal;
+font-weight: 700;
+line-height: 15px; 
+margin-left:9px;
+border-color:#7E7E7E !important
+}
+
+
+
+.save-btn-editprofile {
+  background-color: #F97316;
+  margin-top: 20px;
+}
+
+
+.row-editprofile {
+  display: flex;
+ 
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+  flex-direction: row;
+  align-items: center;
+  
+}
+
+.file-name {
+  font-size: 16px;
+}
+
+.file-name-input-resume{
+
+padding: 8px !important;
+margin-top: 10px !important;
+margin-bottom: 10px !important;
+font-size: 16px !important;
+color: #333 !important;
+box-sizing: border-box !important;
+border-radius: 8px !important;
+border: 1px solid #E5E5E5 !important;
+
+background: #F5F5F5 !important;
+color: var(--link, #0E8CFF) !important;
+text-align: left !important;
+font-family: "Plus Jakarta Sans" !important;
+font-size: 15px !important;
+font-style: normal !important;
+font-weight: 500 !important;
+line-height: 15px !important;  
+
+}
+.save-resume{
+  display: flex;
+  justify-content: flex-end ;
+  
+
+}
+.save-btn-resume{
+  width: 180px !important;
+  height: 40px !important;
+  padding: 12px 18px 13px 17px !important;
+  align-items: center !important;
+  flex-shrink: 0;
+  border-radius: 8px !important;
+  background: #F97316 !important;
+  color: #FFF !important;
+  text-align: center !important;
+  font-family: "Plus Jakarta Sans" !important;
+  font-size: 15px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: 15px !important; 
+  text-transform: capitalize !important;
+  border-color:#F97316 !important ;
+  margin-top: 20px !important;
+}
+
+.file-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.icon2 {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px; 
+  height: 20px; 
+}
+.file-name-input-resume1{
+  color: var(--link, #0E8CFF) !important;
+  text-align: left !important;
+  font-family: "Plus Jakarta Sans" !important;
+  font-size: 15px !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  line-height: 15px !important; 
+}
+

@@ -1,0 +1,64 @@
+
+@media screen and (max-width: 1200px) {
+  .commonContainer {
+    margin-left: 0.25rem; 
+    margin-right: 2rem;
+  }
+
+  .banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5625rem;  
+  }
+
+  .bannerContent {
+    margin-bottom: 1.25rem;  
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .commonContainer {
+    margin-left: 0.5rem; 
+    margin-right: 1rem;
+  }
+
+  .banner {
+    padding: 0.625rem; 
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .commonContainer {
+    margin-left: 0.25rem; 
+    margin-right: 0.5rem;
+  }
+
+  .banner {
+    padding: 0.3125rem;  
+  }
+
+  .banner1 {
+    display: none;
+  }
+}
+
+/* @media (max-width: 768px) { 
+  #pdfViewer {
+    height: 490px; 
+  }
+}
+@media (max-width: 480px) {
+  #pdfViewer {
+    height: 340px;
+  }
+}  */
+/* @media (max-width: 768px) { 
+  .bg-white {
+    height: 520px; 
+  }
+}
+@media (max-width: 480px) { 
+  .bg-white {
+    height: 370px; 
+  }
+} */

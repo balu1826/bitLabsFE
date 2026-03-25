@@ -1,0 +1,186 @@
+@import '../../applicantcomponents/hackathon.css';
+
+.static-feedback-dashboard {
+    padding: 20px;
+}
+
+.static-create-banner {
+    background: #F97316;
+    border-radius: 12px;
+    padding: 30px 40px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
+}
+
+.static-create-info h3 {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+}
+
+.static-create-info p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    margin: 0;
+}
+
+.static-create-btn {
+    background: white;
+    color: #F97316;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.static-feedback-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 24px;
+}
+
+.static-form-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+}
+
+.static-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.static-card-header h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.static-status-badge {
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.static-status-badge.active {
+    background: #DCFCE7;
+    color: #22C55E;
+}
+
+.static-status-badge.inactive {
+    background: #FEE2E2;
+    color: #EF4444;
+}
+
+.static-card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.static-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.static-label {
+    font-size: 14px;
+    color: #888;
+    font-weight: 400;
+}
+
+.static-value {
+    font-size: 14px;
+    color: #333;
+    font-weight: 600;
+}
+
+.static-update-btn {
+    background: white;
+    color: #333;
+    padding: 8px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.static-update-btn:hover {
+    background: #f9fafb;
+    border-color: #ccc;
+}
+
+.no-feedback-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px dashed #ccc;
+}
+
+.no-feedback-message p {
+    font-size: 18px;
+    color: #666;
+    margin: 0;
+    font-weight: 500;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.filter-container {
+    display: flex;
+    align-items: center;
+}
+
+.feedback-filter-dropdown {
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 5px;
+    border: 1px solid #CBCBCB;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4b5563;
+    background-color: white;
+    cursor: pointer;
+    width: 220px;
+    box-sizing: border-box;
+}
+
+.feedback-filter-dropdown:focus {
+    outline: none;
+    border-color: #F97316;
+}
+
+.hackathon-search-box {
+    width: 220px !important;
+    height: 36px !important;
+    box-sizing: border-box;
+}

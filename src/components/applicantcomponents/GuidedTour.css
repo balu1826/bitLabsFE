@@ -1,0 +1,146 @@
+/* Backdrop */
+.gt-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 9998;
+}
+
+/* Spotlight ring around the anchor item */
+.gt-spotlight {
+  position: absolute;
+  border-radius: 8px;
+  /* big outline creates the dimming effect while keeping the inner box transparent */
+  box-shadow: 0 0 0 200vmax rgba(0,0,0,.55);
+  outline: 2px solid rgba(255,255,255,.6);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Coachmark card */
+.gt-card {
+  position: absolute;
+  width: 320px;
+  max-width: 380px;
+  background: #ffffff;
+  color: #1a1a1a;
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+  padding: 12px 14px 12px 14px;
+  z-index: 10000;
+  transition: transform 150ms cubic-bezier(.2,.9,.2,1), opacity 150ms;
+}
+
+/* Text inside card */
+.gt-text {
+  font-size: 14px;
+  line-height: 1.45;
+  color: #222;
+  margin-bottom: 8px;
+  word-wrap: break-word;
+}
+
+/* Footer row */
+.gt-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* Dots */
+.gt-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.gt-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffd3b0;
+  display: inline-block;
+  opacity: 0.9;
+}
+.gt-dot.is-active { background: #ff7a1a; box-shadow: 0 2px 6px rgba(255,122,26,0.18); }
+
+/* Controls */
+.gt-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.gt-prev {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #333;
+}
+.gt-prev:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.gt-next {
+  background: #ff7a1a;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(255,122,26,0.12);
+}
+
+/* Close button */
+.gt-close {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: #666;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Arrow (square rotated) */
+.gt-arrow {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  transform: rotate(45deg);
+  z-index: 10001;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Arrow when card placed to the right of anchor (arrow on the left edge, pointing left) */
+.gt-arrow-right {
+  left: -7px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* Arrow when card placed to the left of anchor (arrow on the right edge, pointing right) */
+.gt-arrow-left {
+  right: -7px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* Additional placement classes for fine tweaks (optional) */
+.gt-card.gt-right { transform-origin: left center; }
+.gt-card.gt-left  { transform-origin: right center; }
+
+/* Responsive adjustments */
+@media (max-width: 720px) {
+  .gt-card { width: 280px; padding: 10px; }
+  .gt-text { font-size: 13px; }
+  .gt-next { padding: 7px 10px; }
+}
+
+/* Small polish: when spotlight is present, reduce pointer events on backdrop (already handled) */

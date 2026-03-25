@@ -1,0 +1,506 @@
+.my-streaks-page {
+  padding: 30px;
+  padding-bottom: 120px;
+  background-color: #fffaf5;
+  min-height: 100vh;
+}
+
+.my-streaks-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+.my-streaks-title-text {
+  font-size: 24px;
+  font-weight: 600;
+  color: #EA7B20;
+  margin-left: 15px;
+}
+
+.my-streaks-card-area {
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  margin-bottom: 100px;
+  /* Ensures the bottom of the card is visible above dashboard bounds */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+}
+
+.submission-streak-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+
+.calendar-scroll-wrapper {
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 1000px;
+  /* Forces scrolling on small screens */
+}
+
+.calendar-header-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.calendar-month-spacer {
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.calendar-header-day {
+  width: 22px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+.calendar-month-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.calendar-month-label {
+  width: 90px;
+  font-size: 14px;
+  color: #444;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.calendar-cell {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  margin-right: 6px;
+  transition: transform 0.2s ease;
+}
+
+.calendar-cell:hover {
+  transform: scale(1.1);
+}
+
+.calendar-cell.empty {
+  background-color: transparent;
+}
+
+.calendar-cell.filled {
+  background-color: #f2f2f2;
+  border: 1px solid #e0e0e0;
+}
+
+.calendar-cell.green {
+  background-color: #00c853;
+  border-color: #00c853;
+}
+
+.calendar-cell.red {
+  background-color: #ff3b30;
+  border-color: #ff3b30;
+}
+
+.calendar-cell.orange {
+  background-color: #ff9500;
+  border-color: #ff9500;
+}
+
+.calendar-legend-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 40px;
+}
+
+.calendar-legend {
+  display: flex;
+  gap: 25px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-text {
+  font-size: 13px;
+  color: #444;
+  font-weight: 600;
+}
+
+.legend-box {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.legend-box.green {
+  background-color: #00c853;
+}
+
+.legend-box.red {
+  background-color: #ff3b30;
+}
+
+.legend-box.orange {
+  background-color: #ff9500;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .my-streaks-card-area {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .my-streaks-page {
+    padding: 15px;
+  }
+
+  .my-streaks-card-area {
+    padding: 15px;
+  }
+
+  .submission-streak-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .calendar-legend-container {
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .calendar-legend {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+}
+
+/* Answer Reveals Section */
+.answer-reveals-section {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.answer-reveals-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.answer-reveals-title-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.answer-reveals-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.answer-reveals-badge {
+  background-color: #e6f7eb;
+  color: #00c853;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.date-picker-input {
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #444;
+  outline: none;
+  cursor: pointer;
+}
+
+.date-picker-input:focus {
+  border-color: #EA7B20;
+}
+
+
+
+/* Question List */
+.revealed-questions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 12px;
+  padding-bottom: 60px;
+  margin-bottom: 60px;
+}
+
+@media (max-width: 768px) {
+  .revealed-questions-list {
+    max-height: none;
+    overflow-y: visible;
+    padding-right: 0;
+    padding-bottom: 20px;
+    margin-bottom: 60px;
+    /* Forces distance from the bottom orange card border */
+  }
+}
+
+.revealed-questions-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.revealed-questions-list::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+.revealed-question-block {
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+  padding: 24px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.r-question-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+}
+
+.r-options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.r-option {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.r-option-letter {
+  font-weight: 600;
+  margin-right: 12px;
+  color: #666;
+}
+
+.r-option-val {
+  flex: 1;
+}
+
+.r-icon {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* States */
+.r-option.correct {
+  border-color: #4caf50;
+  background-color: #f1f8e9;
+}
+
+.r-option.correct .r-icon {
+  color: #4caf50;
+}
+
+.r-option.incorrect {
+  border-color: #f44336;
+  background-color: #ffebee;
+}
+
+.r-option.incorrect .r-icon {
+  color: #f44336;
+}
+
+.r-explanation-box {
+  background-color: #fff9f0;
+  border-left: 4px solid #ea7b20;
+  padding: 16px;
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  word-break: break-word;
+  /* Prevents long words/text from overflowing */
+  overflow-wrap: break-word;
+}
+
+.r-explanation-box strong {
+  color: #1a1a1a;
+}
+
+/* Loading Skeletons */
+.answer-loading-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.answer-skeleton-block {
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.skeleton-line {
+  height: 16px;
+  background-color: #eee;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-line.title {
+  width: 60%;
+  margin-bottom: 24px;
+  height: 20px;
+}
+
+.skeleton-line.option {
+  width: 40%;
+  height: 48px;
+}
+
+.skeleton-box.explanation {
+  width: 100%;
+  height: 60px;
+  background-color: #eee;
+  border-radius: 8px;
+  margin-top: 20px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
+
+@media (max-width: 768px) {
+  .answer-reveals-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .answer-reveals-date-picker {
+    width: 100%;
+  }
+
+  .date-picker-input {
+    width: 100%;
+  }
+}
+
+/* Page Level Skeleton */
+.mystreaks-skeleton-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.skeleton-rect {
+  background-color: #eee;
+  border-radius: 8px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-rect.header {
+  width: 200px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.skeleton-rect.card {
+  width: 100%;
+  height: 400px;
+}
+
+.skeleton-rect.section-title {
+  width: 150px;
+  height: 25px;
+  margin-top: 20px;
+}
+
+.skeleton-rect.small-card {
+  width: 100%;
+  height: 150px;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.empty-answers-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.empty-calendar-img {
+  max-width: 250px;
+  height: 200px;
+  margin-bottom: 24px;
+  object-fit: contain;
+}
+
+.empty-answers-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
