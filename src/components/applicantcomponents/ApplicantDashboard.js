@@ -214,7 +214,7 @@ const allLoadingDone =
         }, 500);
       }
     } catch (err) {
-      if (err.response?.status === 404) {
+      if (err.response?.status === 404&&!sessionSkipped) {
         setStreakDetails({ currentStreak: 0, longestStreak: 0, attemptedToday: false });
         setTimeout(() => setShowStreakModal(true), 500);
       } else {

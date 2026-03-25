@@ -3,6 +3,7 @@ import axios from 'axios';
 import './StreakExamModal.css';
 import { apiUrl } from '../../services/ApplicantAPIService';
 import sirenImg from '../../images/dashboard/siren.png';
+import Snackbar from "../common/Snackbar";
 
 const StreakExamModal = ({ userId, onClose, onExamCompleted }) => {
   const [questions, setQuestions] = useState([]);
@@ -12,7 +13,13 @@ const StreakExamModal = ({ userId, onClose, onExamCompleted }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showWarning, setShowWarning] = useState(false);
-  const [showSnackBar, setShowSnackBar] = useState(false);
+  const [snackbars, setSnackbars] = useState([]);
+
+const addSnackbar = (snackbar) =>
+  setSnackbars((prev) => [...prev, snackbar]);
+
+const handleCloseSnackbar = (index) =>
+  setSnackbars((prev) => prev.filter((_, i) => i !== index));
 
   // Formatted current date logic for header
   const today = new Date();
@@ -83,13 +90,11 @@ const StreakExamModal = ({ userId, onClose, onExamCompleted }) => {
 
   // Check if all questions attempted
   if (Object.keys(selectedAnswers).length < questions.length) {
-    setShowSnackBar(true);
-
-    setTimeout(() => {
-      setShowSnackBar(false);
-    }, 3000);
-
-    return;
+   addSnackbar({
+  message: "Attempt all the questions to submit the test",
+  type: "error"   // 🔥 THIS FIXES GREEN ISSUE
+});
+return;
   }
 
   try {
@@ -175,21 +180,15 @@ const StreakExamModal = ({ userId, onClose, onExamCompleted }) => {
 
   return (
     <div className="streak-modal-overlay">
-  {showSnackBar && (
-  <div className="streak-snackbar">
-    <div className="snackbar-icon">✓</div>
-    <span className="snackbar-text">
-      Attempt all the questions to submit the test
-    </span>
-
-    <button
-      className="snackbar-close"
-      onClick={() => setShowSnackBar(false)}
-    >
-      ✕
-    </button>
-  </div>
-)}
+{snackbars.map((snackbar, index) => (
+  <Snackbar
+    key={index}
+    index={index}
+    message={snackbar.message}
+    type={snackbar.type}
+    onClose={handleCloseSnackbar}
+  />
+))}
       <div className="streak-modal-content">
         {/* Warning Popup */}
         {showWarning && (
