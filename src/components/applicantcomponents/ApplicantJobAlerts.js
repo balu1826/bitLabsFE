@@ -18,10 +18,10 @@ export default function ApplicantJobAlerts() {
   const [hasMore, setHasMore] = useState(false);
   const [exploreLoading, setExploreLoading] = useState(false);
   const navigate = useNavigate();
- const isInitialLoad = useRef(true);
+  const isInitialLoad = useRef(true);
   const currentUserId = useRef(null);
 
-   const fetchAlertsFromServer = async (reset = false) => {
+  const fetchAlertsFromServer = async (reset = false) => {
     if (!user?.id) {
       console.log(" No user ID found");
       return [];
@@ -93,13 +93,13 @@ export default function ApplicantJobAlerts() {
         alerts = resp.data.data;
       }
       setJobAlerts(prev => {
-          const updated = [...prev, ...alerts];
-          // If we got exactly 10, there might be more - show explore button
-          const hasMoreNotifications = alerts.length === 10;
-          setHasMore(hasMoreNotifications);  
-          return updated;
-        });
-        setPage(pageNumber);
+        const updated = [...prev, ...alerts];
+        // If we got exactly 10, there might be more - show explore button
+        const hasMoreNotifications = alerts.length === 10;
+        setHasMore(hasMoreNotifications);
+        return updated;
+      });
+      setPage(pageNumber);
       return alerts;
     } catch (err) {
       return [];
@@ -108,7 +108,7 @@ export default function ApplicantJobAlerts() {
 
   useEffect(() => {
     let mounted = true;
-       
+
 
     // Always fetch if we have a user
 
@@ -176,13 +176,13 @@ export default function ApplicantJobAlerts() {
       setJobAlerts((prevAlerts) =>
         prevAlerts.map((alert) => ({
           ...alert,
-           seenStatus: true
+          seenStatus: true
         }))
       );
 
-     // Dispatch event to update navbar count
+      // Dispatch event to update navbar count
       window.dispatchEvent(new CustomEvent("alerts-updated"));
-      
+
     } catch (err) {
       console.error("❌ ERROR MARKING ALL AS READ:", err);
     } finally {
@@ -215,7 +215,7 @@ export default function ApplicantJobAlerts() {
       setHasMore(true);
 
       // Update notification count in header
-    window.dispatchEvent(new CustomEvent("alerts-updated"));
+      window.dispatchEvent(new CustomEvent("alerts-updated"));
     } catch (error) {
       console.error("Error clearing all notifications:", error);
       setDeletingItems(new Set());
@@ -224,7 +224,6 @@ export default function ApplicantJobAlerts() {
     }
   };
 
- 
   function formatDate(dateString) {
     if (!dateString) return "";
     const date = new Date(dateString);
@@ -248,7 +247,7 @@ export default function ApplicantJobAlerts() {
 
   return (
     <div className="border-style">
-         <style>{`
+      <style>{`
         @keyframes spin {
           0% { transform: rotate(0deg); }
           100% { transform: rotate(360deg); }
@@ -278,8 +277,8 @@ export default function ApplicantJobAlerts() {
                         fontWeight: 600,
                         textTransform: "none",
                         width: "50%",
-                         opacity: (loading || jobAlerts.length === 0 || !jobAlerts.some(alert => !alert.seenStatus)) ? 0.6 : 1,
-                         cursor: (loading || jobAlerts.length === 0 || !jobAlerts.some(alert => !alert.seenStatus)) ? 'not-allowed' : 'pointer'
+                        opacity: (loading || jobAlerts.length === 0 || !jobAlerts.some(alert => !alert.seenStatus)) ? 0.6 : 1,
+                        cursor: (loading || jobAlerts.length === 0 || !jobAlerts.some(alert => !alert.seenStatus)) ? 'not-allowed' : 'pointer'
                       }}
                     >
                       Read all
@@ -333,15 +332,21 @@ export default function ApplicantJobAlerts() {
             ) : (
               <div className="box-notifications">
                 {jobAlerts.length > 0 ? (
-              <>
+                  <>
                     <ul style={{ padding: 0, margin: 0, listStyle: "none" }}>
                       {jobAlerts.map((alert) => {
 
-
+                        let isStreakNotification = false;
                         let redirectRoute = "/";
                         let featureName = alert.feature;
-
-                        if (alert.feature === "hackathon") {
+                        if (
+                          alert.feature?.toLowerCase().includes("streak") ||
+                          alert.message?.toLowerCase().includes("streak")
+                        ) {
+                          isStreakNotification = true;
+                          redirectRoute = "/applicanthome";
+                        }
+                        else if (alert.feature === "hackathon") {
                           redirectRoute = `/applicant-hackathon-details/${alert.featureId}`;
                           featureName = "Hackathon";
                         } else if (alert.feature === "Tech Vibes") {
@@ -350,7 +355,7 @@ export default function ApplicantJobAlerts() {
                         } else if (alert.feature === "Tech buzz shorts") {
                           redirectRoute = `/applicant-verified-videos?video=${alert.featureId}`;
                           featureName = "Techbuzz";
-                        }else if (alert.feature === "Mentor Connect") {
+                        } else if (alert.feature === "Mentor Connect") {
                           redirectRoute = `/applicant-mentorconnect`;
                           featureName = "Mentor Connect";
                         }
@@ -368,7 +373,7 @@ export default function ApplicantJobAlerts() {
                               position: "relative",
                               boxShadow: "0 0 4px rgba(0,0,0,0.1)",
                               cursor: "pointer",
-                              background: alert.seenStatus  ? "#E8E8E8" : "#fff",
+                              background: alert.seenStatus ? "#E8E8E8" : "#fff",
                               transition: 'all 0.3s ease',
                             }}
                           >
@@ -403,9 +408,15 @@ export default function ApplicantJobAlerts() {
                                         : a
                                     )
                                   );
-                                     // Update navbar count
-                                            window.dispatchEvent(new CustomEvent("alerts-updated"));
-                                  navigate(redirectRoute);
+                                  // Update navbar count
+                                  window.dispatchEvent(new CustomEvent("alerts-updated"));
+                                  if (isStreakNotification) {
+                                    navigate("/applicanthome", {
+                                      state: { action: "OPEN_STREAK_MODAL" }
+                                    });
+                                  } else {
+                                    navigate(redirectRoute);
+                                  }
                                 } catch (err) {
                                   console.error("❌ ERROR MARKING NOTIFICATION AS READ:", err);
                                   navigate(redirectRoute);
@@ -418,7 +429,7 @@ export default function ApplicantJobAlerts() {
                                 height: '8px',
                                 borderRadius: '50%',
                                 border: '2px solid #fd7e14',
-                                background:  alert.seenStatus ? 'transparent' : '#fd7e14',
+                                background: alert.seenStatus ? 'transparent' : '#fd7e14',
                                 flexShrink: 0,
                                 boxSizing: 'border-box'
                               }} />
@@ -447,69 +458,69 @@ export default function ApplicantJobAlerts() {
                           </li>
                         );
                       })}
-                  </ul>
+                    </ul>
                     {/* Debug explore button conditions */}
 
-                 
 
-                  {jobAlerts.length > 0 && hasMore && (
-                    <div style={{ textAlign: 'center', marginTop: '20px' }}>
-                      <button
-                        onClick={handleExploreMore}
-                        disabled={exploreLoading}
-                        style={{
-                          background: "transparent linear-gradient(293deg, #fbbb5c 0%, #e66a0e 100%) 0% 0%",
-                          border: "none",
-                          padding: "8px",
-                          borderRadius: "50%",
-                          width: "32px",
-                          height: "32px",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          opacity: exploreLoading ? 0.6 : 1,
-                          cursor: exploreLoading ? 'not-allowed' : 'pointer',
-                          margin: '0 auto'
-                        }}
-                      >
-                        {exploreLoading ? (
-                          <div className="spinner" style={{
-                            width: '16px',
-                            height: '16px',
-                            border: '2px solid #fff',
-                            borderTop: '2px solid transparent',
-                            borderRadius: '50%',
-                            animation: 'spin 1s linear infinite'
-                          }}></div>
-                        ) : (
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                          >
-                            <line
-                              x1="12"
-                              y1="7"
-                              x2="12"
-                              y2="15"
-                              stroke="#fff"
-                              strokeWidth="3"
-                              strokeLinecap="round"
-                            />
-                            <path
-                              d="M7 13L12 18L17 13"
-                              stroke="#fff"
-                              strokeWidth="3"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        )}
-                      </button>
-                    </div>
-                  )}
+
+                    {jobAlerts.length > 0 && hasMore && (
+                      <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                        <button
+                          onClick={handleExploreMore}
+                          disabled={exploreLoading}
+                          style={{
+                            background: "transparent linear-gradient(293deg, #fbbb5c 0%, #e66a0e 100%) 0% 0%",
+                            border: "none",
+                            padding: "8px",
+                            borderRadius: "50%",
+                            width: "32px",
+                            height: "32px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            opacity: exploreLoading ? 0.6 : 1,
+                            cursor: exploreLoading ? 'not-allowed' : 'pointer',
+                            margin: '0 auto'
+                          }}
+                        >
+                          {exploreLoading ? (
+                            <div className="spinner" style={{
+                              width: '16px',
+                              height: '16px',
+                              border: '2px solid #fff',
+                              borderTop: '2px solid transparent',
+                              borderRadius: '50%',
+                              animation: 'spin 1s linear infinite'
+                            }}></div>
+                          ) : (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="20"
+                              height="20"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                            >
+                              <line
+                                x1="12"
+                                y1="7"
+                                x2="12"
+                                y2="15"
+                                stroke="#fff"
+                                strokeWidth="3"
+                                strokeLinecap="round"
+                              />
+                              <path
+                                d="M7 13L12 18L17 13"
+                                stroke="#fff"
+                                strokeWidth="3"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          )}
+                        </button>
+                      </div>
+                    )}
                   </>
                 ) : (
                   <div className="notification-empty-state">

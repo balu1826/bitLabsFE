@@ -16,6 +16,7 @@ import characterImg from '../../images/dashboard/mobilebanners/Group.png';
 import './ApplicantDashboard.css';
 import flameImg from '../../images/dashboard/flame.png';
 import GuidedTour from "./GuidedTour";
+import { useLocation } from "react-router-dom";
 
 
 const safeGet = (key) => {
@@ -76,6 +77,7 @@ const ApplicantDashboard = () => {
   const [showRestorePrompt, setShowRestorePrompt] = useState(false);
   // Attempted dates from getAttemptedDates API – Set of "YYYY-MM-DD" strings
   const [attemptedDates, setAttemptedDates] = useState(new Set());
+ 
 
   const didInitRef = useRef(false);
   const [dashboardScore, setDashboardScore] = useState(0);
@@ -88,6 +90,7 @@ const ApplicantDashboard = () => {
   const bronzeWidth = (bronzeScore / goldScore) * 100;
   const silverWidth = ((silverScore - bronzeScore) / goldScore) * 100;
   const goldWidth = ((goldScore - silverScore) / goldScore) * 100;
+  const location = useLocation();
 
   const DEFAULT_CARD = {
     applicantId: null,
@@ -159,7 +162,7 @@ const allLoadingDone =
       setCard(DEFAULT_CARD); // fallback
     }
   };
-
+  
   useEffect(() => {
     fetchCard();
   }, [applicantId]);
@@ -215,9 +218,20 @@ const allLoadingDone =
       }
     } catch (err) {
       if (err.response?.status === 404&&!sessionSkipped) {
+      
         setStreakDetails({ currentStreak: 0, longestStreak: 0, attemptedToday: false });
         setTimeout(() => setShowStreakModal(true), 500);
-      } else {
+      }
+     else if (err.response?.status === 404) {
+  
+
+  setStreakDetails({
+    currentStreak: 0,
+    longestStreak: 0,
+    attemptedToday: false
+  });
+
+} else {
         console.error("Failed to fetch streak details:", err);
       }
     } finally {
@@ -228,6 +242,19 @@ const allLoadingDone =
   useEffect(() => {
     fetchStreakDetails();
   }, [user?.id]);
+  useEffect(() => {
+  if (streakLoading) return;   // 🔥 wait for API
+
+  if (
+    location.state?.action === "OPEN_STREAK_MODAL" &&
+    streakDetails?.attemptedToday === false    // 🔥 strict check
+  ) {
+    setShowStreakModal(true);
+
+    // clear navigation state
+    navigate(location.pathname, { replace: true });
+  }
+}, [location.state, streakLoading, streakDetails]);
 
 
    useEffect(() => {
