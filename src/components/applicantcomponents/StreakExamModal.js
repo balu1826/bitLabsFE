@@ -205,7 +205,7 @@ return;
                 <img src={sirenImg} alt="Warning Icon" className="warning-siren-icon" />
               </div>
               <h2 className="warning-title">Warning!</h2>
-              <p className="warning-text">You are about to close the exam.<br />Unsaved progress will be lost. Do you wish to continue?</p>
+              <p className="warning-text">You are about to close the exam.<br />You can check notifications later to take the test. Do you wish to close the test now?</p>
               <button className="warning-sure-btn" onClick={handleConfirmClose}>I'm Sure</button>
             </div>
           </div>
